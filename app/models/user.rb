@@ -9,6 +9,5 @@ class User < ApplicationRecord
     'Seller'=> 1,
     'Admin' => 2
   }, _prefix: true
-
   
 end

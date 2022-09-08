@@ -3,5 +3,44 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+5.times do
+  FactoryBot.create(:admin)
+  FactoryBot.create(:seller)
+  FactoryBot.create(:customer)
+end
+
+5.times do
+  FactoryBot.create(:category)
+end
+
+15.times do
+  FactoryBot.create(:product)
+end
+
+
+30.times do
+  FactoryBot.create(:review)
+end
+
+50.times do
+  FactoryBot.create(:question)
+end
+
+50.times do
+  FactoryBot.create(:answer)
+end
+
+5.times do
+  FactoryBot.create(:order)
+end
+
+20.times do
+  FactoryBot.create(:order_item)
+end
+
+5.times do
+  FactoryBot.create(:address)
+end
+
+

@@ -1,0 +1,545 @@
+{
+    "version": "0.4.4",
+    "idCounter": 75,
+    "associationType": "through",
+    "nodes": [
+        {
+            "id": "13",
+            "type": "entity",
+            "position": {
+                "x": 180,
+                "y": -30
+            },
+            "data": {
+                "tableId": "12",
+                "name": "seller"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 180,
+                "y": -30
+            },
+            "dragging": false
+        },
+        {
+            "id": "15",
+            "type": "entity",
+            "position": {
+                "x": 360,
+                "y": -30
+            },
+            "data": {
+                "tableId": "12",
+                "name": "customer"
+            },
+            "selected": true,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 360,
+                "y": -30
+            },
+            "dragging": false
+        },
+        {
+            "id": "23",
+            "type": "entity",
+            "position": {
+                "x": 705,
+                "y": 345
+            },
+            "data": {
+                "tableId": "17",
+                "name": "order"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 705,
+                "y": 345
+            },
+            "dragging": false
+        },
+        {
+            "id": "24",
+            "type": "entity",
+            "position": {
+                "x": 330,
+                "y": 285
+            },
+            "data": {
+                "tableId": "16",
+                "name": "product"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 330,
+                "y": 285
+            },
+            "dragging": false
+        },
+        {
+            "id": "27",
+            "type": "entity",
+            "position": {
+                "x": 960,
+                "y": -45
+            },
+            "data": {
+                "tableId": "19",
+                "name": "category"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 960,
+                "y": -45
+            },
+            "dragging": false
+        },
+        {
+            "id": "28",
+            "type": "entity",
+            "position": {
+                "x": 960,
+                "y": 90
+            },
+            "data": {
+                "tableId": "19",
+                "name": "subcategory"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 960,
+                "y": 90
+            },
+            "dragging": false
+        },
+        {
+            "id": "30",
+            "type": "entity",
+            "position": {
+                "x": 885,
+                "y": 240
+            },
+            "data": {
+                "tableId": "19",
+                "name": "category"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 885,
+                "y": 240
+            },
+            "dragging": false
+        },
+        {
+            "id": "33",
+            "type": "entity",
+            "position": {
+                "x": 585,
+                "y": 540
+            },
+            "data": {
+                "tableId": "18",
+                "name": "order_item"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65
+        },
+        {
+            "id": "36",
+            "type": "entity",
+            "position": {
+                "x": 30,
+                "y": 585
+            },
+            "data": {
+                "tableId": "20",
+                "name": "answer"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 30,
+                "y": 585
+            },
+            "dragging": false
+        },
+        {
+            "id": "37",
+            "type": "entity",
+            "position": {
+                "x": 165,
+                "y": 435
+            },
+            "data": {
+                "tableId": "21",
+                "name": "question"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 165,
+                "y": 435
+            },
+            "dragging": false
+        },
+        {
+            "id": "42",
+            "type": "entity",
+            "position": {
+                "x": 960,
+                "y": 360
+            },
+            "data": {
+                "tableId": "16",
+                "name": "product"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 960,
+                "y": 360
+            },
+            "dragging": false
+        },
+        {
+            "id": "44",
+            "type": "entity",
+            "position": {
+                "x": 525,
+                "y": 345
+            },
+            "data": {
+                "tableId": "22",
+                "name": "review"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65,
+            "positionAbsolute": {
+                "x": 525,
+                "y": 345
+            },
+            "dragging": false
+        },
+        {
+            "id": "67",
+            "type": "entity",
+            "position": {
+                "x": 840,
+                "y": 495
+            },
+            "data": {
+                "tableId": "66",
+                "name": "address"
+            },
+            "selected": false,
+            "width": 146,
+            "height": 65
+        }
+    ],
+    "edges": [
+        {
+            "id": "25",
+            "source": "13",
+            "target": "24",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "26",
+            "source": "15",
+            "target": "23",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "29",
+            "source": "27",
+            "target": "28",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "34",
+            "source": "24",
+            "target": "33",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "35",
+            "source": "23",
+            "target": "33",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "38",
+            "source": "15",
+            "target": "37",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "39",
+            "source": "37",
+            "target": "36",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "40",
+            "source": "24",
+            "target": "37",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "41",
+            "source": "13",
+            "target": "36",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "43",
+            "source": "30",
+            "target": "42",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "45",
+            "source": "24",
+            "target": "44",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "46",
+            "source": "15",
+            "target": "44",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "48",
+            "source": "13",
+            "target": "15",
+            "sourceHandle": "bottom3",
+            "targetHandle": "top",
+            "label": "through",
+            "type": "through",
+            "data": {
+                "throughNodeId": "24"
+            }
+        },
+        {
+            "id": "49",
+            "source": "13",
+            "target": "44",
+            "sourceHandle": "bottom3",
+            "targetHandle": "top",
+            "label": "through",
+            "type": "through",
+            "data": {
+                "throughNodeId": "24"
+            }
+        },
+        {
+            "id": "68",
+            "source": "23",
+            "target": "67",
+            "sourceHandle": "bottom2",
+            "targetHandle": "top",
+            "label": "has many",
+            "type": "hasMany"
+        },
+        {
+            "id": "74",
+            "source": "24",
+            "target": "23",
+            "sourceHandle": "bottom3",
+            "targetHandle": "top",
+            "label": "through",
+            "type": "through",
+            "data": {
+                "throughNodeId": "33"
+            }
+        }
+    ],
+    "tables": {
+        "12": {
+            "name": "user",
+            "attributes": {}
+        },
+        "16": {
+            "name": "product",
+            "attributes": {
+                "50": {
+                    "name": "color",
+                    "type": "string"
+                },
+                "51": {
+                    "name": "description",
+                    "type": "text"
+                },
+                "52": {
+                    "name": "quality",
+                    "type": "integer"
+                },
+                "53": {
+                    "name": "price",
+                    "type": "decimal"
+                },
+                "62": {
+                    "name": "review_count",
+                    "type": "string"
+                },
+                "63": {
+                    "name": "total_review_score",
+                    "type": "string"
+                }
+            }
+        },
+        "17": {
+            "name": "order",
+            "attributes": {
+                "64": {
+                    "name": "total_price",
+                    "type": "decimal"
+                },
+                "65": {
+                    "name": "status",
+                    "type": "string"
+                }
+            }
+        },
+        "18": {
+            "name": "order_item",
+            "attributes": {
+                "55": {
+                    "name": "price",
+                    "type": "decimal"
+                },
+                "56": {
+                    "name": "quantity",
+                    "type": "integer"
+                }
+            }
+        },
+        "19": {
+            "name": "category",
+            "attributes": {
+                "57": {
+                    "name": "name",
+                    "type": "string"
+                }
+            }
+        },
+        "20": {
+            "name": "answer",
+            "attributes": {
+                "58": {
+                    "name": "body",
+                    "type": "text"
+                }
+            }
+        },
+        "21": {
+            "name": "question",
+            "attributes": {
+                "59": {
+                    "name": "body",
+                    "type": "text"
+                }
+            }
+        },
+        "22": {
+            "name": "review",
+            "attributes": {
+                "60": {
+                    "name": "body",
+                    "type": "text"
+                },
+                "61": {
+                    "name": "rate",
+                    "type": "integer"
+                }
+            }
+        },
+        "66": {
+            "name": "address",
+            "attributes": {
+                "69": {
+                    "name": "body",
+                    "type": "text"
+                },
+                "70": {
+                    "name": "city",
+                    "type": "string"
+                },
+                "71": {
+                    "name": "state",
+                    "type": "string"
+                },
+                "72": {
+                    "name": "country",
+                    "type": "string"
+                },
+                "73": {
+                    "name": "zipcode",
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "connectionStartNodeId": "24",
+    "isConnectContinue": false,
+    "isMouseOnNode": false,
+    "isMouseOnEdge": false,
+    "mouseOnNodeId": null,
+    "mouseOnEdgeId": null,
+    "selectedNodeIdForThrough": null
+}

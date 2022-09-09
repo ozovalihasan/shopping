@@ -1,0 +1,8 @@
+<h1>New <%= singular_name %></h1>
+
+<%%= render <%= class_name %>s::FormComponent.new(<%= [singular_name, *reference_attributes.keys.map(&:pluralize)].map{|item| "#{item}: @#{item}"}.join(", ") %>) %>
+<br>
+
+<div>
+  <%%= link_to "Back to <%= plural_name %>", <%= plural_name %>_path %>
+</div>

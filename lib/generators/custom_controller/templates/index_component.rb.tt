@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+class <%= class_name %>s::IndexComponent < ViewComponent::Base
+  def initialize(<%= plural_name %>:)
+    @<%= plural_name %> = <%= plural_name %>
+  end
+
+end

@@ -1,0 +1,8 @@
+<%%= render <%= class_name %>s::<%= class_name %>Component.new(<%= singular_name %>: @<%= singular_name %>) %>
+
+<div>
+  <%%= link_to "Edit this <%= singular_name %>", edit_<%= singular_name %>_path(@<%= singular_name %>) %> |
+  <%%= link_to "Back to <%= plural_name %>", <%= plural_name %>_path %>
+
+  <%%= button_to "Destroy this <%= singular_name %>", @<%= singular_name %>, method: :delete %>
+</div>

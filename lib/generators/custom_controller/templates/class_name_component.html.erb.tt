@@ -1,0 +1,12 @@
+<div class="bg-red-300 border border-solid border-red-200">
+  <div id="<%%= dom_id @<%= singular_name %> %>">
+    <p>
+      <%%= link_to @<%= singular_name %> do %>
+        <% attributes_without_references.keys.map do |key| %>
+        <%%= @<%= singular_name %>.<%= key.to_s %> %>
+        <% end %>
+      <%% end %>
+    </p>
+    
+  </div>
+</div>

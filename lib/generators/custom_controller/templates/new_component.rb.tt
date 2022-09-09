@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+class <%= class_name %>s::NewComponent < ViewComponent::Base
+  def initialize(<%= [singular_name, reference_attributes.keys.map(&:pluralize)].join(":, ") + ":" %>)
+    @<%= singular_name %> = <%= singular_name %>
+    <% reference_attributes.keys.map do |key|  %>
+    @<%= key.to_s.pluralize %> = <%= key.to_s.pluralize %>
+    <% end %>
+  end
+end

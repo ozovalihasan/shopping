@@ -1,0 +1,7 @@
+<h1>Categories</h1>
+
+<div id="categories">
+  <%= render(Categories::CategoryComponent.with_collection(@categories)) %>
+</div>
+
+<%= link_to "New category", new_category_path %>

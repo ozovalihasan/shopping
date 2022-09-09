@@ -1,0 +1,8 @@
+<h1>New product</h1>
+
+<%= render Products::FormComponent.new(product: @product, categories: @categories, sellers: @sellers) %>
+<br>
+
+<div>
+  <%= link_to "Back to products", products_path %>
+</div>

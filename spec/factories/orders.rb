@@ -5,3 +5,19 @@ FactoryBot.define do
     customer_id { Customer.ids.sample }
   end
 end
+
+
+FactoryBot.define do
+  factory :mock_order, class: "Order" do
+    sequence(:total_price) { |n| n.to_f }
+    customer_id { Customer.ids.sample }
+
+    trait :not_completed do
+      status { 1 }
+    end
+
+    trait :completed do
+      status { 1 }
+    end
+  end
+end

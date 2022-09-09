@@ -6,3 +6,12 @@ FactoryBot.define do
     customer_id { Customer.ids.sample }
   end
 end
+
+FactoryBot.define do
+  factory :mock_review, class: "Review" do
+    sequence(:body) { |n| "body#{n}" }
+    sequence(:rate) { |n| n }
+    product_id { Product.ids.sample }
+    customer_id { Customer.ids.sample }
+  end
+end

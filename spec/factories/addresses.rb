@@ -8,3 +8,14 @@ FactoryBot.define do
     order_id { Order.ids.sample }
   end
 end
+
+FactoryBot.define do
+  factory :mock_address, class: "Address" do
+    sequence(:body) { |n| "body#{n}" }
+    sequence(:city) { |n| "city#{n}" }
+    sequence(:state) { |n| "state#{n}" }
+    sequence(:country) { |n| "country#{n}" }
+    sequence(:zipcode) { |n| n }
+    order_id { Order.ids.sample }
+  end
+end

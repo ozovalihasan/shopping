@@ -1,6 +1,6 @@
 {
     "version": "0.4.4",
-    "idCounter": 75,
+    "idCounter": 76,
     "associationType": "through",
     "nodes": [
         {
@@ -426,7 +426,7 @@
                     "type": "text"
                 },
                 "52": {
-                    "name": "quality",
+                    "name": "quantity",
                     "type": "integer"
                 },
                 "53": {
@@ -435,10 +435,14 @@
                 },
                 "62": {
                     "name": "review_count",
-                    "type": "string"
+                    "type": "integer"
                 },
                 "63": {
                     "name": "total_review_score",
+                    "type": "integer"
+                },
+                "75": {
+                    "name": "name",
                     "type": "string"
                 }
             }
@@ -452,7 +456,7 @@
                 },
                 "65": {
                     "name": "status",
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },

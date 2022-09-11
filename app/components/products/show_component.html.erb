@@ -1,4 +1,28 @@
-<%= render Products::ProductComponent.new(product: @product) %>
+<div>
+  name: <%= @product.name %>
+</div>
+<div>
+  color: <%= @product.color %>
+</div>
+<div>
+  description: <%= @product.description %>
+</div>
+<div>
+  quantity: <%= @product.quantity %>
+</div>
+<div>
+  price: <%= @product.price %>
+</div>
+<div>
+  review_count: <%= @product.review_count %>
+</div>
+<div>
+  total_review_score: <%= @product.total_review_score %>
+</div>
+
+<%= render Reviews::IndexComponent.new(reviews: @product.reviews) %>
+
+<%= render Questions::IndexComponent.new(questions: @product.questions) %>
 
 <div>
   <%= link_to "Edit this product", edit_product_path(@product) %> |

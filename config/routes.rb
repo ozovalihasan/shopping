@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :answers
+  resources :questions
   resources :reviews
   resources :products
   resources :categories

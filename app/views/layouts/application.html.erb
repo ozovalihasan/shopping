@@ -13,7 +13,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+    <%= render Layout::NavbarComponent.new(cart: @cart) %>
     <%= yield %>
   </body>
 </html>

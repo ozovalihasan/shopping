@@ -1,0 +1,7 @@
+<div class="bg-third-400 flex justify-between text-3xl">
+  <%= link_to "Shopping", categories_path %>
+
+  <%= link_to @cart do %>
+    <%= @cart.order_items.map(&:quantity).sum %>
+  <% end %>
+</div>

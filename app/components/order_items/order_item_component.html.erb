@@ -1,0 +1,16 @@
+<div class="bg-first-300 border-2 border-solid border-red-200">
+  <div id="<%= dom_id @order_item %>">
+    <p>
+      <%= render Products::ProductComponent.new(product: @order_item.product) %>
+      
+      <%= link_to @order_item do %>
+        
+        <%= @order_item.price %>
+        
+        <%= @order_item.quantity %>
+        
+      <% end %>
+    </p>
+    
+  </div>
+</div>

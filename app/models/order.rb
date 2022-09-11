@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  enum type: {
+  enum status: {
     'not_completed'=> 0,
     'completed' => 1,
   }, _prefix: true

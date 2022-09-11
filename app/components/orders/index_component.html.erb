@@ -1,0 +1,7 @@
+<h1>Orders</h1>
+
+<div id="orders">
+  <%= render(Orders::OrderComponent.with_collection(@orders)) %>
+</div>
+
+<%= link_to "New order", new_order_path %>

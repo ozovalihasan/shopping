@@ -1,0 +1,11 @@
+<h1>Editing order</h1>
+
+<%= render Orders::FormComponent.new(order: @order, customers: @customers) %>
+
+
+<br>
+
+<div>
+  <%= link_to "Show this order", @order %> |
+  <%= link_to "Back to orders", orders_path %>
+</div>

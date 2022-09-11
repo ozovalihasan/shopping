@@ -1,0 +1,14 @@
+<div class="bg-first-300 border border-solid border-red-200">
+  <div id="<%= dom_id @review %>">
+    <p>
+      <%= link_to @review do %>
+        
+        <%= @review.body %>
+        
+        <%= @review.rate %>
+        
+      <% end %>
+    </p>
+    
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<h1>New review</h1>
+
+<%= render Reviews::FormComponent.new(review: @review, products: @products, customers: @customers) %>
+<br>
+
+<div>
+  <%= link_to "Back to reviews", reviews_path %>
+</div>

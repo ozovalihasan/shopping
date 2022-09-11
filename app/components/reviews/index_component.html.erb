@@ -1,0 +1,7 @@
+<h1>Reviews</h1>
+
+<div id="reviews">
+  <%= render(Reviews::ReviewComponent.with_collection(@reviews)) %>
+</div>
+
+<%= link_to "New review", new_review_path %>

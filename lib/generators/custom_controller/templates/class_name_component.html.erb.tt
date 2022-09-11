@@ -1,4 +1,4 @@
-<div class="bg-red-300 border border-solid border-red-200">
+<div class="bg-first-300 border border-solid border-red-200">
   <div id="<%%= dom_id @<%= singular_name %> %>">
     <p>
       <%%= link_to @<%= singular_name %> do %>

@@ -2,8 +2,8 @@
   <div id="<%%= dom_id @<%= singular_name %> %>">
     <p>
       <%%= link_to @<%= singular_name %> do %>
-        <% attributes_without_references.keys.map do |key| %>
-        <%%= @<%= singular_name %>.<%= key.to_s %> %>
+        <% attributes_without_references.map do |attribute| %>
+        <%%= @<%= singular_name %>.<%= attribute.name.to_s %> %>
         <% end %>
       <%% end %>
     </p>

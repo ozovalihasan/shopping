@@ -5,6 +5,7 @@ class CustomControllerGenerator < Rails::Generators::NamedBase
 
   check_class_collision suffix: "Component"  
   class_option :attributes, type: :hash, default: {}
+  argument :attributes, type: :array, default: [], banner: "field[:type][:index] field[:type][:index]"
   
   def create_component_file
     # Template method
@@ -27,11 +28,11 @@ class CustomControllerGenerator < Rails::Generators::NamedBase
   end
 
   def reference_attributes
-    options.attributes.select {|_,value| value == "references"}
+    attributes.select {|attribute| attribute.type == :references}
   end
 
   def attributes_without_references
-    options.attributes.select {|_,value| value != "references"}
+    attributes.select {|attribute| attribute.type != :references}
   end
   
 end

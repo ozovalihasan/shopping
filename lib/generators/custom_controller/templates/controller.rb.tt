@@ -21,18 +21,18 @@ class <%= class_name %>sController < ApplicationController
   # GET /<%= plural_name %>/new
   def new
     @<%= singular_name %> = <%= class_name %>.new
-    <% reference_attributes.keys.map do |key|  %>
-    @<%= key.to_s.pluralize %> = <%= key.to_s.capitalize %>.all
+    <% reference_attributes.map do |attribute|  %>
+    @<%= attribute.name.to_s.pluralize %> = <%= attribute.name.to_s.capitalize %>.all
     <% end %>
-    render <%= class_name %>s::NewComponent.new(<%= [singular_name, *reference_attributes.keys.map(&:pluralize)].map{|item| "#{item}: @#{item}"}.join(", ") %>)
+    render <%= class_name %>s::NewComponent.new(<%= [singular_name, *reference_attributes.map{|attribute| attribute.name.pluralize}].map{|item| "#{item}: @#{item}"}.join(", ") %>)
   end
 
   # GET /<%= plural_name %>/1/edit
   def edit
-    <% reference_attributes.keys.map do |key|  %>
-    @<%= key.to_s.pluralize %> = <%= key.to_s.capitalize %>.all
+    <% reference_attributes.map do |attribute|  %>
+    @<%= attribute.name.to_s.pluralize %> = <%= attribute.name.to_s.capitalize %>.all
     <% end %>
-    render <%= class_name %>s::EditComponent.new(<%= [singular_name, *reference_attributes.keys.map(&:pluralize)].map{|item| "#{item}: @#{item}"}.join(", ") %>)
+    render <%= class_name %>s::EditComponent.new(<%= [singular_name, *reference_attributes.map{|attribute| attribute.name.pluralize}].map{|item| "#{item}: @#{item}"}.join(", ") %>)
   end
 
   # POST /<%= plural_name %> or /<%= plural_name %>.json
@@ -81,6 +81,6 @@ class <%= class_name %>sController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def <%= singular_name %>_params
-      params.require(:<%= singular_name %>).permit(<%= (options.attributes.map {|key, val| val == "references" ? (key.to_s + "_id").to_sym : key.to_sym }).to_s.delete("[]") %>)
+      params.require(:<%= singular_name %>).permit(<%= (options.attributes.map {|key, val| val == "references" ? (attribute.name.to_s + "_id").to_sym : attribute.name.to_sym }).to_s.delete("[]") %>)
     end
 end

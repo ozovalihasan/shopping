@@ -32,15 +32,9 @@
 
   <div>
 
-    <%= form_with url: order_items_path do |form| %>
-    
-        
-      <%= form.hidden_field :product_id, value: @product.id %>
-
-      <div>
-        <%= form.submit "Add To Cart" %>
-      </div>  
-
+    <%= simple_form_for :order_item, url: order_items_path do |form| %>
+      <%= form.input :product_id, as: :hidden, input_html: { value: @product.id } %>
+      <%= form.submit "Add to Cart", class: "bg-second-200" %>
     <% end %>
 
     

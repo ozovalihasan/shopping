@@ -2,10 +2,13 @@
   <div id="<%= dom_id @order %>">
     <p>
       <%= link_to @order do %>
-        
-        <%= @order.total_price %>
-        
-        <%= @order.status %>
+
+        <div>
+          Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
+        </div>
+        <div>
+          Status: <%= @order.status %>
+        </div>
         
       <% end %>
     </p>

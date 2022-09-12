@@ -1,8 +1,10 @@
-<div class="bg-first-300 border border-solid border-red-200">
-  <div id="<%= dom_id @category %>">
-    <p>
-      <%= link_to @category.name, @category %>
-    </p>
-    
+<%= link_to @category do %>
+  <div class="bg-first-300 border border-solid border-red-200 w-72 h-48 m-2">
+    <div id="<%= dom_id @category %>">
+      <p>
+        <%= @category.name %>
+      </p>
+      
+    </div>
   </div>
-</div>
+<% end %>

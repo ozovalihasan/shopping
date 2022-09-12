@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :set_product
+
 
   # GET /questions or /questions.json
   def index
@@ -83,6 +85,10 @@ class QuestionsController < ApplicationController
       @question = Question.find(params[:id])
     end
 
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+    
     # Only allow a list of trusted parameters through.
     def question_params
       params.require(:question).permit()

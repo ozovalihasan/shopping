@@ -1,7 +1,17 @@
-<div class="bg-yellow-300 border border-solid border-red-200" id="<%= dom_id @product %>">
-
+<div class="bg-third-100 border border-solid border-red-200 w-96 h-96 m-4" id="<%= dom_id @product %>">
+  <div class="w-48 h-48 bg-third-400">
+    <img src="https://loremflickr.com/360/360" alt="">
+  </div>
   <p>
-    <%= link_to @product.name, @product %>
+    <%= link_to @product do %>
+      <div>
+        <%= number_to_currency(@product.price, :unit => "$") %>
+      </div>
+      <div>
+        <%= @product.name %>
+      </div>
+      
+    <% end %>
   </p>
     
 </div>

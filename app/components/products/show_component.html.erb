@@ -1,35 +1,47 @@
-<div class="w-32 h-32 bg-second-500">
-  Placeholder image
-</div>
 <div>
-  name: <%= @product.name %>
-</div>
-<div>
-  color: <%= @product.color %>
-</div>
-<div>
-  description: <%= @product.description %>
-</div>
-<div>
-  quantity: <%= @product.quantity %>
-</div>
-<div>
-  price: <%= @product.price %>
-</div>
-<div>
-  review_count: <%= @product.review_count %>
-</div>
-<div>
-  total_review_score: <%= @product.total_review_score %>
-</div>
+  
+  <div class="flex">
+    <div class="w-1/2 aspect-square bg-second-500">
+      <img class="object-cover" src="https://loremflickr.com/360/360" alt="">
+    </div>
+    <div class="w-1/2">
+      <div>
+        name: <%= @product.name %>
+      </div>
+      <div>
+        seller: <%= @product.seller.email %>
+      </div>
+      <div>
+        color: <%= @product.color %>
+      </div>
+      <div>
+        description: <%= @product.description %>
+      </div>
+      <div>
+        quantity: <%= @product.quantity %>
+      </div>
+      <div>
+        price: <%= @product.price %>
+      </div>
+      
+      <div>
+        review_count: <%= @product.review_count %>
+      </div>
+      <div>
+        total_review_score: <%= @product.total_review_score %>
+      </div>
+    </div>
+    
+  </div>
+  
+  <%= render Reviews::IndexComponent.new(reviews: @product.reviews.first(5)) %>
 
-<%= render Reviews::IndexComponent.new(reviews: @product.reviews) %>
-
-<%= render Questions::IndexComponent.new(questions: @product.questions) %>
-
-<div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
-
-  <%= button_to "Destroy this product", @product, method: :delete %>
+  <%= link_to "Questions", product_questions_path(@product) %>
+  
+  <div>
+    <%= link_to "Edit this product", edit_product_path(@product) %> |
+    <%= link_to "Back to products", products_path %>
+  
+    <%= button_to "Destroy this product", @product, method: :delete %>
+  </div>
 </div>

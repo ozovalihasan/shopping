@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :answers
   resources :questions
   resources :reviews
-  resources :products
+  resources :products do 
+    resources :questions
+  end
   resources :categories
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

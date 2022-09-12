@@ -41,8 +41,9 @@ class OrderItemsController < ApplicationController
 
   # POST /order_items or /order_items.json
   def create
-    @order_item = OrderItem.new(order_item_params)
-
+    @order = @cart
+    @order_item = @order.order_items.new(order_item_params)
+    @order_item.update(quantity: 1)
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to order_item_url(@order_item), notice: "OrderItem was successfully created." }
@@ -85,6 +86,6 @@ class OrderItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_item_params
-      params.require(:order_item).permit()
+      params.permit(:product_id)
     end
 end

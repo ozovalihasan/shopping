@@ -33,10 +33,28 @@
     </div>
     
   </div>
+
+  <div>
+
+    <%= form_with url: order_items_path do |form| %>
+    
+        
+      <%= form.hidden_field :product_id, value: @product.id %>
+
+      <div>
+        <%= form.submit "Add To Cart" %>
+      </div>  
+
+    <% end %>
+
+    
+  </div>
   
   <%= render Reviews::IndexComponent.new(reviews: @product.reviews.first(5)) %>
 
-  <%= link_to "Questions", product_questions_path(@product) %>
+  <div>
+    <%= link_to "Questions", product_questions_path(@product) %>
+  </div>
   
   <div>
     <%= link_to "Edit this product", edit_product_path(@product) %> |

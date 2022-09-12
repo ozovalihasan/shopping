@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
-    name { Faker::Lorem.words(number: 4).join(" ") }
+    name { Faker::Commerce.department(max: 1) }
     category_id { Category.all.size < 4 ? nil : Category.ids.sample}
   end
 end

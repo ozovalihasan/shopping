@@ -3,7 +3,7 @@ FactoryBot.define do
     color { Faker::Color.color_name }
     quantity { Faker::Number.number(digits: 2) }
     description { Faker::Lorem.paragraph }
-    name { Faker::Device.model_name }
+    name { Faker::Commerce.product_name }
     price { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
     review_count { Faker::Number.number(digits: 1) }
     total_review_score { Faker::Number.number(digits: 2) }

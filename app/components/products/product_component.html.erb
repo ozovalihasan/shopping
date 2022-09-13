@@ -4,11 +4,17 @@
   </div>
   <p>
     <%= link_to @product do %>
-      <div>
-        <%= number_to_currency(@product.price, :unit => "$") %>
-      </div>
-      <div>
+      <div class="text-sm line-clamp-2">
         <%= @product.name %>
+        <%= @product.name %>
+        <%= @product.name %>
+        <%= @product.name %>
+        <%= @product.name %>
+        <%= @product.name %>
+      </div>
+
+      <div class="text-lg text-first-500">
+        <%= number_to_currency(@product.price, :unit => "$") %>
       </div>
     <% end %>
 

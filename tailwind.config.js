@@ -21,4 +21,7 @@ module.exports = {
       fourth: colors.slate,
     },
   },
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

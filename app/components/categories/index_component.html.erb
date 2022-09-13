@@ -4,4 +4,8 @@
   <%= render(Categories::CategoryComponent.with_collection(@categories)) %>
 </div>
 
+<div id="products" class="flex flex-wrap w-full justify-evenly">
+  <%= render(Products::ProductComponent.with_collection(@products)) %>
+</div>
+
 <%= link_to "New category", new_category_path %>

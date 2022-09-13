@@ -4,8 +4,9 @@ class CategoriesController < ApplicationController
   # GET /categories or /categories.json
   def index
     @categories = Category.all
+    @products = Product.limit(10).order("RANDOM()")
     respond_to do |format|
-      format.html { render Categories::IndexComponent.new(categories: @categories) }
+      format.html { render Categories::IndexComponent.new(categories: @categories, products: @products) }
       format.json
     end
   end

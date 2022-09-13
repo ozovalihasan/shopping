@@ -1,5 +1,5 @@
-<div class="bg-third-100 border border-solid border-red-200 w-96 h-96 m-4" id="<%= dom_id @product %>">
-  <div class="w-48 h-48 bg-third-400">
+<div class="bg-third-100 border border-solid border-red-200 w-96 m-4 p-4 " id="<%= dom_id @product %>">
+  <div class="w-full aspect-square bg-third-400 ">
     <img src="https://loremflickr.com/360/360" alt="">
   </div>
   <p>
@@ -14,13 +14,19 @@
       </div>
 
       <div class="text-lg text-first-500">
+        <div>
+          star: <%= @product.total_review_score.to_f / @product.review_count.to_f %> - <%= @product.review_count %>
+        </div>
+      </div>
+
+      <div class="text-lg text-first-500">
         <%= number_to_currency(@product.price, :unit => "$") %>
       </div>
     <% end %>
 
     <%= simple_form_for :order_item, url: order_items_path do |form| %>
       <%= form.input :product_id, as: :hidden, input_html: { value: @product.id } %>
-      <%= form.submit "Add to Cart", class: "btn-second" %>
+      <%= form.submit "Add to Cart", class: "btn-second w-full" %>
     <% end %>
   </p>
     

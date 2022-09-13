@@ -1,4 +1,23 @@
-<%= render Orders::OrderComponent.new(order: @order) %>
+<div class="border border-solid border-red-200">
+  <div id="<%= dom_id @order %>" class="flex">
+    
+    <div class="w-3/4">
+      <%= render OrderItems::OrderItemComponent.with_collection(OrderItem.all) %>
+    </div>
+
+    <div class="w-1/4">
+      Summary
+      <div>
+        Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
+      </div>
+      <div>
+        Status: <%= @order.status %>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
 
 <div>
   <%= link_to "Edit this order", edit_order_path(@order) %> |

@@ -1,19 +1,15 @@
-<div class="border border-solid border-red-200">
-  <div id="<%= dom_id @order %>">
-    <p>
-      <%= link_to @order do %>
-
-        <div>
-          Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
-        </div>
-        <div>
-          Status: <%= @order.status %>
-        </div>
-        
-      <% end %>
-    </p>
-
-    <%= render OrderItems::OrderItemComponent.with_collection(OrderItem.all) %>
-    
-  </div>
+<div id="<%= dom_id @order %>" class="border border-solid border-red-200">
+  <%= link_to @order do %>
+      
+    <div >
+      Summary
+      <div>
+        Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
+      </div>
+      <div>
+        Status: <%= @order.status %>
+      </div>
+    </div>
+      
+  <% end %>
 </div>

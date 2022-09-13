@@ -1,15 +1,23 @@
-<div class="bg-first-300 border-2 border-solid border-red-200">
+<div class="border-2 border-solid border-red-200">
   <div id="<%= dom_id @order_item %>">
     <p>
-      <%= render Products::ProductComponent.new(product: @order_item.product) %>
+      <div class="flex w-full">
+        <div class="w-16 aspect-square">
+          <img src="https://loremflickr.com/360/360" alt="">
+        </div>
+        <%= link_to @order_item.product do %>
+          <div class="whitespace-nowrap">
+            <%= @order_item.product.name %>
+          </div>
+        <% end %>
+        <div>
+          <%= @order_item.quantity %>
+        </div>
+        <div class="text-first-500 w-full">
+          <%= @order_item.price %>
+        </div>
+      </div>
       
-      <%= link_to @order_item do %>
-        
-        <%= @order_item.price %>
-        
-        <%= @order_item.quantity %>
-        
-      <% end %>
     </p>
     
   </div>

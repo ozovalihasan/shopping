@@ -1,14 +1,17 @@
 <div class="bg-third-400 flex justify-between text-3xl">
   <%= link_to "Shopping", root_path %>
 
-  <% if @current_user %>
-    <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-  <% else %>
-    <%= link_to "Sign in", new_customer_session_path %>
-  <% end %>
-  <% if @cart %>
-    <%= link_to @cart do %>
-      <%= @cart.order_items.map(&:quantity).sum %>
+  <div class="ml-auto flex">
+    
+    <% if @current_user %>
+      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class:"mr-8" %>
+    <% else %>
+      <%= link_to "Sign in", new_customer_session_path %>
     <% end %>
-  <% end %>
+    <% if @cart %>
+      <%= link_to @cart do %>
+        <%= @cart.order_items.map(&:quantity).sum %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

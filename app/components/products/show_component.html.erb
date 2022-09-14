@@ -1,12 +1,14 @@
 <div>
   
   <div class="flex">
-    <div class="w-1/2 aspect-square bg-second-500">
-      <img class="object-cover" src="https://loremflickr.com/360/360" alt="">
+    <div class="w-1/2 aspect-square bg-second-500 ">
+      <%= image_tag @product.images.first, class: "object-cover" %>
 
-      <% @product.images.map do |image| %>
-        <%= image_tag image %>
-      <% end %>
+      <div class="w-32 aspect-square flex">
+        <% @product.images.map do |image| %>
+          <%= image_tag image, class: "object-cover" %>
+        <% end %>
+      </div>
       
     </div>
     <div class="w-1/2">

@@ -2,7 +2,9 @@
 
   <%= link_to @product do %>
     <div class="w-full aspect-square bg-third-400 ">
-      <img src="https://loremflickr.com/360/360" alt="">
+      <% if @product.images.first %>
+        <%= image_tag @product.images.first %>
+      <% end %>
     </div>
     <div class="text-sm line-clamp-2">
       <%= @product.name %>

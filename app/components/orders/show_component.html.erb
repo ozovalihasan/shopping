@@ -2,7 +2,7 @@
   <div id="<%= dom_id @order %>" class="flex">
     
     <div class="w-3/4">
-      <%= render OrderItems::OrderItemComponent.with_collection(OrderItem.all) %>
+      <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>
     </div>
 
     <div class="w-1/4">

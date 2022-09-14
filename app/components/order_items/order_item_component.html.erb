@@ -13,6 +13,31 @@
         <div>
           <%= @order_item.quantity %>
         </div>
+    
+        
+        <%= button_to "-", 
+          order_item_path(@order_item), 
+          params: {order_item: { quantity: @order_item.quantity - 1 }}, 
+          method: :put, 
+          class: "btn-second w-10 aspect-square",
+          disabled: @order_item.quantity.zero?
+        %>
+        
+        <%= button_to "+", 
+          order_item_path(@order_item), 
+          params: {order_item: { quantity: @order_item.quantity + 1 }}, 
+          method: :put, 
+          class: "btn-second w-10 aspect-square",
+          disabled: @order_item.quantity == @order_item.product.quantity
+        %>
+
+         
+        <%= button_to "Delete", 
+          order_item_path(@order_item), 
+          method: :delete, 
+          class: "btn-second w-10 aspect-square"
+        %>
+          
         <div class="text-first-500 w-full">
           <%= @order_item.price %>
         </div>

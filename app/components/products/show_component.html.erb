@@ -3,7 +3,11 @@
   <div class="flex">
     <div class="w-1/2 aspect-square bg-second-500">
       <img class="object-cover" src="https://loremflickr.com/360/360" alt="">
-      <%= image_tag @product.image %>
+
+      <% @product.images.map do |image| %>
+        <%= image_tag image %>
+      <% end %>
+      
     </div>
     <div class="w-1/2">
       <div>

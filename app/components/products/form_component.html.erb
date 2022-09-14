@@ -58,6 +58,10 @@
     <%= form.select :seller_id, options_from_collection_for_select(@sellers, "id", "email")  %>
   </div>
 
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image, accept: "image/png, image/jpeg" %>
+  </div>
 
   <div>
     <%= form.submit %>

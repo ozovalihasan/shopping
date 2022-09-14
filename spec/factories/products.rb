@@ -10,6 +10,7 @@ FactoryBot.define do
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
     images { [Rack::Test::UploadedFile.new("app/assets/images/mock-#{rand(1..5)}.jpg", 'image/png')] }
+    company { Faker::Company.name }
   end
 end
 

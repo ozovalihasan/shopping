@@ -9,6 +9,7 @@ FactoryBot.define do
     total_review_score { Faker::Number.number(digits: 2) }
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
+    images { [Rack::Test::UploadedFile.new("app/assets/images/mock-#{rand(1..5)}.jpg", 'image/png')] }
   end
 end
 

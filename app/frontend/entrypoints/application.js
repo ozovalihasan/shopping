@@ -1,3 +1,5 @@
+import "../../javascript/application"
+
 // To see this message, add the following to the `<head>` section in your
 // views/layouts/application.html.erb
 //
@@ -27,6 +29,4 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 
-// Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "../controllers"
+

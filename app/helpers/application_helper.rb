@@ -19,11 +19,5 @@ module ApplicationHelper
     @cart = current_order
   end
 
-  def signed_in_user?
-    seller_signed_in? || customer_signed_in? || admin_signed_in?
-  end
 
-  def current_user
-    current_customer || current_seller || current_admin
-  end
 end

@@ -21,7 +21,19 @@
 
   </head>
 
-  <body>
+  <body class="bg-first-100">
+    <button class="w-32 h-32" onClick="setVar('green')" >
+      green
+    </button>
+    <button class="w-32 h-32" onClick="setVar('yellow')" >
+      yellow
+    </button>
+    <button class="w-32 h-32" onClick="setVar('sky')" >
+      sky
+    </button>
+    <button class="w-32 h-32" onClick="setVar('pink')" >
+      pink
+    </button>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render Layout::NavbarComponent.new(cart: @cart, current_user: current_user) %>

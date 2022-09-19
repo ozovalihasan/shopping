@@ -71,3 +71,4 @@ gem "faker"
 gem "view_component"
 gem "simple_form"
 gem 'vite_rails'
+gem "figaro"

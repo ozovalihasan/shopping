@@ -31,7 +31,7 @@
         price: <%= @product.price %>
       </div>
       <div>
-        review star: <%= @product.total_review_score.to_f / @product.review_count.to_f %>
+        review star: <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %>
       </div>
     </div>
     

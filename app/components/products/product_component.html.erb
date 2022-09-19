@@ -12,7 +12,7 @@
 
     <div class="text-lg text-first-500">
       <div>
-        star: <%= @product.total_review_score.to_f / @product.review_count.to_f %> - <%= @product.review_count %>
+        star: <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %> - <%= @product.review_count %>
       </div>
     </div>
 

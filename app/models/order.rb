@@ -5,6 +5,6 @@ class Order < ApplicationRecord
   }, _prefix: true
   
   belongs_to :customer, optional: true, class_name: "User"
-  has_many :addresses
+  has_one :address
   has_many :order_items
 end

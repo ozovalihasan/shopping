@@ -1,6 +1,6 @@
 module ApplicationHelper
   def current_order
-    order = Order.find_by id: session[:order_id]
+    order = Order.find session[:order_id]
     
     if order
       if order.customer && (order.customer != current_customer)

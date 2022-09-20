@@ -13,7 +13,7 @@ FactoryBot.define do
     customer_id { Customer.ids.sample }
 
     trait :not_completed do
-      status { 1 }
+      status { 0 }
     end
 
     trait :completed do

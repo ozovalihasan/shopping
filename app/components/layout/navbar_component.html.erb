@@ -1,4 +1,4 @@
-<div class="bg-third-400 flex justify-between text-3xl">
+<div class="flex justify-between text-3xl border-b border-solid">
   <%= link_to "Shopping", root_path %>
 
   <div class="ml-auto flex">
@@ -31,7 +31,19 @@
     </div>
     <% if @cart %>
       <%= link_to @cart do %>
-        <%= @cart.order_items.map(&:quantity).sum %>
+        <div class="w-16 h-16 p-2 rounded-full relative">
+          <svg class="stroke-first-500 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path style="fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round" d="M55 39h-7l-31 1 7 14 8 14m51-36H71L50 68"/>
+            <path style="fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round" d="M24 54h20"/>
+          </svg>
+          <% if @cart.order_items.present?%>
+            <div class="absolute left-1/2 top-1/4 -translate-x-2/3 -translate-y-1/3 bg-first-500 text-first-50 w-6 aspect-square rounded-full flex justify-center items-center text-sm font-bold">
+              <%= @cart.order_items.map(&:quantity).sum %>
+            </div>
+          <% end %>
+        </div>
+        
+        
       <% end %>
     <% end %>
   </div>

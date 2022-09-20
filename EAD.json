@@ -1,6 +1,6 @@
 {
     "version": "0.4.4",
-    "idCounter": 76,
+    "idCounter": 80,
     "associationType": "through",
     "nodes": [
         {
@@ -34,7 +34,7 @@
                 "tableId": "12",
                 "name": "customer"
             },
-            "selected": true,
+            "selected": false,
             "width": 146,
             "height": 65,
             "positionAbsolute": {
@@ -388,15 +388,6 @@
             }
         },
         {
-            "id": "68",
-            "source": "23",
-            "target": "67",
-            "sourceHandle": "bottom2",
-            "targetHandle": "top",
-            "label": "has many",
-            "type": "hasMany"
-        },
-        {
             "id": "74",
             "source": "24",
             "target": "23",
@@ -406,6 +397,27 @@
             "type": "through",
             "data": {
                 "throughNodeId": "33"
+            }
+        },
+        {
+            "id": "76",
+            "source": "23",
+            "target": "67",
+            "sourceHandle": "bottom1",
+            "targetHandle": "top",
+            "label": "has one",
+            "type": "hasOne"
+        },
+        {
+            "id": "79",
+            "source": "15",
+            "target": "67",
+            "sourceHandle": "bottom3",
+            "targetHandle": "top",
+            "label": "through",
+            "type": "through",
+            "data": {
+                "throughNodeId": "23"
             }
         }
     ],
@@ -517,7 +529,7 @@
             "name": "address",
             "attributes": {
                 "69": {
-                    "name": "body",
+                    "name": "name",
                     "type": "text"
                 },
                 "70": {
@@ -533,13 +545,21 @@
                     "type": "string"
                 },
                 "73": {
-                    "name": "zipcode",
+                    "name": "postal_code",
                     "type": "integer"
+                },
+                "77": {
+                    "name": "line1",
+                    "type": "string"
+                },
+                "78": {
+                    "name": "line2",
+                    "type": "string"
                 }
             }
         }
     },
-    "connectionStartNodeId": "24",
+    "connectionStartNodeId": "15",
     "isConnectContinue": false,
     "isMouseOnNode": false,
     "isMouseOnEdge": false,

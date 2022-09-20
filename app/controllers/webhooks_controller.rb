@@ -3,7 +3,7 @@ class WebhooksController < ApplicationController
   # protect_from_forgery except: :webhooks
   skip_before_action :verify_authenticity_token
   before_action :authenticate_customer!, only: [:new]
-    
+
   def new
     order_items = @cart.order_items.map do |order_item|
       {
@@ -24,6 +24,32 @@ class WebhooksController < ApplicationController
       },
       success_url: categories_url,
       cancel_url: categories_url,
+      shipping_address_collection: {
+        allowed_countries: ['US', 'CA'],
+      },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: 0,
+              currency: 'usd',
+            },
+            display_name: 'Free shipping',
+            # Delivers between 5-7 business days
+            delivery_estimate: {
+              minimum: {
+                unit: 'business_day',
+                value: 5,
+              },
+              maximum: {
+                unit: 'business_day',
+                value: 7,
+              },
+            }
+          }
+        },
+      ],
     })
     
     redirect_to session.url, allow_other_host: true
@@ -53,8 +79,18 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       checkout_session = event.data.object
+
       if checkout_session.payment_status == "paid"
-        Order.find(checkout_session["metadata"]["order_id"]).update status: 1
+        order = Order.find(checkout_session["metadata"]["order_id"])
+        order.update status: 1
+
+        if checkout_session.shipping
+          address = Address.new( checkout_session.shipping.address.to_h )
+          address.name = checkout_session.shipping.name
+
+          address.order = order
+          address.save
+        end
       end
     else
         puts "Unhandled event type: #{event.type}"

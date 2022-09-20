@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :webhooks, only: [:new, :create]
 
   resources :order_items
   resources :orders

@@ -3,7 +3,7 @@ module ApplicationHelper
     order = Order.find session[:order_id]
     
     if order
-      if order.customer && (order.customer != current_customer)
+      if order.customer && (order.customer != current_customer) || order.status_completed?
         order = Order.create(status: 0, total_price: 0.0)  
         session[:order_id] = order.id
       end

@@ -72,3 +72,4 @@ gem "view_component"
 gem "simple_form"
 gem 'vite_rails'
 gem "figaro"
+gem "stripe", "~> 7.1"

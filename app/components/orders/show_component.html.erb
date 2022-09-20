@@ -13,7 +13,8 @@
       <div>
         Status: <%= @order.status %>
       </div>
-      <%= button_to "Checkout", "#", class: "btn-first w-full" %>
+      <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full", data: { turbo: false } %>
+
     </div>
     
   </div>

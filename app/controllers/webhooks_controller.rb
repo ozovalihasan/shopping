@@ -2,6 +2,7 @@ class WebhooksController < ApplicationController
   skip_before_action :set_cart, only: [:create]
   # protect_from_forgery except: :webhooks
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_customer!, only: [:new]
     
   def new
     order_items = @cart.order_items.map do |order_item|

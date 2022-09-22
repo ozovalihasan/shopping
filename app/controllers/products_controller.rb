@@ -22,14 +22,14 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @sellers = Seller.all
-    @categories = SubCategories.all
+    @categories = SubCategory.all
     render Products::NewComponent.new(product: @product, categories: @categories, sellers: @sellers)
   end
 
   # GET /products/1/edit
   def edit
     @sellers = Seller.all
-    @categories = SubCategories.all
+    @categories = SubCategory.all
     render Products::EditComponent.new(product: @product, categories: @categories, sellers: @sellers)
   end
 

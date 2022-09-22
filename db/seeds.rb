@@ -15,7 +15,7 @@ end
 end
 
 20.times do
-  FactoryBot.create(:sub_category)
+  FactoryBot.create(:category)
 end
 
 15.times do

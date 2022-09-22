@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_22_102032) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_22_105347) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,13 +66,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_102032) do
     t.index ["seller_id"], name: "index_answers_on_seller_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "base_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "main_category_id"
     t.integer "type"
-    t.index ["main_category_id"], name: "index_categories_on_main_category_id"
+    t.index ["main_category_id"], name: "index_base_categories_on_main_category_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -151,11 +151,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_102032) do
   add_foreign_key "addresses", "orders"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users", column: "seller_id"
-  add_foreign_key "categories", "categories", column: "main_category_id"
+  add_foreign_key "base_categories", "base_categories", column: "main_category_id"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users", column: "customer_id"
-  add_foreign_key "products", "categories"
+  add_foreign_key "products", "base_categories", column: "category_id"
   add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "questions", "products"
   add_foreign_key "questions", "users", column: "customer_id"

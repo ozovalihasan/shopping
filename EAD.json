@@ -1,7 +1,7 @@
 {
     "version": "0.4.4",
-    "idCounter": 80,
-    "associationType": "through",
+    "idCounter": 88,
+    "associationType": "has_many",
     "nodes": [
         {
             "id": "13",
@@ -11,7 +11,7 @@
                 "y": -30
             },
             "data": {
-                "tableId": "12",
+                "tableId": "82",
                 "name": "seller"
             },
             "selected": false,
@@ -31,7 +31,7 @@
                 "y": -30
             },
             "data": {
-                "tableId": "12",
+                "tableId": "83",
                 "name": "customer"
             },
             "selected": false,
@@ -91,8 +91,8 @@
                 "y": -45
             },
             "data": {
-                "tableId": "19",
-                "name": "category"
+                "tableId": "85",
+                "name": "MainCategory"
             },
             "selected": false,
             "width": 146,
@@ -111,8 +111,8 @@
                 "y": 90
             },
             "data": {
-                "tableId": "19",
-                "name": "subcategory"
+                "tableId": "86",
+                "name": "Category"
             },
             "selected": false,
             "width": 146,
@@ -131,8 +131,8 @@
                 "y": 240
             },
             "data": {
-                "tableId": "19",
-                "name": "category"
+                "tableId": "86",
+                "name": "Category"
             },
             "selected": false,
             "width": 146,
@@ -486,7 +486,7 @@
             }
         },
         "19": {
-            "name": "category",
+            "name": "base_category",
             "attributes": {
                 "57": {
                     "name": "name",
@@ -557,9 +557,29 @@
                     "type": "string"
                 }
             }
+        },
+        "82": {
+            "name": "Seller",
+            "attributes": {}
+        },
+        "83": {
+            "name": "Customer",
+            "attributes": {}
+        },
+        "84": {
+            "name": "Admin",
+            "attributes": {}
+        },
+        "85": {
+            "name": "MainCategory",
+            "attributes": {}
+        },
+        "86": {
+            "name": "Category",
+            "attributes": {}
         }
     },
-    "connectionStartNodeId": "15",
+    "connectionStartNodeId": "87",
     "isConnectContinue": false,
     "isMouseOnNode": false,
     "isMouseOnEdge": false,

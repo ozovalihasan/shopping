@@ -1,0 +1,8 @@
+<%= render MainCategorys::MainCategoryComponent.new(main_category: @main_category) %>
+
+<div>
+  <%= link_to "Edit this main_category", edit_main_category_path(@main_category) %> |
+  <%= link_to "Back to main_categories", main_categories_path %>
+
+  <%= button_to "Destroy this main_category", @main_category, method: :delete %>
+</div>

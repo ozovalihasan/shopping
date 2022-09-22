@@ -1,0 +1,7 @@
+<h1>MainCategorys</h1>
+
+<div id="main_categories">
+  <%= render(MainCategorys::MainCategoryComponent.with_collection(@main_categories)) %>
+</div>
+
+<%= link_to "New main_category", new_main_category_path %>

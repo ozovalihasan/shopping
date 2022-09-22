@@ -1,8 +1,4 @@
-class Category < ApplicationRecord
-  has_one_attached :image
-
-  enum type: {
-    'MainCategory' => 0,
-    'SubCategory' => 1,
-  }
+class Category < BaseCategory
+  belongs_to :main_category
+  has_many :products, foreign_key: "category_id"
 end

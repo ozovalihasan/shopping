@@ -1,4 +1,4 @@
-class MainCategory < Category
-  has_many :sub_categories
-  has_many :products, through: :sub_categories
+class MainCategory < BaseCategory
+  has_many :categories
+  has_many :products, through: :categories
 end

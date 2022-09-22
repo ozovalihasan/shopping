@@ -11,11 +11,11 @@
 end
 
 10.times do
-  FactoryBot.create(:category, :primary)
+  FactoryBot.create(:main_category)
 end
 
 20.times do
-  FactoryBot.create(:category, :secondary)
+  FactoryBot.create(:sub_category)
 end
 
 15.times do

@@ -7,7 +7,7 @@ FactoryBot.define do
     state { Faker::Address.state }
     country { Faker::Address.country }
     postal_code { Faker::Number.number(digits: 5) }
-    order_id { Order.all.reject {|order| order.address }.ids.sample }
+    order_id { Order.where.missing(:address).ids.sample }
   end
 end
 

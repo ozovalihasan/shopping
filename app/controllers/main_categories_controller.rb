@@ -1,11 +1,12 @@
-class MainCategorysController < ApplicationController
+class MainCategoriesController < ApplicationController
   before_action :set_main_category, only: %i[ show edit update destroy ]
 
   # GET /main_categories or /main_categories.json
   def index
     @main_categories = MainCategory.all
+    @products = Product.limit(10).order("RANDOM()")
     respond_to do |format|
-      format.html { render MainCategorys::IndexComponent.new(main_categories: @main_categories) }
+      format.html { render MainCategories::IndexComponent.new(main_categories: @main_categories, products: @products) }
       format.json
     end
   end
@@ -13,7 +14,7 @@ class MainCategorysController < ApplicationController
   # GET /main_categories/1 or /main_categories/1.json
   def show
     respond_to do |format|
-      format.html { render MainCategorys::ShowComponent.new(main_category: @main_category) }
+      format.html { render MainCategories::ShowComponent.new(main_category: @main_category) }
       format.json 
     end
   end
@@ -22,13 +23,13 @@ class MainCategorysController < ApplicationController
   def new
     @main_category = MainCategory.new
     
-    render MainCategorys::NewComponent.new(main_category: @main_category)
+    render MainCategories::NewComponent.new(main_category: @main_category)
   end
 
   # GET /main_categories/1/edit
   def edit
     
-    render MainCategorys::EditComponent.new(main_category: @main_category)
+    render MainCategories::EditComponent.new(main_category: @main_category)
   end
 
   # POST /main_categories or /main_categories.json

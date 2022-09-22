@@ -1,8 +1,19 @@
-<%= render MainCategorys::MainCategoryComponent.new(main_category: @main_category) %>
+<%= @main_category.name %>
 
 <div>
-  <%= link_to "Edit this main_category", edit_main_category_path(@main_category) %> |
-  <%= link_to "Back to main_categories", main_categories_path %>
+  Subcategories
+</div>
+<div class="flex flex-wrap justify-evenly">
+  <%= render(Categories::CategoryComponent.with_collection(@main_category.categories)) %>
+</div>
 
-  <%= button_to "Destroy this main_category", @main_category, method: :delete %>
+<div class="bg-blue-100">
+  <%= render Products::IndexComponent.new(products: @main_category.products) %>
+</div>
+
+<div>
+  <%= link_to "Edit this category", edit_category_path(@main_category) %> |
+  <%= link_to "Back to categories", main_categories_path %>
+
+  <%= button_to "Destroy this category", @main_category, method: :delete %>
 </div>

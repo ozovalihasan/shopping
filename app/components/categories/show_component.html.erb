@@ -1,14 +1,7 @@
 <%= @category.name %>
 
-<div>
-  Subcategories
-</div>
-<div class="flex flex-wrap justify-evenly">
-  <%= render(Categories::CategoryComponent.with_collection(@category.subcategories)) %>
-</div>
-
 <div class="bg-blue-100">
-  <%= render Products::IndexComponent.new(products: @category.subcategories.products) %>
+  <%= render Products::IndexComponent.new(products: @category.products) %>
 </div>
 
 <div>

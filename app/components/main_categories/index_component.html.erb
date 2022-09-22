@@ -1,7 +1,11 @@
-<h1>MainCategorys</h1>
+<h1>Categories</h1>
 
-<div id="main_categories">
-  <%= render(MainCategorys::MainCategoryComponent.with_collection(@main_categories)) %>
+<div id="categories" class="flex flex-wrap justify-evenly">
+  <%= render(MainCategories::MainCategoryComponent.with_collection(@main_categories)) %>
 </div>
 
-<%= link_to "New main_category", new_main_category_path %>
+<div id="products" class="flex flex-wrap w-full justify-evenly">
+  <%= render(Products::ProductComponent.with_collection(@products)) %>
+</div>
+
+<%= link_to "New category", new_main_category_path %>

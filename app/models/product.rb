@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  belongs_to :seller, class_name: "User"
-  belongs_to :category
+  belongs_to :seller
+  belongs_to :category, class_name: "SubCategory"
   has_many :order_items
   has_many :orders, through: :order_items
   has_many :reviews

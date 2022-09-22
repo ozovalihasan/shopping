@@ -8,7 +8,7 @@
 </div>
 
 <div class="bg-blue-100">
-  <%= render Products::IndexComponent.new(products: @category.products) %>
+  <%= render Products::IndexComponent.new(products: @category.subcategories.products) %>
 </div>
 
 <div>

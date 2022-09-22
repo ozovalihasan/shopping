@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :questions
   end
   resources :categories
+  resources :main_categories
   
   devise_for :sellers
   devise_for :customers
@@ -18,5 +19,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "categories#index"
+  root "main_categories#index"
 end

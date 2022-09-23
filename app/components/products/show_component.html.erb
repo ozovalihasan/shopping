@@ -13,7 +13,15 @@
     </div>
     <div class="w-1/2">
       <div>
-        name: <span class="font-bold"><%= @product.company %></span> <%= @product.name %>
+        <span class="font-bold"><%= @product.company %></span> <%= @product.name %>
+      </div>
+      <div>
+        <%= link_to reviews_path do %>
+          star: <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %>
+        <% end %>
+        <div>
+          <%= pluralize @product.review_count, "Review" %>
+        </div>
       </div>
       <div>
         seller: <%= @product.seller.email %>
@@ -30,9 +38,7 @@
       <div>
         price: <%= @product.price %>
       </div>
-      <div>
-        review star: <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %>
-      </div>
+      
     </div>
     
   </div>

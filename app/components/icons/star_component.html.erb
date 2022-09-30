@@ -1,0 +1,31 @@
+<div class="flex">
+
+  <% 5.times do |count| %>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+        <% if count == (@percent / 100) %>
+          <defs>
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id=<%= "#{@percent}-linear-background" %>>
+              <stop offset=<%= "#{ @percent % 100 }%" %> stop-color="var(--first-500)" />
+              <stop offset=<%= "#{ @percent % 100 }%" %> stop-color="transparent" />
+            </linearGradient>
+          </defs>
+        <% end %>
+
+        <path
+
+          <% if (@percent / 100) == count %>
+            fill=<%= "url(##{@percent}-linear-background)" %>
+            class="stroke-first-500"
+          <% elsif (@percent / 100) > count  %>
+            class="stroke-first-500 fill-first-500"
+          <% else %>
+            class="stroke-first-500 fill-transparent"
+          <% end %>
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+  <% end %>
+</div>

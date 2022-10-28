@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :set_product
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = @product.reviews
     respond_to do |format|
       format.html { render Reviews::IndexComponent.new(reviews: @reviews) }
       format.json
@@ -83,6 +84,10 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+    
     # Only allow a list of trusted parameters through.
     def review_params
       params.require(:review).permit()

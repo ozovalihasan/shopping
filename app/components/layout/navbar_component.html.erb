@@ -1,10 +1,10 @@
-<div class="flex justify-between text-3xl border-b border-solid">
+<div class="sticky top-0 w-full flex justify-between text-3xl border-b border-solid bg-first-50 p-3 items-center">
   <%= link_to "Shopping", root_path %>
 
   <div class="ml-auto flex">
     
     
-    <div class="mr-8 flex">
+    <div class="mr-8 flex items-center">
       
       <details class="relative mr-8">
         <summary class="w-8 h-8 cursor-pointer"><%= render Icons::SettingsComponent.new %></summary>
@@ -34,7 +34,7 @@
         <div class="w-16 h-16 p-2 rounded-full relative stroke-first-500">
           <%= render Icons::CartComponent.new %>
           <% if @cart.order_items.present?%>
-            <div class="absolute left-1/2 top-1/4 -translate-x-2/3 -translate-y-1/3 bg-first-500 text-first-50 w-6 aspect-square rounded-full flex justify-center items-center text-sm font-bold">
+            <div class="absolute left-1/2 top-1/4 -translate-x-2/3 -translate-y-1/3 bg-first-500 text-first-50 w-5 aspect-square rounded-full flex justify-center items-center text-xs font-bold">
               <%= @cart.order_items.map(&:quantity).sum %>
             </div>
           <% end %>

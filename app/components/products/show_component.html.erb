@@ -16,7 +16,7 @@
       </div>
       <div>
       
-        <%= link_to reviews_path, class: "flex" do %>
+        <%= link_to product_reviews_path(@product), class: "flex" do %>
           <div class="h-6 aspect-[5]">
             <%= render Icons::StarComponent.new(percent: 450) %>
           </div>

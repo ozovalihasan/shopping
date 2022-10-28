@@ -27,6 +27,11 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="fixed top-0 right-0 inset-x-0 m-4 z-30">
+      <div class="relative ">
+        <p id="notifications" class="absolute right-0 flex flex-col items-end space-y-4"></p>
+      </div>
+    </div>
     <%= render Layout::NavbarComponent.new(cart: @cart, current_user: current_user) %>
     <%= yield %>
   </body>

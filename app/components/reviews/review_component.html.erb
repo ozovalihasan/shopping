@@ -1,11 +1,20 @@
-<div class="bg-first-300 border border-solid border-red-200">
+<div class="border border-solid border-red-200 my-4 p-4">
   <div id="<%= dom_id @review %>">
     <p>
       <%= link_to @review do %>
         
-        <%= @review.body %>
+        <div>
+          <%= @review.body %>
+        </div>
         
-        <%= @review.rate %>
+        <div class="flex">
+          <div class="h-4 aspect-[5] mt-1">
+            <%= render Icons::StarComponent.new(percent: @review.rate * 100) %>
+          </div>
+          <div class="mx-2">
+            <%= @review.customer.email %>
+          </div>
+        </div>
         
       <% end %>
     </p>

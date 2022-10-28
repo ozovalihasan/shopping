@@ -32,9 +32,6 @@
       <div>
         color: <%= @product.color %>
       </div>
-      <div>
-        description: <%= @product.description %>
-      </div>
       <div class="text-2xl font-bold py-4" >
         <%= number_to_currency(@product.price, :unit => "$") %>
       </div>
@@ -44,12 +41,8 @@
     
   </div>
   
-  <%= render Reviews::IndexComponent.new(reviews: @product.reviews.first(5)) %>
+  <%= render Products::Show::TabsComponent.new(product: @product) %>
 
-  <div>
-    <%= link_to "Questions", product_questions_path(@product) %>
-  </div>
-  
   <div>
     <%= link_to "Edit this product", edit_product_path(@product) %> |
     <%= link_to "Back to products", products_path %>

@@ -1,7 +1,15 @@
 <h1>Questions</h1>
 
-<div id="questions">
-  <%= render(Questions::QuestionComponent.with_collection(@questions)) %>
-</div>
+<turbo-frame id=<%= dom_id(@product, :questions) %>>
+  <div id="questions">
+    <% if @questions.present? %>
+      <%= render(Questions::QuestionComponent.with_collection(@questions)) %>
+    <% else %>
+      <div>
+        There is no question to show.
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to "New question", new_question_path %>
+  <%= link_to "New question", new_question_path %>
+</turbo-frame>

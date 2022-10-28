@@ -5,9 +5,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @questions = @product.questions
     respond_to do |format|
-      format.html { render Questions::IndexComponent.new(questions: @questions) }
+      format.html { render Questions::IndexComponent.new(questions: @questions, product: @product) }
       format.json
     end
   end

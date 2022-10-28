@@ -30,6 +30,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
+      slate: colors.slate,
       white: colors.white,
       gray: colors.gray,
       first: setVar("first"),

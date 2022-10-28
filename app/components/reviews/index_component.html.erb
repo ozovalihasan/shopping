@@ -1,7 +1,10 @@
 <h1>Reviews</h1>
 
-<div id="reviews">
-  <%= render(Reviews::ReviewComponent.with_collection(@reviews)) %>
-</div>
+<turbo-frame id=<%= dom_id(@reviews.first.product, :reviews) %>>
+  <div id="reviews">
+    <%= render(Reviews::ReviewComponent.with_collection(@reviews)) %>
+  </div>
 
-<%= link_to "New review", new_review_path %>
+  <%= link_to "New review", new_review_path %>
+</turbo-frame>
+

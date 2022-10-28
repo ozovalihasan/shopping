@@ -5,24 +5,8 @@
     
     
     <div class="mr-8 flex items-center">
-      
-      <details class="relative mr-8">
-        <summary class="w-8 h-8 cursor-pointer"><%= render Icons::SettingsComponent.new %></summary>
-        <p class="absolute top-full left-0 bg-first-400 [&>button]:w-32 [&>button]:h-32 [&>button:active]:bg-first-300 ">
-          <button onClick="setVar('green')" >
-            green
-          </button>
-          <button onClick="setVar('yellow')" >
-            yellow
-          </button>
-          <button onClick="setVar('sky')" >
-            sky
-          </button>
-          <button onClick="setVar('pink')" >
-            pink
-          </button>
-        </p>
-      </details> 
+      <%= render Settings::MainColorComponent.new() %>
+        
       <% if @current_user %>
         <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
       <% else %>

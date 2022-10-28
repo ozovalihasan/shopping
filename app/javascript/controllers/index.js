@@ -5,7 +5,8 @@
 import { application } from "./application"
 
 import HelloController from "./hello_controller"
-import { Alert } from "tailwindcss-stimulus-components"
+import { Alert, Dropdown } from "tailwindcss-stimulus-components"
 
 application.register("hello", HelloController)
 application.register("alert", Alert)
+application.register('dropdown', Dropdown);

@@ -46,8 +46,13 @@ class OrderItemsController < ApplicationController
     @order_item.update(quantity: 1)
     respond_to do |format|
       if @order_item.save
-        format.html { redirect_to order_item_url(@order_item), notice: "OrderItem was successfully created." }
+        format.html { redirect_to order_item_url(@order_item), notice: "#{@order_item.product.name} is added to your cart." }
         format.json { render :show, status: :created, location: @order_item }
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.prepend(
+            "notifications", render_to_string( Notifications::InfoComponent.new(info: "#{@order_item.product.name} is added to your cart.") )
+          ) 
+        }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @order_item.errors, status: :unprocessable_entity }

@@ -50,7 +50,7 @@ class OrderItemsController < ApplicationController
         format.json { render :show, status: :created, location: @order_item }
         format.turbo_stream { 
           render turbo_stream: turbo_stream.prepend(
-            "notifications", render_to_string( Notifications::InfoComponent.new(info: "#{@order_item.product.name} is added to your cart.") )
+            "notifications", render_to_string( OrderItems::CreateComponent.new(cart: @cart, order_item: @order_item ))
           ) 
         }
       else

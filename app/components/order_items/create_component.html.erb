@@ -1,0 +1,11 @@
+<turbo-stream action="append" target="notifications">
+  <template>
+    <%= render Notifications::InfoComponent.new(info: "#{@order_item.product.name} is added to your cart.") %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="cart">
+  <template>
+    <%= render Carts::NavbarComponent.new(cart: @cart) %>
+  </template>
+</turbo-stream>

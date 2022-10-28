@@ -1,12 +1,9 @@
-<div class="bg-second-300 border border-solid border-red-200">
-  <div id="<%= dom_id @answer %>">
-    <p>
-      <%= link_to @answer do %>
-        
-        <%= @answer.body %>
-        
-      <% end %>
-    </p>
-    
-  </div>
+<div id="<%= dom_id @answer %>">
+  <p>
+    <%= link_to @answer do %>
+      
+      <%= @answer.body %>
+      
+    <% end %>
+  </p>
 </div>

@@ -1,12 +1,14 @@
-<div class="bg-first-300 border border-solid border-red-200">
+<div class="border border-solid border-red-200 m-4 p-4">
   <div id="<%= dom_id @question %>">
     <p>
       <%= @question.body %>
-      <div>
-        Answers
+      <div class="p-4">
+        <% if @question.answers.present? %>
+          <%= render(Answers::AnswerComponent.with_collection(@question.answers)) %>
+        <% else %>
+          No answer yet.
+        <% end %>
       </div>
-      <%= render(Answers::AnswerComponent.with_collection(@question.answers)) %>
-
     </p>
     
   </div>

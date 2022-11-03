@@ -2,13 +2,7 @@
   
   <div class="flex">
     <div class="w-1/2 aspect-square rounded-md p-4">
-      <%= image_tag @product.images.first, class: "object-contain w-full rounded-md pb-4" %>
-      <div class="flex rounded-md gap-4 overflow-x-scroll ">
-        <% @product.images.map do |image| %>
-          <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "object-contain rounded-md w-32 aspect-square" %>
-        <% end %>
-      </div>
-      
+      <%= render Products::Show::ImageTabsComponent.new(images: @product.images) %>
     </div>
     <div class="w-1/2 p-4">
       <div>

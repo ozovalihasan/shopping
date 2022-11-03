@@ -1,0 +1,20 @@
+<div data-controller="tabs" class="border border-solid border-slate-100 bg-slate-300">
+
+  <% @images.map do |image| %>
+    <div class="hidden py-4 px-4" data-tabs-target="panel">
+      <%= image_tag image, class: "object-contain w-full rounded-md pb-4", loading: "lazy" %>
+    </div>
+  <% end %>
+  
+  <div class="p-4">
+    <ul class="flex overflow-x-scroll">
+      <% @images.map do |image| %>
+        <li class="m-1 h-32 aspect-square" data-tabs-target="tab" data-action="mouseover->tabs#change">
+          <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  
+
+</div>

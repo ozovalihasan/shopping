@@ -1,11 +1,10 @@
 <%= link_to @category do %>
-  <div class="bg-first-300 border border-solid border-red-200 w-72 m-2">
-    <div id="<%= dom_id @category %>">
-      <p>
+  <div class="bg-first-300 border border-solid border-red-200 w-72 m-2 rounded-md">
+    <div id="<%= dom_id @category %>" class="relative group rounded-md">
+      <%= image_tag @category.image, class: "rounded-t-md rounded-b-lg" %>
+      <p class="absolute bottom-0 bg-first-100 group-hover:bg-first-300 p-2 rounded-b-md w-full">
         <%= @category.name %>
       </p>
-      <%= image_tag @category.image %>
-      
     </div>
   </div>
 <% end %>

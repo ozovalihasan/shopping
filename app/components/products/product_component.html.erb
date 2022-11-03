@@ -1,4 +1,4 @@
-<div class="bg-third-100 border border-solid border-red-200 w-96 m-4 p-4 rounded-md" id="<%= dom_id @product %>">
+<div class="bg-first-100 border border-solid border-red-200 w-96 m-4 p-4 rounded-md" id="<%= dom_id @product %>">
 
   <%= link_to @product do %>
     <div class="w-full aspect-square ">
@@ -11,8 +11,13 @@
     </div>
 
     <div class="text-lg text-first-500">
-      <div>
-        star: <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %> - <%= @product.review_count %>
+      <div class="flex">
+        <div class="h-6 aspect-[5]">
+          <%= render Icons::StarComponent.new(percent: rand(500)) %>
+        </div> 
+        <div>
+           (<%= @product.review_count %>)
+        </div>
       </div>
     </div>
 

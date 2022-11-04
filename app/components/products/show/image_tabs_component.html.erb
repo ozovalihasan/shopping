@@ -1,5 +1,5 @@
 <div data-controller="tabs" class="border border-solid border-slate-100 bg-slate-300">
-  <div class="relative">
+  <div class="relative group">
     <% @images.map do |image| %>
       <div class="hidden py-4 px-4" data-tabs-target="panel">
         <%= image_tag image, class: "object-contain w-full rounded-md pb-4", loading: "lazy" %>
@@ -7,10 +7,10 @@
       
     <% end %>
 
-    <div class="absolute top-1/2 left-8 aspect-square w-16 rounded-full opacity-40 btn-second" data-action="click->tabs#previous">
+    <div class="absolute top-1/2 left-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#previous">
       <
     </div>
-    <div class="absolute top-1/2 right-8 aspect-square w-16 rounded-full opacity-40 btn-second" data-action="click->tabs#next">
+    <div class="absolute top-1/2 right-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#next">
       >
     </div>
   </div>

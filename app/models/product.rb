@@ -7,4 +7,6 @@ class Product < ApplicationRecord
   has_many :questions, dependent: :delete_all
 
   has_many_attached :images
+
+  scope :search, ->(search_term) { where('name ILIKE ?', "%#{search_term}%")}
 end

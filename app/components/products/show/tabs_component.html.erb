@@ -18,15 +18,18 @@
     <%= @product.description %>
   </div>
 
+      
+      
   <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    
     <turbo-frame id=<%= dom_id(@product, :questions) %> src=<%= product_questions_path(@product) %> loading="lazy">
-      <img src="/icons/spinner.gif">
+      <%= render Icons::SpinnerComponent.new %>
     </turbo-frame>
   </div>
 
   <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
     <turbo-frame id=<%=  dom_id(@product, :reviews) %> src=<%= product_reviews_path(@product) %> loading="lazy">
-      <img src="/icons/spinner.gif">
+      <%= render Icons::SpinnerComponent.new %>
     </turbo-frame>
   </div>
 

@@ -3,8 +3,14 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+
+    @products = Product.search(params[:search_term], params[:category])
     respond_to do |format|
+      format.turbo_stream { 
+        render turbo_stream: turbo_stream.update(
+          "main-parts", render_to_string( Products::IndexComponent.new(products: @products))
+        ) 
+      }
       format.html { render Products::IndexComponent.new(products: @products) }
       format.json
     end
@@ -68,6 +74,13 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+    @products = Product.search(params[:search_term]).includes(:reviews)
+    respond_to do |format|
+      format.turbo_stream 
     end
   end
 

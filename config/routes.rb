@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :products do
+    get 'search/new'
+  end
   resources :webhooks, only: [:new, :create]
 
   resources :order_items
@@ -6,6 +9,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :questions
   resources :reviews
+  resources :searches, only: [:new]
   resources :products do 
     resources :questions
     resources :reviews

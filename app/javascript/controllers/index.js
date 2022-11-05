@@ -6,9 +6,11 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 import CustomTabsController from "./custom_tabs_controller"
-import { Alert, Tabs, Dropdown } from "tailwindcss-stimulus-components"
+import SearchFormController from "./search_form_controller"
+import { Alert, Dropdown } from "tailwindcss-stimulus-components"
 
 application.register("hello", HelloController)
 application.register("alert", Alert)
 application.register("tabs", CustomTabsController)
 application.register('dropdown', Dropdown);
+application.register("search-form", SearchFormController)

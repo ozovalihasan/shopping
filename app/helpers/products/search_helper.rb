@@ -1,0 +1,2 @@
+module Products::SearchHelper
+end

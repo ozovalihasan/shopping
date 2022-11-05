@@ -8,5 +8,11 @@ class Product < ApplicationRecord
 
   has_many_attached :images
 
-  scope :search, ->(search_term) { where('name ILIKE ?', "%#{search_term}%")}
+  scope :search, ->(search_term, category_id = nil) do 
+    if category_id 
+      return where('category_id = ? AND name ILIKE ?', category_id, "%#{search_term}%") 
+    else
+      return where('name ILIKE ?', "%#{search_term}%") 
+    end
+  end
 end

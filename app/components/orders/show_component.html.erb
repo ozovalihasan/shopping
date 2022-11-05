@@ -1,29 +1,31 @@
-<div class="border border-solid border-red-200">
-  <div id="<%= dom_id @order %>" class="flex">
-    
-    <div class="w-3/4">
-      <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>
-    </div>
-
-    <div class="w-1/4">
-      Summary
-      <div>
-        Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
+<turbo-frame id="main-parts">
+  <div class="border border-solid border-red-200">
+    <div id="<%= dom_id @order %>" class="flex">
+      
+      <div class="w-3/4">
+        <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>
       </div>
-      <div>
-        Status: <%= @order.status %>
-      </div>
-      <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full", data: { turbo: false } %>
 
+      <div class="w-1/4">
+        Summary
+        <div>
+          Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
+        </div>
+        <div>
+          Status: <%= @order.status %>
+        </div>
+        <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full", data: { turbo: false } %>
+
+      </div>
+      
     </div>
-    
   </div>
-</div>
 
 
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
+  <div>
+    <%= link_to "Edit this order", edit_order_path(@order) %> |
+    <%= link_to "Back to orders", orders_path %>
 
-  <%= button_to "Destroy this order", @order, method: :delete %>
-</div>
+    <%= button_to "Destroy this order", @order, method: :delete %>
+  </div>
+</turbo-frame>

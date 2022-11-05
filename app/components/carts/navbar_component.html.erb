@@ -1,4 +1,4 @@
-<%= link_to @cart do %>
+<%= link_to @cart, data: {"turbo-frame"=> "main-parts"} do %>
   <div id="cart" class="w-16 h-16 p-2 rounded-full relative stroke-first-500">
     <%= render Icons::CartComponent.new %>
     <% if @cart.order_items.present?%>

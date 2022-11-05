@@ -1,9 +1,12 @@
-<div id="main-categories" class="flex flex-wrap justify-evenly">
-  <%= render(Categories::CategoryComponent.with_collection(@main_categories)) %>
-</div>
+<turbo-frame id="main-parts">
 
-<div id="products" class="flex flex-wrap w-full justify-evenly">
-  <%= render(Products::ProductComponent.with_collection(@products)) %>
-</div>
+  <div id="main-categories" class="flex flex-wrap justify-evenly">
+    <%= render(Categories::CategoryComponent.with_collection(@main_categories)) %>
+  </div>
 
-<%= link_to "New category", new_main_category_path %>
+  <div id="products" class="flex flex-wrap w-full justify-evenly">
+    <%= render(Products::ProductComponent.with_collection(@products)) %>
+  </div>
+
+  <%= link_to "New category", new_main_category_path %>
+</turbo-frame>

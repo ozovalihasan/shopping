@@ -1,7 +1,9 @@
-<h1>Orders</h1>
+<turbo-frame id="main-parts">
+  <h1>Orders</h1>
 
-<div id="orders">
-  <%= render(Orders::OrderComponent.with_collection(@orders)) %>
-</div>
+  <div id="orders">
+    <%= render(Orders::OrderComponent.with_collection(@orders)) %>
+  </div>
 
-<%= link_to "New order", new_order_path %>
+  <%= link_to "New order", new_order_path %>
+</turbo-frame>

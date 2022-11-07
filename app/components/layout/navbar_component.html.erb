@@ -14,12 +14,7 @@
     
     <div class="mr-8 flex items-center">
       <%= render Settings::MainColorComponent.new() %>
-        
-      <% if @current_user %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-      <% else %>
-        <%= link_to "Sign in", new_customer_session_path %>
-      <% end %>
+      <%= render Layout::UserAccountComponent.new(current_user: @current_user) %>
     </div>
     <% if @cart %>
       <%= render Carts::NavbarComponent.new(cart: @cart) %>

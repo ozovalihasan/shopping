@@ -1,7 +1,7 @@
 <div class="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4" id="<%= dom_id @product %>">
 
   <div class="bg-first-100 border border-solid border-red-200 p-4 rounded-md">
-    <%= link_to @product, data: {"turbo-action": "advance"} do %>
+    <%= link_to @product, data: {"turbo-action": "advance", "turbo-frame": "main-parts"} do %>
       <div class="w-full aspect-square ">
         <% if @product.images.first %>
           <%= image_tag @product.images.first, class: "rounded-md" %>

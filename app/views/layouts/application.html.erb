@@ -25,11 +25,16 @@
 
   <body class="bg-first-50" data-controller="scroll">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    
     <div class="fixed bottom-0 right-0 inset-x-0 m-4 z-30">
       <div class="relative ">
         <div id="notifications" class="absolute right-0 bottom-0 flex flex-col items-end space-y-4">
+          <% if notice  %>
+            <%= render Notifications::InfoComponent.new(info: notice) %>  
+          <% end %>
+          <% if alert  %>
+            <%= render Notifications::InfoComponent.new(info: alert) %>
+          <% end %>
         </div>
       </div>
     </div>

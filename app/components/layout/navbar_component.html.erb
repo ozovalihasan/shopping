@@ -16,8 +16,6 @@
       <%= render Settings::MainColorComponent.new() %>
       <%= render Layout::UserAccountComponent.new(current_user: @current_user) %>
     </div>
-    <% if @cart %>
-      <%= render Carts::NavbarComponent.new(cart: @cart) %>
-    <% end %>
+    <%= render Carts::NavbarComponent.new(cart: @cart) %>
   </div>
 </div>

@@ -6,6 +6,7 @@ class MainCategoriesController < ApplicationController
     @main_categories = MainCategory.all
     @products = Product.limit(10).order("RANDOM()")
     respond_to do |format|
+      format.turbo_stream      
       format.html { render MainCategories::IndexComponent.new(main_categories: @main_categories, products: @products) }
       format.json
     end

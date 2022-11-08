@@ -1,12 +1,17 @@
 <turbo-frame id="main-parts">
-  <div class="border border-solid border-red-200">
-    <div id="<%= dom_id @order %>" class="flex">
+  <div class="">
+    <div id="<%= dom_id @order %>" class="flex p-8 space-x-4">
       
-      <div class="w-3/4">
-        <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>
+      <div class="w-3/4 border border-solid p-4 rounded-md" id="order-items-list">
+        <% if @order.order_items.exists? %>
+          <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>  
+        <% else %>
+          <%= render OrderItems::EmptyComponent.new %>  
+        <% end %>
+        
       </div>
 
-      <div class="w-1/4">
+      <div class="w-1/4 p-4 border border-solid rounded-md">
         Summary
         <div>
           Total: <%= number_to_currency(@order.total_price, :unit => "€") %>

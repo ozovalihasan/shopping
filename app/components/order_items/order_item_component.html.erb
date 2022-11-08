@@ -1,49 +1,50 @@
-<div class="border-2 border-solid border-red-200">
-  <div id="<%= dom_id @order_item %>">
-    <p>
-      <div class="flex w-full">
-        <div class="w-16 aspect-square">
-          <img src="https://loremflickr.com/360/360" alt="">
-        </div>
-        <%= link_to @order_item.product do %>
-          <div class="whitespace-nowrap">
-            <%= @order_item.product.name %>
-          </div>
-        <% end %>
-        <div>
-          <%= @order_item.quantity %>
-        </div>
-    
-        
-        <%= button_to "-", 
-          order_item_path(@order_item), 
-          params: {order_item: { quantity: @order_item.quantity - 1 }}, 
-          method: :put, 
-          class: "btn-second w-10 aspect-square",
-          disabled: @order_item.quantity.zero?
-        %>
-        
-        <%= button_to "+", 
-          order_item_path(@order_item), 
-          params: {order_item: { quantity: @order_item.quantity + 1 }}, 
-          method: :put, 
-          class: "btn-second w-10 aspect-square",
-          disabled: @order_item.quantity == @order_item.product.quantity
-        %>
+<div id="<%= dom_id @order_item %>" class="w-full p-4 border-solid border-b">
+  <div class="flex w-full items-center">
 
-         
-        <%= button_to "Delete", 
-          order_item_path(@order_item), 
-          method: :delete, 
-          class: "btn-second w-10 aspect-square"
-        %>
-          
-        <div class="text-first-500 w-full">
-          <%= @order_item.price %>
-        </div>
+    <%= image_tag @order_item.product.images.first.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
+
+    <%= link_to @order_item.product, class: "w-full m-4" do %>
+      <div class="whitespace-nowrap">
+        <%= @order_item.product.name %>
       </div>
-      
-    </p>
+
+      <div class="text-first-500 w-full">
+        <%= @order_item.price * @order_item.quantity %>
+      </div>
+    <% end %>
     
+    <div class="items-center flex flex-col">
+      
+      <%= button_to "+",
+        order_item_path(@order_item),
+        params: {order_item: { quantity: @order_item.quantity + 1 }},
+        method: :put,
+        class: "btn-second w-10 aspect-square",
+        disabled: @order_item.quantity == @order_item.product.quantity
+      %>
+    
+      <div class="mx-8">
+        <%= @order_item.quantity %>
+      </div>
+
+      <%= button_to "-",
+        order_item_path(@order_item),
+        params: {order_item: { quantity: @order_item.quantity - 1 }},
+        method: :put,
+        class: "btn-second w-10 aspect-square",
+        disabled: @order_item.quantity.zero?
+      %>
+      
+    </div>
+
+      
+    <div>
+      <%= button_to order_item_path(@order_item), method: :delete, class: "btn-second w-10 aspect-square p-3" do %>
+        <%= render Icons::XMarkComponent.new %>
+      <% end %>
+    </div>
+      
   </div>
+  
+
 </div>

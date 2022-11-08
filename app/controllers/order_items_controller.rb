@@ -1,4 +1,6 @@
 class OrderItemsController < ApplicationController
+  include ActionView::RecordIdentifier
+  
   before_action :set_order_item, only: %i[ show edit update destroy ]
 
   # GET /order_items or /order_items.json
@@ -64,7 +66,10 @@ class OrderItemsController < ApplicationController
   def update
     respond_to do |format|
       if @order_item.update(order_item_params)
-        format.html { redirect_to order_item_url(@order_item), notice: "OrderItem was successfully updated." }
+        @notice = "OrderItem was successfully updated."
+
+        format.html { redirect_to order_item_url(@order_item), notice: @notice }
+        format.turbo_stream 
         format.json { render :show, status: :ok, location: @order_item }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,8 +82,14 @@ class OrderItemsController < ApplicationController
   def destroy
     @order_item.destroy
 
+    puts "\n\n\e[32;3m#{"⟱"*40}\e[0m\n#{__FILE__} : #{__LINE__}\n"
+    puts "@order_item: #{@order_item} \n\e[32;3m#{"⟰"*40}\e[0m\n\n"
+
     respond_to do |format|
-      format.html { redirect_to order_items_url, notice: "OrderItem was successfully destroyed." }
+      @notice = "OrderItem was successfully destroyed."
+
+      format.html { redirect_to order_items_url, notice: @notice }
+      format.turbo_stream 
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,13 @@
+<%= turbo_stream.replace dom_id(@order_item) do %>
+    <%= render  OrderItems::OrderItemComponent.new(order_item: @order_item ) %>
+<% end %>
+
+<turbo-stream action="append" target="notifications">
+  <template>
+    <%= render Notifications::InfoComponent.new(info: @notice) %>
+  </template>
+</turbo-stream>
+
+<%= turbo_stream.replace "cart" do %>
+    <%= render Carts::NavbarComponent.new(cart: @cart) %>
+<% end %>

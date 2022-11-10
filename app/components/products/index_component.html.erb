@@ -1,9 +1,11 @@
-<turbo-frame id="main-parts">
-  <h1>Products</h1>
+<%= render Frame::BodyComponent.new do |c|%>
+  <% c.with_custom_component do %>
+    <h1>Products</h1>
 
-  <div id="products" class="flex flex-wrap w-full justify-evenly">
-    <%= render(Products::ProductComponent.with_collection(@products)) %>
-  </div>
+    <div id="products" class="flex flex-wrap w-full justify-evenly">
+      <%= render(Products::ProductComponent.with_collection(@products)) %>
+    </div>
 
-  <%= link_to "New product", new_product_path %>
-</turbo-frame>
+    <%= link_to "New product", new_product_path %>
+  <% end %>
+<% end %>

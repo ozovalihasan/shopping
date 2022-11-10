@@ -1,48 +1,51 @@
-<turbo-frame id="main-parts">
-  <div>
-    
-    <div class="flex">
-      <div class="w-1/2 aspect-square rounded-md p-4">
-        <%= render Products::Show::ImageTabsComponent.new(images: @product.images) %>
-      </div>
-      <div class="w-1/2 p-4">
-        <div>
-          <span class="font-bold"><%= @product.company %></span> <%= @product.name %>
+<%= render Frame::BodyComponent.new do |c|%>
+  <% c.with_custom_component do %>
+  
+    <div>
+      
+      <div class="flex">
+        <div class="w-1/2 aspect-square rounded-md p-4">
+          <%= render Products::Show::ImageTabsComponent.new(images: @product.images) %>
         </div>
-        <div>
-        
-          <%= link_to product_reviews_path(@product), class: "flex" do %>
-            <div class="h-6 aspect-[5]">
-              <%= render Icons::StarComponent.new(percent: 450) %>
-            </div>
-            <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %>
-          <% end %>
+        <div class="w-1/2 p-4">
           <div>
-            <%= pluralize @product.review_count, "Review" %>
+            <span class="font-bold"><%= @product.company %></span> <%= @product.name %>
           </div>
+          <div>
+          
+            <%= link_to product_reviews_path(@product), class: "flex" do %>
+              <div class="h-6 aspect-[5]">
+                <%= render Icons::StarComponent.new(percent: 450) %>
+              </div>
+              <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %>
+            <% end %>
+            <div>
+              <%= pluralize @product.review_count, "Review" %>
+            </div>
+          </div>
+          <div>
+            seller: <%= @product.seller.email %>
+          </div>
+          <div>
+            color: <%= @product.color %>
+          </div>
+          <div class="text-2xl font-bold py-4" >
+            <%= number_to_currency(@product.price, :unit => "$") %>
+          </div>
+          <%= button_to "Add to Cart", order_items_path(order_item: {product_id: @product.id, quantity: 1}), class: "btn-first p-2 w-full font-bold" %>
+          
         </div>
-        <div>
-          seller: <%= @product.seller.email %>
-        </div>
-        <div>
-          color: <%= @product.color %>
-        </div>
-        <div class="text-2xl font-bold py-4" >
-          <%= number_to_currency(@product.price, :unit => "$") %>
-        </div>
-        <%= button_to "Add to Cart", order_items_path(order_item: {product_id: @product.id, quantity: 1}), class: "btn-first p-2 w-full font-bold" %>
         
       </div>
       
-    </div>
-    
-    <%= render Products::Show::TabsComponent.new(product: @product) %>
+      <%= render Products::Show::TabsComponent.new(product: @product) %>
 
-    <div>
-      <%= link_to "Edit this product", edit_product_path(@product) %> |
-      <%= link_to "Back to products", products_path %>
-    
-      <%= button_to "Destroy this product", @product, method: :delete %>
+      <div>
+        <%= link_to "Edit this product", edit_product_path(@product) %> |
+        <%= link_to "Back to products", products_path %>
+      
+        <%= button_to "Destroy this product", @product, method: :delete %>
+      </div>
     </div>
-  </div>
-</turbo-frame>
+  <% end %>
+<% end %>

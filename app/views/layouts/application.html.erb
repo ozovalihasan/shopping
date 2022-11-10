@@ -40,9 +40,7 @@
     </div>
     <%= render Layout::NavbarComponent.new(cart: @cart, current_user: current_user) %>
     <div class="px-3">
-      <turbo-frame id="main-parts" data-turbo-action="advance">
-        <%= yield %>
-      </turbo-frame>
+      <%= yield %>
     </div>
   </body>
 </html>

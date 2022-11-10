@@ -1,36 +1,38 @@
-<turbo-frame id="main-parts">
-  <div class="">
-    <div id="<%= dom_id @order %>" class="flex p-8 space-x-4">
-      
-      <div class="w-3/4 border border-solid p-4 rounded-md" id="order-items-list">
-        <% if @order.order_items.exists? %>
-          <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>  
-        <% else %>
-          <%= render OrderItems::EmptyComponent.new %>  
-        <% end %>
+<%= render Frame::BodyComponent.new do |c|%>
+  <% c.with_custom_component do %>
+    <div class="">
+      <div id="<%= dom_id @order %>" class="flex p-8 space-x-4">
+        
+        <div class="w-3/4 border border-solid p-4 rounded-md" id="order-items-list">
+          <% if @order.order_items.exists? %>
+            <%= render OrderItems::OrderItemComponent.with_collection(@order.order_items) %>  
+          <% else %>
+            <%= render OrderItems::EmptyComponent.new %>  
+          <% end %>
+          
+        </div>
+
+        <div class="w-1/4 p-4 border border-solid rounded-md">
+          Summary
+          <div>
+            Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
+          </div>
+          <div>
+            Status: <%= @order.status %>
+          </div>
+          <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full", data: { turbo: false } %>
+
+        </div>
         
       </div>
-
-      <div class="w-1/4 p-4 border border-solid rounded-md">
-        Summary
-        <div>
-          Total: <%= number_to_currency(@order.total_price, :unit => "€") %>
-        </div>
-        <div>
-          Status: <%= @order.status %>
-        </div>
-        <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full", data: { turbo: false } %>
-
-      </div>
-      
     </div>
-  </div>
 
 
-  <div>
-    <%= link_to "Edit this order", edit_order_path(@order) %> |
-    <%= link_to "Back to orders", orders_path %>
+    <div>
+      <%= link_to "Edit this order", edit_order_path(@order) %> |
+      <%= link_to "Back to orders", orders_path %>
 
-    <%= button_to "Destroy this order", @order, method: :delete %>
-  </div>
-</turbo-frame>
+      <%= button_to "Destroy this order", @order, method: :delete %>
+    </div>
+  <% end %>
+<% end %>

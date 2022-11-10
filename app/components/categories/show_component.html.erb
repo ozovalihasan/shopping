@@ -1,14 +1,16 @@
-<turbo-frame id="main-parts">
-  <%= @category.name %>
+<%= render Frame::BodyComponent.new do |c|%>
+  <% c.with_custom_component do %>
+    <%= @category.name %>
 
-  <div class="bg-blue-100">
-    <%= render Products::IndexComponent.new(products: @category.products) %>
-  </div>
+    <div class="bg-blue-100">
+      <%= render Products::IndexComponent.new(products: @category.products) %>
+    </div>
 
-  <div>
-    <%= link_to "Edit this category", edit_category_path(@category) %> |
-    <%= link_to "Back to categories", categories_path %>
+    <div>
+      <%= link_to "Edit this category", edit_category_path(@category) %> |
+      <%= link_to "Back to categories", categories_path %>
 
-    <%= button_to "Destroy this category", @category, method: :delete %>
-  </div>
-</turbo-frame>
+      <%= button_to "Destroy this category", @category, method: :delete %>
+    </div>
+  <% end %>
+<% end %>

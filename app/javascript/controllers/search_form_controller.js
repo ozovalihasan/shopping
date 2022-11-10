@@ -24,11 +24,12 @@ export default class extends Controller {
   }
   
   search() {
-    this.loadingTarget.classList.remove("hidden")
-    this.searchIconTarget.classList.add("hidden")
+    
     
     clearTimeout(this.timeout)
     this.timeout = setTimeout(() => {
+      this.loadingTarget.classList.remove("hidden");
+      this.searchIconTarget.classList.add("hidden");
       this.element.requestSubmit();
     }, 700)
   }

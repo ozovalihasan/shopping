@@ -31,12 +31,21 @@
               }
             }
           %>
-          <div class="absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="searchIcon">
-            <button data-action="click->search-form#search" class="outline-none w-6 h-6">
+          <div
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 center-content"
+            data-search-form-target="searchIcon"
+          >
+            <button
+              data-action="click->search-form#search"
+              class="outline-none w-6 h-6"
+            >
               <%= render Icons::SearchComponent.new %>
             </button>
           </div>
-          <div class="hidden absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="loading">
+          <div
+              class="hidden absolute left-4 top-1/2 transform -translate-y-1/2 center-content"
+              data-search-form-target="loading"
+          >
             <%= render Icons::SpinnerComponent.new %>
           </div>
         <% end %>

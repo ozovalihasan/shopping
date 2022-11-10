@@ -1,23 +1,46 @@
 <turbo-frame id="products-search-bar" >
 
-  <div class="w-full flex items-center h-full">
-    <%= form_with(url: products_path, method: :get, data: {controller: "search-form", turbo_frame: "main-parts", action: "turbo:before-fetch-response->search-form#hideSpinner" }) do |form| %>
-      <%= form.label :search_term, "Search by band name:", class: "block mb-2" %>
-      <%= form.text_field :search_term, class: "py-3 px-4 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", data: {action: "input->search-form#search", "search-form-target": "input"} %>
-
-      <%= form.label :category, "category", class: "block mb-2" %>
-      <%= form.select :category, [["All categories", nil]].concat(@categories), {}, class: "py-3 px-4 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", data: {action: "input->search-form#search", "search-form-target": "category"} %>
-
-      <%= form.submit 'Search', class: "px-4 py-3 font-medium bg-orange-300 text-neutal-900 rounded flex items-center cursor-pointer hover:bg-orange-400 focus:ring-4 ring-0 focus:ring-orange-100" %>
-      <div class="absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="searchIcon">
-        <button data-action="click->search-form#search" class="outline-none w-6 h-6">
-          <%= render Icons::SearchComponent.new %>
-        </button>
+  <div class="w-full flex items-center h-full" ">
+    <div class="bottom-unset px-16 inset-x-0 flex z-100 shadow-none w-full">
+      <div class=" relative h-12 flex">
+        <%= form_with(
+          url: products_path,
+          method: :get,
+          class: "flex",
+          data: {
+            turbo_frame: "main-parts",
+            action: "turbo:before-fetch-response->search-form#hideSpinner",
+            controller: "search-form"
+          }
+        ) do |form| %>
+          <%= form.text_field :search_term,
+            data: {
+              action: "input->search-form#search", "search-form-target": "input"
+            },
+            placeholder: 'Search products',
+            class: "w-2/3 input-primary p-3 pl-12 px-6 w-full border border-r-0 rounded-l-full h-12",
+            value: @search_term
+          %>
+          <%= form.select :category,
+            [["All categories", nil]].concat(@categories),
+            {},
+            {
+              class: "w-1/3 bg-first-50 rounded-r-full border border-l-3 placeholder-white outline-none w-full h-12",
+              data: {
+                action: "input->search-form#search", "search-form-target": "category"
+              }
+            }
+          %>
+          <div class="absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="searchIcon">
+            <button data-action="click->search-form#search" class="outline-none w-6 h-6">
+              <%= render Icons::SearchComponent.new %>
+            </button>
+          </div>
+          <div class="hidden absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="loading">
+            <%= render Icons::SpinnerComponent.new %>
+          </div>
+        <% end %>
       </div>
-      <div class="hidden absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="loading">
-        <%= render Icons::SpinnerComponent.new %>
-      </div>
-    <% end %>
-    
+    </div>
   </div>
 </turbo-frame>

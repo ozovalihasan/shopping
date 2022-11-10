@@ -1,26 +1,23 @@
 <turbo-frame id="products-search-bar" >
 
   <div class="w-full flex items-center h-full">
-    <div
-        class="bottom-unset px-16 inset-x-0 flex z-100 shadow-none w-full "
-        data-controller="search-form"
-        data-search-form-url-value="<%= products_url %>"
-    >
+    <%= form_with(url: products_path, method: :get, data: {controller: "search-form", turbo_frame: "main-parts", action: "turbo:before-fetch-response->search-form#hideSpinner" }) do |form| %>
+      <%= form.label :search_term, "Search by band name:", class: "block mb-2" %>
+      <%= form.text_field :search_term, class: "py-3 px-4 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", data: {action: "input->search-form#search", "search-form-target": "input"} %>
 
-      <div class="w-2/3 relative h-12 flex">
-        <%= render Products::SearchFormComponent.new %>
-        <div class="hidden absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="loading">
-          <%= render Icons::SpinnerComponent.new %>
-        </div>
-        <div class="absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="searchIcon">
-          <button data-action="click->search-form#search" class="outline-none w-6 h-6">
-            <%= render Icons::SearchComponent.new %>
-          </button>
-        </div>
+      <%= form.label :category, "category", class: "block mb-2" %>
+      <%= form.select :category, [["All categories", nil]].concat(@categories), {}, class: "py-3 px-4 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none", data: {action: "input->search-form#search", "search-form-target": "category"} %>
+
+      <%= form.submit 'Search', class: "px-4 py-3 font-medium bg-orange-300 text-neutal-900 rounded flex items-center cursor-pointer hover:bg-orange-400 focus:ring-4 ring-0 focus:ring-orange-100" %>
+      <div class="absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="searchIcon">
+        <button data-action="click->search-form#search" class="outline-none w-6 h-6">
+          <%= render Icons::SearchComponent.new %>
+        </button>
       </div>
-      <div class="w-1/3 h-12" id="search-bar-select">
-        <%= render Products::CategorySelectComponent.new(categories: @categories, category: @category) %>
+      <div class="hidden absolute left-4 top-1/2 transform -translate-y-1/2 center-content" data-search-form-target="loading">
+        <%= render Icons::SpinnerComponent.new %>
       </div>
-    </div>
+    <% end %>
+    
   </div>
 </turbo-frame>

@@ -6,11 +6,9 @@
   <% end %>
 <% end %>
 
-<turbo-stream action="append" target="notifications">
-  <template>
-    <%= render Notifications::InfoComponent.new(info: @notice) %>
-  </template>
-</turbo-stream>
+<%= turbo_stream.append "notifications" do %>
+  <%= render Notifications::InfoComponent.new(info: @notice) %>
+<% end %>
 
 <%= turbo_stream.replace "cart" do %>
     <%= render Carts::NavbarComponent.new(cart: @cart) %>

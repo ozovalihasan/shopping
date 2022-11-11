@@ -1,7 +1,7 @@
 <%= render Frame::BodyComponent.new do |c|%>
   <% c.with_custom_component do %>
-    <div class="">
-      <div id="<%= dom_id @order %>" class="flex p-8 space-x-4">
+    <div>
+      <div id=<%= dom_id @order %> class="flex p-8 space-x-4">
         
         <div class="w-3/4 border border-solid p-4 rounded-md" id="order-items-list">
           <% if @order.order_items.exists? %>
@@ -18,9 +18,9 @@
             Total: <span id="<%= dom_id @order %>-total"><%= number_to_currency(@order.total_price) %></span>
           </div>
           <div>
-            Status: <%= @order.status %>
+            Status: <%= @order.status.humanize %>
           </div>
-          <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full", data: { turbo: false } %>
+          <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full p-2 mt-4", data: { turbo: false } %>
 
         </div>
         

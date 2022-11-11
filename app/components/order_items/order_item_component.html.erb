@@ -17,6 +17,12 @@
         </div>
       </div>
     <% end %>
+
+    <%= button_to "X", 
+      order_item_path(@order_item), 
+      method: :delete, 
+      class: "btn-danger w-10 aspect-square"
+    %>
     
     <%= render OrderItems::QuantityFormComponent.new(order_item: @order_item) %>
     

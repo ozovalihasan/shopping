@@ -14,25 +14,35 @@
 }
 
 @layer components {
+
+  .btn {
+    @apply flex justify-center items-center
+    rounded-md cursor-pointer
+    border border-solid
+  }
+  
   .btn-first {
-    @apply flex justify-center items-center bg-first-500 hover:bg-first-600 
-    text-first-100 stroke-first-100 border-first-500
-    rounded-md
-    hover:border-first-600 border border-solid cursor-pointer;
+    @apply btn bg-first-500 hover:bg-first-600 
+    text-first-100 stroke-first-100 
+    border-first-500 hover:border-first-600;
   }
 
   .btn-second {
-    @apply flex justify-center items-center bg-first-50 hover:bg-first-100 
+    @apply btn bg-first-50 hover:bg-first-100 
     text-first-500 stroke-first-500 hover:text-first-600 hover:stroke-first-600 
-    border-first-500 border border-solid cursor-pointer
-    rounded-md
+    border-first-500
     disabled:bg-fourth-500 disabled:border-fourth-50;
   }
 
   .btn-third {
-    @apply flex justify-center items-center text-first-500 stroke-first-500 
-    rounded-md
-    hover:text-first-600 hover:stroke-first-600 cursor-pointer;
+    @apply btn text-first-500 stroke-first-500 
+    hover:text-first-600 hover:stroke-first-600
+    border-none;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-400 hover:bg-danger-500
+    font-bold border-none;
   }
 }
 

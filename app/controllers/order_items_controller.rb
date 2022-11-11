@@ -72,8 +72,14 @@ class OrderItemsController < ApplicationController
         format.turbo_stream 
         format.json { render :show, status: :ok, location: @order_item }
       else
+        @notice = "The order item is not updated because of an error."
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.append(
+            "notifications", render_to_string( Notifications::InfoComponent.new(info: @notice) )
+          ) 
+        }
       end
     end
   end

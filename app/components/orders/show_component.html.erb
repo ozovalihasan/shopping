@@ -12,17 +12,26 @@
           
         </div>
 
-        <div class="w-1/4 p-4 border border-solid rounded-md">
-          Summary
-          <div>
-            Total: <span id="<%= dom_id @order %>-total" class="font-bold"><%= number_to_currency(@order.total_price) %></span>
+        <div class="w-1/4 ">
+          <div class="p-4 border border-solid rounded-md">
+            Summary
+            <div>
+              Total: <span id="<%= dom_id @order %>-total" class="font-bold"><%= number_to_currency(@order.total_price) %></span>
+            </div>
+            <div>
+              Status: <%= @order.status.humanize %>
+            </div>
+            <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full p-2 mt-4", data: { turbo: false } %>
           </div>
-          <div>
-            Status: <%= @order.status.humanize %>
+
+
+          <div class="my-4">
+            <%= link_to "All Orders", orders_path %>
           </div>
-          <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full p-2 mt-4", data: { turbo: false } %>
 
         </div>
+
+        
         
       </div>
     </div>

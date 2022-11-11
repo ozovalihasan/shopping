@@ -15,7 +15,7 @@
         <div class="w-1/4 p-4 border border-solid rounded-md">
           Summary
           <div>
-            Total: <span id="<%= dom_id @order %>-total"><%= number_to_currency(@order.total_price) %></span>
+            Total: <span id="<%= dom_id @order %>-total" class="font-bold"><%= number_to_currency(@order.total_price) %></span>
           </div>
           <div>
             Status: <%= @order.status.humanize %>

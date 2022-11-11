@@ -1,15 +1,19 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["quantity", "increaseButton", "decreaseButton"]
+  static targets = ["input", "increaseButton", "decreaseButton"]
+
+  static values = {
+    max: Number,
+  };
 
   connect() {
-    _checkButtons();
+    this._checkButtons();
   }
 
   increase(e) {
     e.preventDefault();
-    this.quantityTarget.stepUp();
+    this.inputTarget.stepUp();
     this._submit();
     this._checkButtons();
   }
@@ -21,13 +25,13 @@ export default class extends Controller {
   
   decrease(e) {
     e.preventDefault();
-    this.quantityTarget.stepDown();
+    this.inputTarget.stepDown();
     this._submit();
     this._checkButtons();
   }
 
   _updateQuantity(val) {
-    this.quantityTarget.value = parseInt(val);
+    this.inputTarget.value = parseInt(val);
   }
   
   _submit() {
@@ -43,7 +47,7 @@ export default class extends Controller {
   }
 
   _checkIncreaseButton() {
-    if (parseInt(this.quantityTarget.value) >= parseInt(this.quantityTarget.attributes.max.nodeValue)){
+    if (parseInt(this.inputTarget.value) >= this.maxValue ){
       this.increaseButtonTarget.disabled = true
     } else {
       this.increaseButtonTarget.disabled = false
@@ -51,7 +55,7 @@ export default class extends Controller {
   }
 
   _checkDecreaseButton() {
-    if (parseInt(this.quantityTarget.value) <= 1 ){
+    if (parseInt(this.inputTarget.value) <= 1 ){
       this.decreaseButtonTarget.disabled = true
     } else {
       this.decreaseButtonTarget.disabled = false

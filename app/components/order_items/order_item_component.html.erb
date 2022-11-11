@@ -19,7 +19,8 @@
       class: "flex flex-col items-center w-32",
       data: {
         turbo_frame: "main-parts",
-        controller: "order-item-quantity"
+        controller: "order-item-quantity",
+        "order-item-quantity-max-value": @order_item.product.quantity
       }
     ) do |form| %>
       
@@ -35,7 +36,7 @@
         step: 1,
         data: {
           action: "input->order-item-quantity#submitForm",
-          "order-item-quantity-target": "quantity"
+          "order-item-quantity-target": "input"
         }
       %>
       

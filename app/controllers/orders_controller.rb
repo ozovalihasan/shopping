@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: %i[ index ]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @orders = current_user.orders
     respond_to do |format|
       format.html { render Orders::IndexComponent.new(orders: @orders) }
       format.json

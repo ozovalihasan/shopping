@@ -19,7 +19,11 @@ export default class extends Controller {
   }
 
   submitForm(e){
-    this._submit();
+    
+    if (parseInt(this.inputTarget.value)){
+      this.inputTarget.value = parseInt(this.inputTarget.value);
+      this._submit();  
+    }
     this._checkButtons();
   }
   

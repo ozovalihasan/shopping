@@ -8,6 +8,7 @@ import HelloController from "./hello_controller"
 import CustomTabsController from "./custom_tabs_controller"
 import SearchFormController from "./search_form_controller"
 import ScrollController from "./scroll_controller"
+import OrderItemQuantityController from "./order_item_quantity_controller"
 import { Alert, Dropdown } from "tailwindcss-stimulus-components"
 
 application.register("hello", HelloController)
@@ -16,3 +17,4 @@ application.register("tabs", CustomTabsController)
 application.register('dropdown', Dropdown);
 application.register("search-form", SearchFormController)
 application.register("scroll", ScrollController)
+application.register("order-item-quantity", OrderItemQuantityController)

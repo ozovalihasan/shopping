@@ -3,7 +3,7 @@
 
     <%= image_tag @order_item.product.images.first.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
 
-    <%= link_to @order_item.product, class: "w-full m-4" do %>
+    <%= link_to @order_item.product, class: "w-full m-4 flex-grow-1" do %>
       <div class="whitespace-nowrap">
         <%= @order_item.product.name %>
       </div>
@@ -13,37 +13,41 @@
       </div>
     <% end %>
     
-    <div class="items-center flex flex-col">
+    <%= form_with(
+      model: @order_item,
+      method: :put,
+      class: "flex flex-col items-center w-32",
+      data: {
+        turbo_frame: "main-parts",
+        controller: "order-item-quantity"
+      }
+    ) do |form| %>
       
-      <%= button_to "+",
-        order_item_path(@order_item),
-        params: {order_item: { quantity: @order_item.quantity + 1 }},
-        method: :put,
-        class: "btn-second w-10 aspect-square",
-        disabled: @order_item.quantity == @order_item.product.quantity
+      <button 
+        data-action="click->order-item-quantity#increase"
+        class="btn-second w-10 aspect-square"
+        data-order-item-quantity-target= "increaseButton"
+      > + </button>
+      
+      <%= form.number_field :quantity,
+        class:"mx-8 text-center bg-transparent outline-none appearance-none appearance-textfield w-full",
+        in: 1..@order_item.product.quantity,
+        step: 1,
+        data: {
+          action: "input->order-item-quantity#submitForm",
+          "order-item-quantity-target": "quantity"
+        }
       %>
+      
+      <button 
+        data-action="click->order-item-quantity#decrease"
+        class="btn-second w-10 aspect-square"
+        data-order-item-quantity-target= "decreaseButton"
+      > - </button>
+      
+    <% end %>
     
-      <div class="mx-8">
-        <%= @order_item.quantity %>
-      </div>
-
-      <%= button_to "-",
-        order_item_path(@order_item),
-        params: {order_item: { quantity: @order_item.quantity - 1 }},
-        method: :put,
-        class: "btn-second w-10 aspect-square",
-        disabled: @order_item.quantity.zero?
-      %>
-      
-    </div>
-
-      
-    <div>
-      <%= button_to order_item_path(@order_item), method: :delete, class: "btn-second w-10 aspect-square p-3" do %>
-        <%= render Icons::XMarkComponent.new %>
-      <% end %>
-    </div>
-      
+    
   </div>
   
 

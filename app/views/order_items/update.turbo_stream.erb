@@ -1,6 +1,6 @@
 <turbo-stream action="update" target=<%= "#{ dom_id(@order_item) }-intermediate-total" %>>
   <template>
-    <%= @order_item.product.price * @order_item.quantity %>
+    <%= number_to_currency(@order_item.product.price * @order_item.quantity)  %>
   </template>
 </turbo-stream>
 

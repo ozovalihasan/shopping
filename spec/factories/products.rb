@@ -5,8 +5,8 @@ FactoryBot.define do
     description { Faker::Lorem.paragraph }
     name { Faker::Commerce.product_name }
     price { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
-    review_count { Faker::Number.number(digits: 1) }
-    total_review_score { Faker::Number.number(digits: 2) }
+    review_count { 0 }
+    total_review_score { 0 }
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
     images { [Rack::Test::UploadedFile.new("app/assets/images/mock-#{rand(1..5)}.jpg", 'image/png')] }

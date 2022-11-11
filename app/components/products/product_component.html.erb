@@ -13,7 +13,7 @@
       <div class="text-lg text-first-500">
         <div class="flex">
           <div class="h-6 aspect-[5]">
-            <%= render Icons::StarComponent.new(percent: rand(500)) %>
+            <%= render Icons::StarComponent.new(percent: @product.average_rate * 100) %>
           </div>
           <div>
              (<%= @product.review_count %>)

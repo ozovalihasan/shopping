@@ -1,5 +1,5 @@
 {
-    "version": "0.4.4",
+    "version": "0.4.5",
     "idCounter": 88,
     "associationType": "has_many",
     "nodes": [
@@ -15,8 +15,8 @@
                 "name": "seller"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 180,
                 "y": -30
@@ -35,8 +35,8 @@
                 "name": "customer"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 360,
                 "y": -30
@@ -55,8 +55,8 @@
                 "name": "order"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 705,
                 "y": 345
@@ -75,8 +75,8 @@
                 "name": "product"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 330,
                 "y": 285
@@ -94,9 +94,9 @@
                 "tableId": "85",
                 "name": "MainCategory"
             },
-            "selected": false,
-            "width": 146,
-            "height": 65,
+            "selected": true,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 960,
                 "y": -45
@@ -115,8 +115,8 @@
                 "name": "Category"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 960,
                 "y": 90
@@ -135,8 +135,8 @@
                 "name": "Category"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 885,
                 "y": 240
@@ -155,8 +155,8 @@
                 "name": "order_item"
             },
             "selected": false,
-            "width": 146,
-            "height": 65
+            "width": 144,
+            "height": 71
         },
         {
             "id": "36",
@@ -170,8 +170,8 @@
                 "name": "answer"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 30,
                 "y": 585
@@ -190,8 +190,8 @@
                 "name": "question"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 165,
                 "y": 435
@@ -210,8 +210,8 @@
                 "name": "product"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 960,
                 "y": 360
@@ -230,8 +230,8 @@
                 "name": "review"
             },
             "selected": false,
-            "width": 146,
-            "height": 65,
+            "width": 144,
+            "height": 71,
             "positionAbsolute": {
                 "x": 525,
                 "y": 345
@@ -250,8 +250,8 @@
                 "name": "address"
             },
             "selected": false,
-            "width": 146,
-            "height": 65
+            "width": 144,
+            "height": 71
         }
     ],
     "edges": [
@@ -424,7 +424,8 @@
     "tables": {
         "12": {
             "name": "user",
-            "attributes": {}
+            "attributes": {},
+            "superclassId": ""
         },
         "16": {
             "name": "product",
@@ -450,14 +451,15 @@
                     "type": "integer"
                 },
                 "63": {
-                    "name": "total_review_score",
-                    "type": "integer"
+                    "name": "average_rate",
+                    "type": "decimal"
                 },
                 "75": {
                     "name": "name",
                     "type": "string"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "17": {
             "name": "order",
@@ -470,7 +472,8 @@
                     "name": "status",
                     "type": "integer"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "18": {
             "name": "order_item",
@@ -483,7 +486,8 @@
                     "name": "quantity",
                     "type": "integer"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "19": {
             "name": "base_category",
@@ -492,7 +496,8 @@
                     "name": "name",
                     "type": "string"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "20": {
             "name": "answer",
@@ -501,7 +506,8 @@
                     "name": "body",
                     "type": "text"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "21": {
             "name": "question",
@@ -510,7 +516,8 @@
                     "name": "body",
                     "type": "text"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "22": {
             "name": "review",
@@ -523,7 +530,8 @@
                     "name": "rate",
                     "type": "integer"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "66": {
             "name": "address",
@@ -556,27 +564,33 @@
                     "name": "line2",
                     "type": "string"
                 }
-            }
+            },
+            "superclassId": ""
         },
         "82": {
             "name": "Seller",
-            "attributes": {}
+            "attributes": {},
+            "superclassId": ""
         },
         "83": {
             "name": "Customer",
-            "attributes": {}
+            "attributes": {},
+            "superclassId": ""
         },
         "84": {
             "name": "Admin",
-            "attributes": {}
+            "attributes": {},
+            "superclassId": ""
         },
         "85": {
             "name": "MainCategory",
-            "attributes": {}
+            "attributes": {},
+            "superclassId": "19"
         },
         "86": {
             "name": "Category",
-            "attributes": {}
+            "attributes": {},
+            "superclassId": "19"
         }
     },
     "connectionStartNodeId": "87",
@@ -585,5 +599,6 @@
     "isMouseOnEdge": false,
     "mouseOnNodeId": null,
     "mouseOnEdgeId": null,
-    "selectedNodeIdForThrough": null
+    "selectedNodeIdForThrough": null,
+    "needFitView": false
 }

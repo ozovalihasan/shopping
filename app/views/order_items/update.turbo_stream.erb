@@ -1,16 +1,15 @@
-<turbo-stream action="update" target=<%= "#{ dom_id(@order_item) }-intermediate-total" %>>
-  <template>
-    <%= number_to_currency(@order_item.product.price * @order_item.quantity)  %>
-  </template>
-</turbo-stream>
+<%= turbo_stream.update "#{ dom_id(@order_item) }-intermediate-total" do %>
+  <%= number_to_currency(@order_item.product.price * @order_item.quantity)  %>
+<% end %>
 
-
-<turbo-stream action="append" target="notifications">
-  <template>
-    <%= render Notifications::InfoComponent.new(info: @notice) %>
-  </template>
-</turbo-stream>
+<%= turbo_stream.append "notifications" do %>
+  <%= render Notifications::InfoComponent.new(info: @notice) %>
+<% end %>
 
 <%= turbo_stream.replace "cart" do %>
-    <%= render Carts::NavbarComponent.new(cart: @cart) %>
+  <%= render Carts::NavbarComponent.new(cart: @cart) %>
+<% end %>
+
+<%= turbo_stream.update "#{dom_id(@order_item.order)}-total" do %>
+  <%= number_to_currency @order_item.order.total_price %>
 <% end %>

@@ -15,7 +15,7 @@
           
             <%= link_to product_reviews_path(@product), class: "flex" do %>
               <div class="h-6 aspect-[5]">
-                <%= render Icons::StarComponent.new(percent: 450) %>
+                <%= render Icons::StarComponent.new(percent: (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) * 100) %>
               </div>
               <%= (@product.total_review_score.to_f / @product.review_count.to_f).floor(1) %>
             <% end %>

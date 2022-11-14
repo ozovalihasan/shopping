@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+  
   def current_order
     order = Order.find_by id: session[:order_id]
     

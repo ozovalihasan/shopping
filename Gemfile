@@ -73,3 +73,4 @@ gem "simple_form"
 gem 'vite_rails'
 gem "figaro"
 gem "stripe", "~> 7.1"
+gem 'pagy'

@@ -2,8 +2,42 @@
   <% c.with_custom_component do %>
     <h1>Products</h1>
 
-    <div id="products" class="flex flex-wrap w-full justify-evenly">
-      <%= render(Products::ProductComponent.with_collection(@products)) %>
+    <div
+      data-controller="pagination"
+      data-pagination-url-value="<%= products_url %> "
+      data-pagination-page-value="<%= 2 %>"
+      data-pagination-max-page-value="<%= @last_page %>"
+      data-pagination-request-value="false"
+      data-pagination-search-term-value="<%= @search_term %>"
+      data-pagination-category-value="<%= @category_id %>"
+    >
+
+      <div
+        id="products"
+        class="flex flex-wrap justify-center"  
+      >
+        <% if @products.empty? %>
+          <div class="flex" id="no-product">
+            <div class="text-center w-52 m-7 p-6">
+              There is no result to show
+              <% if @category %>
+                in <%= @category.name %>
+              <% end %>
+              .
+            </div>
+          </div>
+        <% else %>
+          <%= render Products::ProductComponent.with_collection(@products) %>
+        <% end %>
+      </div>
+
+      <div
+        class="w-full h-32 center-content mt-32"
+        data-pagination-target="loading"
+      >
+        <%= render Icons::SpinnerComponent.new %>
+      </div>
+
     </div>
 
     <%= link_to "New product", new_product_path %>

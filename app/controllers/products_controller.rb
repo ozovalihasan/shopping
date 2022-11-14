@@ -4,14 +4,18 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
 
-    @products = Product.search(params[:search_term], params[:category])
+    page = params[:page] || 1
+    @pagy, @products = pagy(Product.search(params[:search_term], params[:category_id]), page: page)
+    last_page = @pagy.last
+    
     respond_to do |format|
-      format.turbo_stream { 
-        render turbo_stream: turbo_stream.update(
-          "main-parts", render_to_string( Products::IndexComponent.new(products: @products))
-        ) 
-      }
-      format.html { render Products::IndexComponent.new(products: @products) }
+      format.turbo_stream 
+      format.html { render Products::IndexComponent.new(
+        products: @products, 
+        last_page: last_page, 
+        search_term: params[:search_term],
+        category_id: params[:category_id]
+      )}
       format.json
     end
   end

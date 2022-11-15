@@ -66,13 +66,14 @@ class OrderItemsController < ApplicationController
   def update
     respond_to do |format|
       if @order_item.update(order_item_params)
-        @notice = "OrderItem was successfully updated."
+        @notice = "#{@order_item.product.name} was successfully updated."
 
         format.html { redirect_to order_item_url(@order_item), notice: @notice }
         format.turbo_stream 
         format.json { render :show, status: :ok, location: @order_item }
       else
         @notice = "The order item is not updated because of an error."
+        
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
         format.turbo_stream {

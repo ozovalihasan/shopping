@@ -5,11 +5,15 @@
     <div
       data-controller="pagination"
       data-pagination-url-value="<%= products_url %> "
-      data-pagination-page-value="<%= 2 %>"
+      data-pagination-current-page-value="<%= 1 %>"
       data-pagination-max-page-value="<%= @last_page %>"
       data-pagination-request-value="false"
-      data-pagination-search-term-value="<%= @search_term %>"
-      data-pagination-category-value="<%= @category_id %>"
+      <% if @search_term %>
+        data-pagination-search-term-value="<%= @search_term %>"
+      <% end %>
+      <% if @category_id %>
+        data-pagination-category-value="<%= @category_id %>"
+      <% end %>
     >
 
       <div

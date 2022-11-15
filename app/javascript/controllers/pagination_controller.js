@@ -4,7 +4,7 @@ import { get } from '@rails/request.js'
 export default class extends Controller {
   static values = {
     url: String,
-    page: Number,
+    currentPage: Number,
     maxPage: Number,
     request: Boolean,
     searchTerm: String,
@@ -15,11 +15,14 @@ export default class extends Controller {
 
   initialize() {
     this.scroll = this.scroll.bind(this);
-    this.pageValue = this.pageValue || 1;
+    this.currentPageValue = this.currentPageValue || 1;
   }
 
   connect() {
     document.addEventListener("scroll", this.scroll);
+    if ( this.currentPageValue === this.maxPageValue ){
+      this.loadingTarget.classList.add("hidden");  
+    }
   }
 
   disconnect(){
@@ -28,14 +31,14 @@ export default class extends Controller {
 
   scroll() {
     
-    if (!this.requestValue && this.pageValue <= this.maxPageValue && this.scrollReachedEnd ) {
+    if (!this.requestValue && this.currentPageValue < this.maxPageValue && this.scrollReachedEnd ) {
       this._fetchNewPage();
     }
   }
 
   async _fetchNewPage() {
     const url = new URL(this.urlValue);
-    url.searchParams.set('page', this.pageValue)
+    url.searchParams.set('page', this.currentPageValue + 1)
     if (this.searchTermValue){
       url.searchParams.set('search_term', this.searchTermValue)
     }
@@ -47,13 +50,15 @@ export default class extends Controller {
     await get(url.toString(), {
       responseKind: 'turbo-stream'
     });
-    if ( this.pageValue === this.maxPageValue ){
+    this.requestValue = false;
+    this.currentPageValue += 1;
+
+    if ( this.currentPageValue >= this.maxPageValue ){
       this.loadingTarget.classList.add("hidden");  
     }
     
-    this.requestValue = false;
     
-    this.pageValue += 1;
+    
 
   }
     

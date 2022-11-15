@@ -13,8 +13,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    page = params[:page] || 1
+    @pagy, @products = pagy(@category.products, page: page)
+    last_page = @pagy.last
+    
     respond_to do |format|
-      format.html { render Categories::ShowComponent.new(category: @category) }
+      format.html { render Categories::ShowComponent.new(products: @products, category: @category, last_page: last_page) }
       format.json 
     end
   end

@@ -22,7 +22,7 @@ FactoryBot.define do
     sequence(:price) { |n| n.to_f }
     sequence(:description) { |n| "description#{n}" }
     sequence(:review_count) { |n| n }
-    sequence(:average_rate) { Faker::Number.between(from: 1, to: 5) }
+    sequence(:average_rate) { |n| n % 5  }
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
   end

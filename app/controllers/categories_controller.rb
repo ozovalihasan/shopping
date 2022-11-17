@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     last_page = @pagy.last
     
     respond_to do |format|
-      format.html { render Categories::ShowComponent.new(products: @products, category: @category, last_page: last_page) }
+      format.html 
       format.json 
     end
   end

@@ -89,9 +89,6 @@ class OrderItemsController < ApplicationController
   def destroy
     @order_item.destroy
 
-    puts "\n\n\e[32;3m#{"⟱"*40}\e[0m\n#{__FILE__} : #{__LINE__}\n"
-    puts "@order_item: #{@order_item} \n\e[32;3m#{"⟰"*40}\e[0m\n\n"
-
     respond_to do |format|
       @notice = "OrderItem was successfully destroyed."
 

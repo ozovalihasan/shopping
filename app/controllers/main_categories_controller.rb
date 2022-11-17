@@ -7,7 +7,7 @@ class MainCategoriesController < ApplicationController
     @products = Product.limit(10).order("RANDOM()")
     respond_to do |format|
       format.turbo_stream      
-      format.html { render MainCategories::IndexComponent.new(main_categories: @main_categories, products: @products) }
+      format.html
       format.json
     end
   end
@@ -19,7 +19,7 @@ class MainCategoriesController < ApplicationController
     last_page = @pagy.last
     
     respond_to do |format|
-      format.html { render MainCategories::ShowComponent.new(products: @products, main_category: @main_category, last_page: last_page) }
+      format.html
       format.json 
     end
   end

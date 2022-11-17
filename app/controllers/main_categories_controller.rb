@@ -16,7 +16,7 @@ class MainCategoriesController < ApplicationController
   def show
     page = params[:page] || 1
     @pagy, @products = pagy(@main_category.products, page: page)
-    last_page = @pagy.last
+    @last_page = @pagy.last
     
     respond_to do |format|
       format.html

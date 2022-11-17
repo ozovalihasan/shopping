@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   def index
     @reviews = @product.reviews
     respond_to do |format|
-      format.html { render Reviews::IndexComponent.new(reviews: @reviews) }
+      format.html { render Reviews::IndexComponent.new(reviews: @reviews, product: @product) }
       format.json
     end
   end

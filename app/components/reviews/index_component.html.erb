@@ -1,6 +1,6 @@
 <h1>Reviews</h1>
 
-<turbo-frame id=<%= dom_id(@reviews.first.product, :reviews) %>>
+<turbo-frame id=<%= dom_id(@product, :reviews) %>>
   <div id="reviews">
     <%= render(Reviews::ReviewComponent.with_collection(@reviews)) %>
   </div>

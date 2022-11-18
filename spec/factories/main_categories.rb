@@ -6,7 +6,8 @@ FactoryBot.define do
 end
 
 FactoryBot.define do
-  factory :mock_main_category, class: "Category" do
-    sequence(:name) { |n| "name#{n}" }
+  factory :mock_main_category, class: "MainCategory" do
+    sequence(:image) {|n| Rack::Test::UploadedFile.new("app/assets/images/mock-#{n % 5 + 1}.jpg", 'image/png') }
+    sequence(:name) { |n| "main_category_name_#{n}" }
   end
 end

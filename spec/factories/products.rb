@@ -18,7 +18,7 @@ FactoryBot.define do
   factory :mock_product, class: "Product" do
     sequence(:quantity) { |n| n }
     sequence(:color) { |n| "color#{n}" }
-    sequence(:name) { |n| "name#{n}" }
+    sequence(:name) { |n| "product_name_#{n}" }
     sequence(:price) { |n| n.to_f }
     sequence(:description) { |n| "description#{n}" }
     sequence(:review_count) { |n| n }

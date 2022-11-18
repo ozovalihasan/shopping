@@ -26,5 +26,11 @@ module ApplicationHelper
     @cart = current_order
   end
 
+  def pagy_products(page:, products:)
+    pagy, limited_products = pagy(products, page: page)
+    last_page = pagy.last
+
+    return [ pagy, limited_products, last_page ]
+  end
 
 end

@@ -5,14 +5,13 @@ class ProductsController < ApplicationController
   def index
 
     page = params[:page] || 1
-    @pagy, @products = pagy(Product.search(params[:search_term], params[:category_id]), page: page)
-    last_page = @pagy.last
+    @pagy, @products, @last_page = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]))
     
     respond_to do |format|
       format.turbo_stream 
       format.html { render Products::IndexComponent.new(
         products: @products, 
-        last_page: last_page, 
+        last_page: @last_page, 
         search_term: params[:search_term],
         category_id: params[:category_id]
       )}

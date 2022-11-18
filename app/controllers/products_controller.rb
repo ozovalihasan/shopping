@@ -8,7 +8,9 @@ class ProductsController < ApplicationController
     @pagy, @products, @last_page = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]))
     
     respond_to do |format|
-      format.turbo_stream 
+      unless turbo_frame_request?
+        format.turbo_stream 
+      end
       format.html { render Products::IndexComponent.new(
         products: @products, 
         last_page: @last_page, 

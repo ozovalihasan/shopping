@@ -30,7 +30,7 @@ module ApplicationHelper
     pagy, limited_products = pagy(products, page: page)
     last_page = pagy.last
 
-    return [ pagy, limited_products, last_page ]
+    return [ limited_products, last_page ]
   end
 
 end

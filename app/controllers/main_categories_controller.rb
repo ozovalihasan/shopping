@@ -15,7 +15,7 @@ class MainCategoriesController < ApplicationController
   # GET /main_categories/1 or /main_categories/1.json
   def show
     page = params[:page] || 1
-    @pagy, @products, @last_page = pagy_products(page: page, products: @main_category.products)
+    @products, @last_page = pagy_products(page: page, products: @main_category.products)
     
     respond_to do |format|
       format.html

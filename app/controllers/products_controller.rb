@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
 
     page = params[:page] || 1
-    @pagy, @products, @last_page = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]))
+    @products, @last_page = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]))
     
     respond_to do |format|
       unless turbo_frame_request?

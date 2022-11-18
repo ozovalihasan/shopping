@@ -7,7 +7,7 @@ class Review < ApplicationRecord
   def update_product
     product.update(
       review_count: product.reviews.count, 
-      average_rate: ( product.reviews.average(:rate)).floor(2)
+      average_rate: ( product.reviews.average(:rate) || 0).floor(2)
     )
   end
   

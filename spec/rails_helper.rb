@@ -8,6 +8,9 @@ require 'rspec/rails'
 require "view_component/test_helpers"
 require "capybara/rspec" 
 require_relative "./components/mock_component"
+include Pagy::Backend
+
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -28,5 +28,7 @@ RSpec.describe "main_categories/show", type: :view do
     expect(rendered).to match( Products::IndexComponent.name )
     expect(rendered).to match( Categories::CategoryComponent.name )
       
+    expect(rendered).to match_snapshot('main_categories/show')
   end
+
 end

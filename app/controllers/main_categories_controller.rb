@@ -8,7 +8,6 @@ class MainCategoriesController < ApplicationController
     respond_to do |format|
       format.turbo_stream      
       format.html
-      format.json
     end
   end
 
@@ -19,7 +18,6 @@ class MainCategoriesController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json 
     end
   end
 

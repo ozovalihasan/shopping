@@ -26,6 +26,8 @@
 
 RSpec.describe "/main_categories", type: :request do
 
+  let(:frame_id) { "main-parts" }
+
   before(:all) {
     FactoryBot.reload
     FactoryBot.create(:mock_main_category)
@@ -46,8 +48,8 @@ RSpec.describe "/main_categories", type: :request do
     end
   
     it "renders only a frame for a request of turbo frame" do
-      frame_id = "main-parts"
       get main_categories_path, headers: { "Turbo-Frame" => frame_id }
+      
       expect(response).to render_template(layout: false)
       expect(response).to have_http_status(:ok)
       expect(response.body).to have_css("turbo-frame##{frame_id}")
@@ -63,12 +65,24 @@ RSpec.describe "/main_categories", type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    it "renders the view of MainCategories#show for the json format" do
-      pending "add some examples to (or delete) #{__FILE__}"
-      # get main_category_path(MainCategory.first, format: :json)
+    it "renders only a frame for a request for a turbo frame" do
+      get main_category_path(MainCategory.first), headers: { "Turbo-Frame" => frame_id }
 
-      # expect(response).to render_template(:show)
-      # expect(response).to have_http_status(:ok)
+      expect(response).to render_template(layout: false)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to have_css("turbo-frame##{frame_id}")
     end
+    
+    it "shouldn't get any response for a turbo stream request" do
+      begin
+        get main_category_path(MainCategory.first, format: :turbo_stream)   
+      rescue 
+        "There shouldn't be a response for a turbo stream request"
+      ensure
+        expect(response).to eq(nil)
+      end
+      
+    end
+
   end
 end

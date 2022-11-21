@@ -10,7 +10,7 @@ RSpec.describe "main_categories/show", type: :view do
     FactoryBot.create(:mock_product)
   }
 
-  it "renders show view of MainCategoriesController correctly" do
+  it "renders the view of MainCategoriesController#show correctly" do
 
     main_category = MainCategory.first
     assign(:main_category, main_category)
@@ -24,7 +24,7 @@ RSpec.describe "main_categories/show", type: :view do
     allow(Products::IndexComponent).to receive(:new) { MockComponent.new( Products::IndexComponent ) }
     
     render
-    expect(rendered).to match("turbo-frame")
+    expect(rendered).to have_css("turbo-frame#main-parts")
     expect(rendered).to match( Products::IndexComponent.name )
     expect(rendered).to match( Categories::CategoryComponent.name )
       

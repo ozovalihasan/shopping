@@ -65,6 +65,7 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
   gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
   gem 'rails-controller-testing'
+  gem 'rspec-snapshot'
 end
 
 gem "devise"

@@ -36,32 +36,39 @@ RSpec.describe "/main_categories", type: :request do
   
 
   describe "GET /index" do
-    it "renders a successful response" do
-      get main_categories_url
+    it "renders a successful response for the html format"  do
+      get main_categories_path
 
-      expect(response.body).to include("turbo-frame")
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to have_css('turbo-frame')
       expect(response.body).to include("product_name_1")
       expect(response.body).to include("main_category_name_1")
-      expect(response).to have_http_status(:ok)
     end
+  
+    it "renders only a frame for a request of turbo frame" do
+      frame_id = "main-parts"
+      get main_categories_path, headers: { "Turbo-Frame" => frame_id }
+      expect(response).to render_template(layout: false)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to have_css("turbo-frame##{frame_id}")
+    end
+
   end
 
   describe "GET /show" do
-    it "renders a successful response" do
-      
-      allow_any_instance_of(ViewComponent::Base).to receive(:render).and_return("one of unimportant mock components")
-      allow(Categories::CategoryComponent).to receive(:with_collection) { MockComponent.new( Categories::CategoryComponent ) }
-      allow(Products::IndexComponent).to receive(:new) { MockComponent.new( Products::IndexComponent ) }
-      
-      get main_category_url(MainCategory.first)
+    it "renders the view of MainCategories#show for the html format" do
+      get main_category_path(MainCategory.first)
 
-      expect(response.body).to include("turbo-frame")
-      expect(response.body).to include( Products::IndexComponent.name )
-      expect(response.body).to include( Categories::CategoryComponent.name )
-      expect(response.body).to include("one of unimportant mock components").exactly(4).times
-      
+      expect(response).to render_template(:show)
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "renders the view of MainCategories#show for the json format" do
+      pending "add some examples to (or delete) #{__FILE__}"
+      # get main_category_path(MainCategory.first, format: :json)
+
       # expect(response).to render_template(:show)
-      
+      # expect(response).to have_http_status(:ok)
     end
   end
 end

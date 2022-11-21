@@ -1,0 +1,21 @@
+<turbo-frame 
+  id="main-parts" 
+  data-turbo-action="advance" 
+  autoscroll 
+  data-autoscroll-block="start"
+  data-autoscroll-behavior="smooth"
+  
+>
+  <div class="scroll-mt-96">
+    
+    <div id="main-categories" class="flex flex-wrap justify-evenly">
+      Categories::CategoryComponent
+    </div>
+
+    <div id="products" class="flex flex-wrap w-full justify-evenly">
+      Products::ProductComponent
+    </div>
+
+
+  </div>
+</turbo-frame>

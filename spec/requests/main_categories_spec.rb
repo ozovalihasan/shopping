@@ -31,6 +31,27 @@ RSpec.describe "/main_categories", type: :request do
       expect(response.body).to have_css("turbo-frame##{frame_id}")
     end
 
+    it "replaces some elements for a turbo stream request" do
+      allow(Layout::UserAccountComponent).to receive(:new) { MockComponent.new( Layout::UserAccountComponent ) }
+      allow(MainCategories::IndexComponent).to receive(:new) { MockComponent.new( MainCategories::IndexComponent ) }
+      allow(Carts::NavbarComponent).to receive(:new) { MockComponent.new( Carts::NavbarComponent ) }
+      
+      get main_categories_path(format: :turbo_stream)
+      
+      expect(response).to render_template(layout: false)
+      expect(response).to have_http_status(:ok)
+
+      expect(response.body).to have_css("turbo-stream[target='user-account'][action='replace']")
+      expect(response.body).to include( Layout::UserAccountComponent.name )
+      
+      expect(response.body).to have_css("turbo-stream[target='main-parts'][action='replace']")
+      expect(response.body).to include( MainCategories::IndexComponent.name )
+      
+      expect(response.body).to have_css("turbo-stream[target='cart'][action='replace']")
+      expect(response.body).to include( Carts::NavbarComponent.name )
+
+    end
+
   end
 
   describe "GET /show" do

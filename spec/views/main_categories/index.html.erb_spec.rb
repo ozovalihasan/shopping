@@ -11,21 +11,16 @@ RSpec.describe "main_categories/index", type: :view do
 
   it "renders the index view of MainCategoriesController correctly" do
 
-    main_category = MainCategory.first
-    assign(:main_category, main_category)
+    main_categories = MainCategory.all
+    assign(:main_categories, main_categories)
 
-    products, last_page = pagy_products(page: 1, products: main_category.products)
+    products = Product.all
     assign(:products, products)
-    assign(:last_page, last_page)
     
-    allow_any_instance_of(ViewComponent::Base).to receive(:render).and_return("one of unimportant mock components")
-    allow(Categories::CategoryComponent).to receive(:with_collection) { MockComponent.new( Categories::CategoryComponent ) }
-    allow(Products::ProductComponent).to receive(:with_collection) { MockComponent.new( Products::ProductComponent ) }
+    allow(MainCategories::IndexComponent).to receive(:new) { MockComponent.new( MainCategories::IndexComponent ) }
     
     render
-    expect(rendered).to have_css("turbo-frame#main-parts")
-    expect(rendered).to match( Categories::CategoryComponent.name )
-    expect(rendered).to match( Products::ProductComponent.name )
+    expect(rendered).to match( MainCategories::IndexComponent.name )
       
     expect(rendered).to match_snapshot('main_categories/index')
   end

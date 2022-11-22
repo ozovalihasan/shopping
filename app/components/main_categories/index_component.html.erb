@@ -1,0 +1,13 @@
+<%= render Frame::BodyComponent.new do |c|%>
+  <% c.with_custom_component do %>
+
+    <div id="main-categories" class="flex flex-wrap justify-evenly">
+      <%= render(Categories::CategoryComponent.with_collection(@main_categories)) %>
+    </div>
+
+    <div id="products" class="flex flex-wrap w-full justify-evenly">
+      <%= render(Products::ProductComponent.with_collection(@products)) %>
+    </div>
+
+  <% end %>
+<% end %>

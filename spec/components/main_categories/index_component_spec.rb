@@ -11,7 +11,7 @@ RSpec.describe MainCategories::IndexComponent, type: :component do
     FactoryBot.create(:mock_product)
   }
 
-  it "renders something useful", :snapshot do
+  it "renders something useful" do
     allow(Categories::CategoryComponent).to receive(:with_collection) { MockComponent.new( Categories::CategoryComponent ) }
     allow(Products::ProductComponent).to receive(:with_collection) { MockComponent.new( Products::ProductComponent ) }
     # allow_any_instance_of(ViewComponent::Base).to receive(:render).and_return("one of unimportant mock components")
@@ -22,6 +22,7 @@ RSpec.describe MainCategories::IndexComponent, type: :component do
     expect(page).to have_text( Categories::CategoryComponent.name )
     expect(page).to have_text( Products::ProductComponent.name )
       
+    expect(rendered_component).to match_snapshot('index')
   end
 
 end

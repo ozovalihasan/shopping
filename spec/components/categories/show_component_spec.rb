@@ -31,7 +31,7 @@ RSpec.describe Categories::IndexComponent, type: :component do
       end
     end
 
-    expect(rendered_component).to have_text "Mock products"
+    expect(rendered_content).to have_text "Mock products"
     
   end
 end

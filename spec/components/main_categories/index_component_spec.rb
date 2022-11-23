@@ -22,7 +22,7 @@ RSpec.describe MainCategories::IndexComponent, type: :component do
     expect(page).to have_text( Categories::CategoryComponent.name )
     expect(page).to have_text( Products::ProductComponent.name )
       
-    expect(rendered_component).to match_snapshot('index')
+    expect(rendered_content).to match_snapshot('index')
   end
 
 end

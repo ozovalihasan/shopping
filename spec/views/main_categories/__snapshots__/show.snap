@@ -21,12 +21,6 @@
       Products::IndexComponent
     </div>
 
-    <div>
-      <a href="/categories/1/edit">Edit this category</a> |
-      <a href="/main_categories">Back to categories</a>
-
-      <form class="button_to" method="post" action="/main_categories/1"><input type="hidden" name="_method" value="delete" autocomplete="off" /><button type="submit">Destroy this category</button></form>
-    </div>
 
   </div>
 </turbo-frame>

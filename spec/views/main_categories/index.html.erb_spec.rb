@@ -22,7 +22,7 @@ RSpec.describe "main_categories/index", type: :view do
     render
     expect(rendered).to match( MainCategories::IndexComponent.name )
       
-    expect(rendered).to match_snapshot('main_categories/index')
+    expect(rendered).to match_snapshot('index')
   end
 
 end

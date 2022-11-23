@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :reviews
   end
-  resources :categories
+  resources :categories, only: [:show]
   resources :main_categories
   
   devise_for :sellers

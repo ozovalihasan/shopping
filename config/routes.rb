@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
   resources :categories, only: [:show]
-  resources :main_categories
+  resources :main_categories, only: [:index, :show]
   
   devise_for :sellers
   devise_for :customers

@@ -8,7 +8,7 @@ export default class extends Controller {
     maxPage: Number,
     request: Boolean,
     searchTerm: String,
-    category: Number,
+    categoryId: Number,
   };
 
   static targets = [ "loading" ]
@@ -42,8 +42,8 @@ export default class extends Controller {
     if (this.searchTermValue){
       url.searchParams.set('search_term', this.searchTermValue)
     }
-    if (this.categoryValue){
-      url.searchParams.set('category', this.categoryValue)
+    if (this.categoryIdValue){
+      url.searchParams.set('category', this.categoryIdValue)
     }
  
     this.requestValue = true;

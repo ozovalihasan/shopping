@@ -65,16 +65,6 @@ RSpec.describe "/main_categories", type: :request do
       expect(response.body).to have_css("turbo-frame##{frame_id}")
     end
     
-    it "shouldn't get any response for a turbo stream request" do
-      begin
-        get main_category_path(MainCategory.first, format: :turbo_stream)   
-      rescue 
-        "There shouldn't be a response for a turbo stream request"
-      ensure
-        expect(response).to eq(nil)
-      end
-      
-    end
-
+    
   end
 end

@@ -14,11 +14,5 @@
       <%= render Products::IndexComponent.new(products: @main_category.products, last_page: @last_page, category_id: @main_category.id) %>
     </div>
 
-    <div>
-      <%= link_to "Edit this category", edit_category_path(@main_category) %> |
-      <%= link_to "Back to categories", main_categories_path %>
-
-      <%= button_to "Destroy this category", @main_category, method: :delete %>
-    </div>
   <% end %>
 <% end %>

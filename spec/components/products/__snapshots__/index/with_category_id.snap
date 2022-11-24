@@ -1,0 +1,39 @@
+<turbo-frame 
+  id="main-parts" 
+  data-turbo-action="advance" 
+  autoscroll 
+  data-autoscroll-block="start"
+  data-autoscroll-behavior="smooth"
+  
+>
+  <div class="scroll-mt-96">
+        <h1>Products</h1>
+
+    <div
+      data-controller="pagination"
+      data-pagination-url-value="http://test.host/products "
+      data-pagination-current-page-value="1"
+      data-pagination-max-page-value="2"
+      data-pagination-request-value="false"
+        data-pagination-category-id-value="1"
+    >
+      <div
+        id="products"
+        class="flex flex-wrap justify-center"  
+      >
+          Products::ProductComponent
+      </div>
+
+      <div
+        class="w-full h-32 mt-32 flex justify-center"
+        data-pagination-target="loading"
+      >
+        Icons::SpinnerComponent
+      </div>
+
+    </div>
+
+    <a href="/products/new">New product</a>
+
+  </div>
+</turbo-frame>

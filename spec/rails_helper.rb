@@ -26,7 +26,7 @@ include Pagy::Backend
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -92,6 +92,9 @@ RSpec.configure do |config|
   config.before(:each, type: :component) do
     @request = controller.request
   end
+
+  config.include Helpers::ComponentsTest, type: :component
+  config.include Helpers::ComponentsTest, type: :request
 
 end
 

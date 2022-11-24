@@ -32,9 +32,9 @@ RSpec.describe "/main_categories", type: :request do
     end
 
     it "replaces some elements for a turbo stream request" do
-      allow(Layout::UserAccountComponent).to receive(:new) { MockComponent.new( Layout::UserAccountComponent ) }
-      allow(MainCategories::IndexComponent).to receive(:new) { MockComponent.new( MainCategories::IndexComponent ) }
-      allow(Carts::NavbarComponent).to receive(:new) { MockComponent.new( Carts::NavbarComponent ) }
+      subcomponents = [ Layout::UserAccountComponent, MainCategories::IndexComponent, Carts::NavbarComponent ] 
+
+      mock_components(subcomponents)
       
       get main_categories_path(format: :turbo_stream)
       
@@ -42,14 +42,9 @@ RSpec.describe "/main_categories", type: :request do
       expect(response).to have_http_status(:ok)
 
       expect(response.body).to have_css("turbo-stream[target='user-account'][action='replace']")
-      expect(response.body).to include( Layout::UserAccountComponent.name )
-      
       expect(response.body).to have_css("turbo-stream[target='main-parts'][action='replace']")
-      expect(response.body).to include( MainCategories::IndexComponent.name )
-      
       expect(response.body).to have_css("turbo-stream[target='cart'][action='replace']")
-      expect(response.body).to include( Carts::NavbarComponent.name )
-
+      subcomponents.each {|subcomponent| expect(response.body).to include( subcomponent.name )  }
     end
 
   end

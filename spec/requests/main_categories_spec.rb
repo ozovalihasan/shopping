@@ -4,7 +4,7 @@ RSpec.describe "/main_categories", type: :request do
 
   let(:frame_id) { "main-parts" }
 
-  before(:all) {
+  before(:each) {
     FactoryBot.reload
     FactoryBot.create(:mock_main_category)
     FactoryBot.create_list(:mock_category, 1)
@@ -21,6 +21,8 @@ RSpec.describe "/main_categories", type: :request do
       expect(response.body).to have_css('turbo-frame')
       expect(response.body).to include("product_name_1")
       expect(response.body).to include("main_category_name_1")
+
+      expect(response.body).to match_snapshot('main_categories/index/html')
     end
   
     it "renders only a frame for a request of turbo frame" do
@@ -29,6 +31,8 @@ RSpec.describe "/main_categories", type: :request do
       expect(response).to render_template(layout: false)
       expect(response).to have_http_status(:ok)
       expect(response.body).to have_css("turbo-frame##{frame_id}")
+
+      expect(response.body).to match_snapshot('main_categories/index/turbo_frame')
     end
 
     it "replaces some elements for a turbo stream request" do
@@ -45,6 +49,8 @@ RSpec.describe "/main_categories", type: :request do
       expect(response.body).to have_css("turbo-stream[target='main-parts'][action='replace']")
       expect(response.body).to have_css("turbo-stream[target='cart'][action='replace']")
       subcomponents.each {|subcomponent| expect(response.body).to include( subcomponent.name )  }
+
+      expect(response.body).to match_snapshot('main_categories/index/turbo_stream')
     end
 
   end
@@ -55,6 +61,8 @@ RSpec.describe "/main_categories", type: :request do
 
       expect(response).to render_template(:show)
       expect(response).to have_http_status(:ok)
+
+      expect(response.body).to match_snapshot('main_categories/show/html')
     end
 
     it "renders only a frame for a request for a turbo frame" do
@@ -63,6 +71,8 @@ RSpec.describe "/main_categories", type: :request do
       expect(response).to render_template(layout: false)
       expect(response).to have_http_status(:ok)
       expect(response.body).to have_css("turbo-frame##{frame_id}")
+
+      expect(response.body).to match_snapshot('main_categories/show/turbo_frame')
     end
     
     

@@ -1,0 +1,9 @@
+<turbo-stream action="replace" target="user-account"><template>
+    Layout::UserAccountComponent
+</template></turbo-stream>
+<turbo-stream action="replace" target="main-parts"><template>
+    MainCategories::IndexComponent
+</template></turbo-stream>
+<turbo-stream action="replace" target="cart"><template>
+    Carts::NavbarComponent
+</template></turbo-stream>

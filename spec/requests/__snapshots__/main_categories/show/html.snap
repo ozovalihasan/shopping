@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    
+
+    <script src="https://js.stripe.com/v3" data-turbo-eval="false"></script>
+
+    
+    <link rel="stylesheet" href="/vite-test/assets/application.77cb90f0.css" data-turbo-track="reload" />
+    <script src="/vite-test/assets/application.676e8f27.js" crossorigin="anonymous" type="module" data-turbo-track="reload" defer="defer"></script>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
+  </head>
+
+  <body class="bg-first-50" data-controller="scroll">
+
+    
+    <div class="fixed bottom-0 right-0 inset-x-0 m-4 z-30">
+      <div class="relative ">
+        <div id="notifications" class="absolute right-0 bottom-0 flex flex-col items-end space-y-4">
+        </div>
+      </div>
+    </div>
+    <div 
+  class="sticky top-0 w-full flex justify-between text-3xl border-b border-solid bg-first-50 p-3 items-center z-50" 
+  data-scroll-target="navbar"
+  data-turbo-permanent
+>
+  <a data-turbo-frame="main-parts" href="/">Shopping</a>
+
+  <div class="ml-auto flex">
+    <turbo-frame id="products-search-bar" src=/searches/new loading="lazy" class="flex items-center">
+      <svg class="animate-spin -ml-1 mr-3 h-6 aspect-square text-first-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+  <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="50% 300%"></circle>
+</svg>
+    </turbo-frame>
+    
+    
+    <div class="mr-8 flex items-center">
+      <div data-controller="dropdown"
+  data-action="click->dropdown#toggle click@window->dropdown#hide"
+  data-dropdown-open-value="false"
+  data-dropdown-active-target="#dropdown-button"
+  data-dropdown-active-class="bg-indigo-600"
+  data-dropdown-invisible-class="opacity-0 scale-95"
+  data-dropdown-visible-class="opacity-100 scale-100"
+  data-dropdown-entering-class="ease-out duration-300"
+  data-dropdown-enter-timeout="300"
+  data-dropdown-leaving-class="ease-in duration-300"
+  data-dropdown-leave-timeout="300"
+>
+  <div id="dropdown-button" class="relative inline-block text-sm text-white px-4 py-2 leading-none rounded no-underline hover:bg-indigo-600 mt-0">
+    <div role="button" tabindex="0" data-dropdown-target="button" class="inline-block select-none">
+      <span class="appearance-none flex items-center">
+        <span class="w-8 h-8"><svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 16 16">
+  <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+  <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+</svg></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="text-white fill-current h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+      </span>
+    </div>
+    <div data-dropdown-target="menu" class="absolute right-0 mt-2 transform transition hidden opacity-0 scale-95">
+      <div class="bg-white shadow rounded border overflow-hidden w-32">
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('green')" >
+          green
+        </button>
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('yellow')" >
+          yellow
+        </button>
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('sky')" >
+          sky
+        </button>
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('pink')" >
+          pink
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+      <div id="user-account">
+    <a data-turbo-frame="main-parts" href="/customers/sign_in">Sign in</a>
+</div>
+    </div>
+      <a data-turbo-frame="main-parts" id="cart" href="/orders/4">
+    <div class="w-16 h-16 p-2 rounded-full relative stroke-first-500">
+      <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path style="fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round" d="M55 39h-7l-31 1 7 14 8 14m51-36H71L50 68"/>
+    <path style="fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round" d="M24 54h20"/>
+</svg>
+    </div>
+</a>
+  </div>
+</div>
+    <div class="px-3">
+      <turbo-frame 
+  id="main-parts" 
+  data-turbo-action="advance" 
+  autoscroll 
+  data-autoscroll-block="start"
+  data-autoscroll-behavior="smooth"
+  
+>
+  <div class="scroll-mt-96">
+    
+    main_category_name_1
+
+    <div>
+      Subcategories
+    </div>
+    <div class="flex flex-wrap justify-evenly">
+      <a class="w-full md:w-1/2 lg:w-1/3" data-turbo-action="advance" data-turbo-frame="main-parts" href="/categories/8">
+  <div class="bg-first-300 border border-solid border-red-200 m-4 rounded-md">
+    <div id="category_8" class="relative group rounded-md">
+      <img class="rounded-t-md rounded-b-lg" src="http://www.example.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae25acef017eec334c8eba26b8d107a081546b4f/mock-2.jpg" />
+      <p class="absolute bottom-0 bg-first-100 group-hover:bg-first-300 p-2 rounded-b-md w-full">
+        category_name_1
+      </p>
+    </div>
+  </div>
+</a>
+    </div>
+
+    <div class="bg-blue-100">
+      <turbo-frame 
+  id="main-parts" 
+  data-turbo-action="advance" 
+  autoscroll 
+  data-autoscroll-block="start"
+  data-autoscroll-behavior="smooth"
+  
+>
+  <div class="scroll-mt-96">
+        <h1>Products</h1>
+
+    <div
+      data-controller="pagination"
+      data-pagination-url-value="http://www.example.com/products "
+      data-pagination-current-page-value="1"
+      data-pagination-max-page-value="1"
+      data-pagination-request-value="false"
+        data-pagination-category-id-value="7"
+    >
+      <div
+        id="products"
+        class="flex flex-wrap justify-center"  
+      >
+          <div class="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4" id="product_4">
+
+  <div class="bg-first-100 border border-solid border-red-200 p-4 rounded-md">
+    <a data-turbo-action="advance" data-turbo-frame="main-parts" href="/products/4">
+      <div class="w-full aspect-square ">
+      </div>
+      <div class="text-sm line-clamp-2 h-10 my-2">
+        <span class="font-bold"></span> product_name_1
+      </div>
+      <div class="text-lg text-first-500">
+        <div class="flex">
+          <div class="h-6 aspect-[5]">
+            <div class="flex">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-first-500"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+          <defs>
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id=100-linear-background>
+              <stop offset=0% stop-color="var(--first-500)" />
+              <stop offset=0% stop-color="transparent" />
+            </linearGradient>
+          </defs>
+
+        <path
+
+            fill=url(#100-linear-background)
+            class="stroke-first-500"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+</div>
+          </div>
+          <div>
+             (1)
+          </div>
+        </div>
+      </div>
+      <div class="text-lg text-first-500 font-bold mb-2">
+        $1.00
+      </div>
+</a>    <form class="button_to" method="post" action="/order_items?order_item%5Bproduct_id%5D=4&amp;order_item%5Bquantity%5D=1"><button class="btn-first p-2 w-full font-bold" type="submit">Add to Cart</button></form>
+  </div>
+    
+</div>
+
+      </div>
+
+      <div
+        class="w-full h-32 mt-32 flex justify-center"
+        data-pagination-target="loading"
+      >
+        <svg class="animate-spin -ml-1 mr-3 h-6 aspect-square text-first-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+  <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="50% 300%"></circle>
+</svg>
+      </div>
+
+    </div>
+
+    <a href="/products/new">New product</a>
+
+  </div>
+</turbo-frame>
+    </div>
+
+
+  </div>
+</turbo-frame>
+    </div>
+  </body>
+</html>

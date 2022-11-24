@@ -12,9 +12,6 @@ RSpec.describe "/categories", type: :request do
       FactoryBot.create(:mock_seller)
       FactoryBot.create(:mock_product)
 
-      subcomponents = [Categories::CategoryComponent, Products::IndexComponent]
-      mock_components(subcomponents)
-      
     }
     
     it "renders the view of Categories#show for the html format" do

@@ -1,9 +1,137 @@
 <turbo-stream action="replace" target="user-account"><template>
-    Layout::UserAccountComponent
+    <div id="user-account">
+    <a data-turbo-frame="main-parts" href="/customers/sign_in">Sign in</a>
+</div>
 </template></turbo-stream>
 <turbo-stream action="replace" target="main-parts"><template>
-    MainCategories::IndexComponent
+    <turbo-frame 
+  id="main-parts" 
+  data-turbo-action="advance" 
+  autoscroll 
+  data-autoscroll-block="start"
+  data-autoscroll-behavior="smooth"
+  
+>
+  <div class="scroll-mt-96">
+    
+    <div id="main-categories" class="flex flex-wrap justify-evenly">
+      <a class="w-full md:w-1/2 lg:w-1/3" data-turbo-action="advance" data-turbo-frame="main-parts" href="/main_categories/5">
+  <div class="bg-first-300 border border-solid border-red-200 m-4 rounded-md">
+    <div id="main_category_5" class="relative group rounded-md">
+      <img class="rounded-t-md rounded-b-lg" src="http://www.example.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c601474f1e9bdc5010ad7810f2b15c6ddb57c9d1/mock-2.jpg" />
+      <p class="absolute bottom-0 bg-first-100 group-hover:bg-first-300 p-2 rounded-b-md w-full">
+        main_category_name_1
+      </p>
+    </div>
+  </div>
+</a>
+    </div>
+
+    <div id="products" class="flex flex-wrap w-full justify-evenly">
+      <div class="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4" id="product_3">
+
+  <div class="bg-first-100 border border-solid border-red-200 p-4 rounded-md">
+    <a data-turbo-action="advance" data-turbo-frame="main-parts" href="/products/3">
+      <div class="w-full aspect-square ">
+      </div>
+      <div class="text-sm line-clamp-2 h-10 my-2">
+        <span class="font-bold"></span> product_name_1
+      </div>
+      <div class="text-lg text-first-500">
+        <div class="flex">
+          <div class="h-6 aspect-[5]">
+            <div class="flex">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-first-500"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+          <defs>
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id=100-linear-background>
+              <stop offset=0% stop-color="var(--first-500)" />
+              <stop offset=0% stop-color="transparent" />
+            </linearGradient>
+          </defs>
+
+        <path
+
+            fill=url(#100-linear-background)
+            class="stroke-first-500"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+</div>
+          </div>
+          <div>
+             (1)
+          </div>
+        </div>
+      </div>
+      <div class="text-lg text-first-500 font-bold mb-2">
+        $1.00
+      </div>
+</a>    <form class="button_to" method="post" action="/order_items?order_item%5Bproduct_id%5D=3&amp;order_item%5Bquantity%5D=1"><button class="btn-first p-2 w-full font-bold" type="submit">Add to Cart</button></form>
+  </div>
+    
+</div>
+
+    </div>
+
+
+  </div>
+</turbo-frame>
 </template></turbo-stream>
 <turbo-stream action="replace" target="cart"><template>
-    Carts::NavbarComponent
+      <a data-turbo-frame="main-parts" id="cart" href="/orders/3">
+    <div class="w-16 h-16 p-2 rounded-full relative stroke-first-500">
+      <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path style="fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round" d="M55 39h-7l-31 1 7 14 8 14m51-36H71L50 68"/>
+    <path style="fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round" d="M24 54h20"/>
+</svg>
+    </div>
+</a>
 </template></turbo-stream>

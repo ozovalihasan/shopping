@@ -17,10 +17,8 @@ RSpec.describe "/main_categories", type: :request do
     it "renders a successful response for the html format"  do
       get main_categories_path
 
+      expect(response).to render_template(:index)
       expect(response).to have_http_status(:ok)
-      expect(response.body).to have_css('turbo-frame')
-      expect(response.body).to include("product_name_1")
-      expect(response.body).to include("main_category_name_1")
 
       expect(response.body).to match_snapshot('main_categories/index/html')
     end
@@ -36,10 +34,6 @@ RSpec.describe "/main_categories", type: :request do
     end
 
     it "replaces some elements for a turbo stream request" do
-      subcomponents = [ Layout::UserAccountComponent, MainCategories::IndexComponent, Carts::NavbarComponent ] 
-
-      mock_components(subcomponents)
-      
       get main_categories_path(format: :turbo_stream)
       
       expect(response).to render_template(layout: false)
@@ -48,7 +42,6 @@ RSpec.describe "/main_categories", type: :request do
       expect(response.body).to have_css("turbo-stream[target='user-account'][action='replace']")
       expect(response.body).to have_css("turbo-stream[target='main-parts'][action='replace']")
       expect(response.body).to have_css("turbo-stream[target='cart'][action='replace']")
-      subcomponents.each {|subcomponent| expect(response.body).to include( subcomponent.name )  }
 
       expect(response.body).to match_snapshot('main_categories/index/turbo_stream')
     end

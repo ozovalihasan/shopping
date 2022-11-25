@@ -21,7 +21,7 @@
             class: "w-2/3 input-primary p-3 pl-12 px-6 w-full border border-r-0 rounded-l-full h-12",
             value: @search_term
           %>
-          <%= form.select :category,
+          <%= form.select :category_id,
             [["All categories", nil]].concat(@categories),
             {},
             {

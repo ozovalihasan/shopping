@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
   def show
     respond_to do |format|
       format.html { render Products::ShowComponent.new(product: @product) }
-      format.json 
     end
   end
 

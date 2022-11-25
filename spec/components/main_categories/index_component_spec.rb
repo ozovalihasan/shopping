@@ -12,15 +12,16 @@ RSpec.describe MainCategories::IndexComponent, type: :component do
   }
 
   it "renders something useful" do
-    allow(Categories::CategoryComponent).to receive(:with_collection) { MockComponent.new( Categories::CategoryComponent ) }
-    allow(Products::ProductComponent).to receive(:with_collection) { MockComponent.new( Products::ProductComponent ) }
+    subcomponents = [Categories::CategoryComponent, Products::ProductComponent]
+    mock_components(subcomponents)
     # allow_any_instance_of(ViewComponent::Base).to receive(:render).and_return("one of unimportant mock components")
 
     render_inline(described_class.new(products: Product.all, main_categories: MainCategory.all))
     
     expect(page).to have_css("turbo-frame#main-parts")
-    expect(page).to have_text( Categories::CategoryComponent.name )
-    expect(page).to have_text( Products::ProductComponent.name )
+    subcomponents.each do |subcomponent|
+      expect(page).to have_text( subcomponent.name )  
+    end
       
     expect(rendered_content).to match_snapshot('index')
   end

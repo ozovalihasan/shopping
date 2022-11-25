@@ -1,16 +1,3 @@
-<% if @page == 1  %>
-    <%= turbo_stream.replace "main-parts" do %>
-        <%= render Products::IndexComponent.new(
-            products: @products, 
-            last_page: @last_page, 
-            search_term: params[:search_term],
-            category_id: params[:category_id]
-        ) %>
-    <% end %>
-<% else %>
-
-    <%= turbo_stream.append "products" do %>
-        <%= render Products::InfiniteScrollComponent.new(products: @products) %>
-    <% end %>
-    
+<%= turbo_stream.append "products" do %>
+    <%= render Products::InfiniteScrollComponent.new(products: @products) %>
 <% end %>

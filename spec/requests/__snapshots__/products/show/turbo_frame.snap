@@ -1,0 +1,172 @@
+<turbo-frame 
+  id="main-parts" 
+  data-turbo-action="advance" 
+  autoscroll 
+  data-autoscroll-block="start"
+  data-autoscroll-behavior="smooth"
+  
+>
+  <div class="scroll-mt-96">
+      
+    <div>
+      
+      <div class="flex">
+        <div class="w-1/2 aspect-square rounded-md p-4">
+          <div data-controller="tabs" class="border border-solid border-slate-100 bg-slate-300">
+  <div class="relative group">
+
+    <div class="absolute top-1/2 left-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#previous">
+      <
+    </div>
+    <div class="absolute top-1/2 right-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#next">
+      >
+    </div>
+  </div>
+  
+  <div class="p-4">
+    <ul class="flex overflow-x-scroll">
+    </ul>
+  </div>
+  
+
+</div>
+        </div>
+        <div class="w-1/2 p-4">
+          <div>
+            <span class="font-bold"></span> product_name_1
+          </div>
+          <div>
+          
+            <a class="flex" href="/products/25/reviews">
+              <div class="h-6 aspect-[5]">
+                <div class="flex">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-first-500"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+          <defs>
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id=100-linear-background>
+              <stop offset=0% stop-color="var(--first-500)" />
+              <stop offset=0% stop-color="transparent" />
+            </linearGradient>
+          </defs>
+
+        <path
+
+            fill=url(#100-linear-background)
+            class="stroke-first-500"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" >
+        
+
+        <path
+
+            class="stroke-first-500 fill-transparent"
+          style="stroke-width:3;stroke-linejoin:round;stroke-opacity:1"
+          d="m50 6 10 30h32L66 55l10 31-26-19-26 19 10-31L8 36h32Z"
+          transform="translate(-6 -1) scale(1.11674)"
+        />
+    </svg>
+</div>
+              </div>
+</a>            <div>
+              1 Review
+            </div>
+          </div>
+          <div>
+            seller: mock_seller_1@email.com
+          </div>
+          <div>
+            color: color1
+          </div>
+          <div class="text-2xl font-bold py-4" >
+            $1.00
+          </div>
+          <form class="button_to" method="post" action="/order_items?order_item%5Bproduct_id%5D=25&amp;order_item%5Bquantity%5D=1"><button class="btn-first p-2 w-full font-bold" type="submit">Add to Cart</button></form>
+          
+        </div>
+        
+      </div>
+      
+      <div data-controller="tabs" data-scroll-target="tab" data-tabs-active-tab="-mb-px border-l border-t border-r rounded-t bg-first-400">
+  <ul class="flex border-b">
+    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
+      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Description</a>
+    </li>
+    
+    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
+      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Questions</a>
+    </li>
+    
+    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
+      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Reviews</a>
+    </li>
+
+  </ul>
+
+  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    description1
+  </div>
+
+      
+      
+  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    
+    <turbo-frame id=questions_product_25 src=/products/25/questions loading="lazy">
+      <svg class="animate-spin -ml-1 mr-3 h-6 aspect-square text-first-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+  <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="50% 300%"></circle>
+</svg>
+    </turbo-frame>
+  </div>
+
+  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    <turbo-frame id=reviews_product_25 src=/products/25/reviews loading="lazy">
+      <svg class="animate-spin -ml-1 mr-3 h-6 aspect-square text-first-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+  <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="50% 300%"></circle>
+</svg>
+    </turbo-frame>
+  </div>
+
+</div>
+    </div>
+
+  </div>
+</turbo-frame>

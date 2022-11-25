@@ -14,118 +14,71 @@ require 'rails_helper'
 
 RSpec.describe "/products", type: :request do
   
-  # This should return the minimal set of attributes required to create a valid
-  # Product. As you add validations to Product, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:frame_id) { "main-parts" }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+  before(:each) {
+    FactoryBot.reload
+    FactoryBot.create(:mock_main_category)
+    FactoryBot.create_list(:mock_category, 1)
+    FactoryBot.create(:mock_seller)
+    FactoryBot.create(:mock_product)
   }
 
   describe "GET /index" do
-    it "renders a successful response" do
-      Product.create! valid_attributes
-      get products_url
-      expect(response).to be_successful
+    it "renders a successful response for the html format"  do
+      get products_path
+
+      expect(response).to render_template(:index)
+      expect(response).to have_http_status(:ok)
+
+      expect(response.body).to match_snapshot('products/index/html')
     end
+  
+    it "renders only a frame for a request of turbo frame" do
+      get products_path, headers: { "Turbo-Frame" => frame_id }
+      
+      expect(response).to render_template(layout: false)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to have_css("turbo-frame##{frame_id}")
+
+      expect(response.body).to match_snapshot('products/index/turbo_frame')
+    end
+
+    it "replaces some elements for a turbo stream request" do
+      FactoryBot.create_list(:mock_product, 20)
+
+      get products_path(format: :turbo_stream, params: {search_term: "product", page: 2})
+      
+      expect(response).to render_template(layout: false)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to have_css("turbo-stream[target='products'][action='append']")
+
+      expect(response.body).to match_snapshot('products/index/turbo_stream')
+    end  
+    
   end
 
   describe "GET /show" do
-    it "renders a successful response" do
-      product = Product.create! valid_attributes
-      get product_url(product)
-      expect(response).to be_successful
+    it "renders a successful response for the html format"  do
+      get product_path(Product.first)
+
+      expect(response).to render_template(:show)
+      expect(response).to have_http_status(:ok)
+
+      expect(response.body).to match_snapshot('products/show/html')
     end
+  
+    it "renders only a frame for a request of turbo frame" do
+      get product_path((Product.first)), headers: { "Turbo-Frame" => frame_id }
+      
+      expect(response).to render_template(layout: false)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to have_css("turbo-frame##{frame_id}")
+
+      expect(response.body).to match_snapshot('products/show/turbo_frame')
+    end
+    
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_product_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      product = Product.create! valid_attributes
-      get edit_product_url(product)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Product" do
-        expect {
-          post products_url, params: { product: valid_attributes }
-        }.to change(Product, :count).by(1)
-      end
-
-      it "redirects to the created product" do
-        post products_url, params: { product: valid_attributes }
-        expect(response).to redirect_to(product_url(Product.last))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Product" do
-        expect {
-          post products_url, params: { product: invalid_attributes }
-        }.to change(Product, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post products_url, params: { product: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested product" do
-        product = Product.create! valid_attributes
-        patch product_url(product), params: { product: new_attributes }
-        product.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the product" do
-        product = Product.create! valid_attributes
-        patch product_url(product), params: { product: new_attributes }
-        product.reload
-        expect(response).to redirect_to(product_url(product))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        product = Product.create! valid_attributes
-        patch product_url(product), params: { product: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested product" do
-      product = Product.create! valid_attributes
-      expect {
-        delete product_url(product)
-      }.to change(Product, :count).by(-1)
-    end
-
-    it "redirects to the products list" do
-      product = Product.create! valid_attributes
-      delete product_url(product)
-      expect(response).to redirect_to(products_url)
-    end
-  end
+  
 end

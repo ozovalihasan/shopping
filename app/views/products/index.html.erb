@@ -1,0 +1,8 @@
+<%= 
+  render Products::IndexComponent.new(
+    products: @products, 
+    last_page: @last_page, 
+    search_term: params[:search_term],
+    category_id: params[:category_id] 
+  ) 
+%>

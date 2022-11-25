@@ -8,9 +8,7 @@ class ProductsController < ApplicationController
     @products, @last_page = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]))
     
     respond_to do |format|
-      unless turbo_frame_request?
-        format.turbo_stream 
-      end
+      format.turbo_stream 
       format.html 
     end
   end

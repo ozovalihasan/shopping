@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :reviews
   resources :searches, only: [:new]
-  resources :products do 
+  resources :products, only: %i[ index show ] do 
     resources :questions
     resources :reviews
   end

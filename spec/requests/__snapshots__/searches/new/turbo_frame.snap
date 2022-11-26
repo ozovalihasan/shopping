@@ -1,0 +1,36 @@
+<turbo-frame id="products-search-bar" >
+
+  <div class="w-full flex items-center h-full" ">
+    <div class="bottom-unset px-16 inset-x-0 flex z-100 shadow-none w-full">
+      <div class=" relative h-12 flex">
+        <form class="flex" data-turbo-frame="main-parts" data-action="turbo:before-fetch-response-&gt;search-form#hideSpinner" data-controller="search-form" action="/products" accept-charset="UTF-8" method="get">
+          <input data-action="input-&gt;search-form#search" data-search-form-target="input" placeholder="Search products" class="w-2/3 input-primary p-3 pl-12 px-6 w-full border border-r-0 rounded-l-full h-12" type="text" name="search_term" id="search_term" />
+          <select class="w-1/3 bg-first-50 rounded-r-full border border-l-3 placeholder-white outline-none w-full h-12" data-action="input-&gt;search-form#search" data-search-form-target="category" name="category_id" id="category_id"><option selected="selected" value="">All categories</option>
+<option value="2">category_name_1</option>
+<option value="3">category_name_2</option></select>
+          <div
+            class="absolute left-4 top-1/2 transform -translate-y-1/2"
+            data-search-form-target="searchIcon"
+          >
+            <button
+              data-action="click->search-form#search"
+              class="outline-none w-6 h-6"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="stroke-first-500">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+            </button>
+          </div>
+          <div
+              class="hidden absolute left-4 top-1/2 transform -translate-y-1/2"
+              data-search-form-target="loading"
+          >
+            <svg class="animate-spin -ml-1 mr-3 h-6 aspect-square text-first-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+  <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="50% 300%"></circle>
+</svg>
+          </div>
+</form>      </div>
+    </div>
+  </div>
+</turbo-frame>

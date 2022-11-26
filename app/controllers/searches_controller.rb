@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
   def new
-    categories = Category.pluck(:name, :id)
+    @categories = Category.pluck(:name, :id)
+
     respond_to do |format|
       if turbo_frame_request?
         format.html 

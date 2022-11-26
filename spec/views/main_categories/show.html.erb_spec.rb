@@ -21,11 +21,11 @@ RSpec.describe "main_categories/show", type: :view do
     
     allow_any_instance_of(ViewComponent::Base).to receive(:render).and_return("one of unimportant mock components")
     allow(Categories::CategoryComponent).to receive(:with_collection) { MockComponent.new( Categories::CategoryComponent ) }
-    allow(Products::IndexComponent).to receive(:new) { MockComponent.new( Products::IndexComponent ) }
+    allow(Products::InfiniteScrollStartPage).to receive(:new) { MockComponent.new( Products::InfiniteScrollStartPage ) }
     
     render
     expect(rendered).to have_css("turbo-frame#main-parts")
-    expect(rendered).to match( Products::IndexComponent.name )
+    expect(rendered).to match( Products::InfiniteScrollStartPage.name )
     expect(rendered).to match( Categories::CategoryComponent.name )
       
     expect(rendered).to match_snapshot('show')

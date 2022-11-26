@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Products::IndexComponent, type: :component do
+RSpec.describe Products::InfiniteScrollStartPage, type: :component do
   let(:subcomponents) { [ Icons::SpinnerComponent, Products::ProductComponent] }
 
   before(:all) {

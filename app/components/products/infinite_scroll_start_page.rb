@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Products::IndexComponent < ViewComponent::Base
+class Products::InfiniteScrollStartPage < ViewComponent::Base
   def initialize(products:, last_page:, search_term: nil, category_id: nil)
     @products = products
     @last_page = last_page

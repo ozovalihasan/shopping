@@ -1,5 +1,5 @@
 <%= 
-  render Products::IndexComponent.new(
+  render Products::InfiniteScrollStartPage.new(
     products: @products, 
     last_page: @last_page, 
     search_term: params[:search_term],

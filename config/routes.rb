@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :webhooks, only: [:new, :create]
 
   resources :order_items
-  resources :orders
+  resources :orders, only: %i[ index show ]
   resources :answers
   resources :questions
   resources :reviews

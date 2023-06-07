@@ -7,6 +7,7 @@ end
 
 FactoryBot.define do
   factory :mock_seller, class: "Seller" do
+    id { (User.last&.id || 0) + 1 }
     sequence(:email) { |n| "mock_seller_#{n}@email.com" }
     sequence(:password) { |n| "password_seller_#{n}" }
   end

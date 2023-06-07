@@ -9,6 +9,7 @@ end
 
 FactoryBot.define do
   factory :mock_order, class: "Order" do
+    sequence(:id) { |n| n }
     sequence(:total_price) { |n| n.to_f }
     customer_id { Customer.ids.sample }
 

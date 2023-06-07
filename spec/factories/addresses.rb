@@ -13,6 +13,7 @@ end
 
 FactoryBot.define do
   factory :mock_address, class: "Address" do
+    sequence(:id) { |n| n }
     sequence(:name) { |n| "name#{n}" }
     sequence(:city) { |n| "city#{n}" }
     sequence(:line1) {|n| "line1-#{n}" }

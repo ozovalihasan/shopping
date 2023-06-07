@@ -33,4 +33,12 @@ module ApplicationHelper
     return [ limited_products, last_page ]
   end
 
+  def component(name, *args, **kwargs, &)
+    name.to_s.camelize.constantize::Component.new(*args, **kwargs, &)
+  end
+
+  def components(name, *args, **kwargs, &)
+    name.to_s.camelize.constantize::Component.with_collection(*args, **kwargs, &)
+  end
+
 end

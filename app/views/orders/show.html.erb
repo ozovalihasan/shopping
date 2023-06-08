@@ -1,1 +1,38 @@
-<%= render Orders::ShowComponent.new(order: @order) %>
+<%= render component("frame/body") do %>
+  <div>
+    <div id=<%= dom_id @order %> class="flex p-8 space-x-4">
+      
+      <div class="w-3/4 border border-solid p-4 rounded-md" id="order-items-list">
+        <% if @order.order_items.exists? %>
+          <%= render components("order_items/order_item", @order.order_items) %>
+        <% else %>
+          <%= render component("order_items/empty") %>
+        <% end %>
+        
+      </div>
+
+      <div class="w-1/4 ">
+        <div class="p-4 border border-solid rounded-md">
+          Summary
+          <div>
+            Total: <span id="<%= dom_id @order %>-total" class="font-bold"><%= number_to_currency(@order.total_price) %></span>
+          </div>
+          <div>
+            Status: <%= @order.status.humanize %>
+          </div>
+          <%= button_to "Checkout", new_webhook_path, method: :get, class: "btn-first w-full p-2 mt-4", data: { turbo: false } %>
+        </div>
+
+
+        <div class="my-4">
+          <%= link_to "All Orders", orders_path %>
+        </div>
+
+      </div>
+
+      
+      
+    </div>
+  </div>
+
+<% end %>

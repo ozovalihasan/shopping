@@ -1,8 +1,0 @@
-Description:
-    This generator creates the necessary controller and components of the model
-
-Example:
-    bin/rails generate custom_controller Review --attributes body:text rate:integer product:references customer:references
-
-    This will create:
-        what/will/it/create

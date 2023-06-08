@@ -1,0 +1,10 @@
+<%= render component("frame/body") do %>
+  <div id="main-categories" class="flex flex-wrap justify-evenly">
+    <%= render components("categories/category", @main_categories) %>
+  </div>
+
+  <div id="products" class="flex flex-wrap w-full justify-evenly">
+    <%= render components("products/product", @products) %>
+  </div>
+
+<% end %>

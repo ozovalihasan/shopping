@@ -1,11 +1,11 @@
 <%= turbo_stream.replace "user-account" do %>
-    <%= render Layout::UserAccountComponent.new(current_user: current_user) %>
+    <%= render component("layout/user_account", current_user: current_user) %>
 <% end %>
 
 <%= turbo_stream.replace "main-parts" do %>
-    <%= render MainCategories::IndexComponent.new(main_categories: @main_categories, products: @products)%>
+    <%= render component("shared/main_page", main_categories: @main_categories, products: @products) %>
 <% end %>
 
 <%= turbo_stream.replace "cart" do %>
-    <%= render Carts::NavbarComponent.new(cart: @cart) %>
+    <%= render component("carts/navbar", cart: @cart) %>
 <% end %>

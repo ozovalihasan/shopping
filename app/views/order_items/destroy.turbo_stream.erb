@@ -2,14 +2,14 @@
 
 <% unless @order_item.order.order_items.exists? %>
   <%= turbo_stream.append "order-items-list" do %>
-    <%= render OrderItems::EmptyComponent.new %>  
+    <%= render component("order_items/empty") %>
   <% end %>
 <% end %>
 
 <%= turbo_stream.append "notifications" do %>
-  <%= render Notifications::InfoComponent.new(info: @notice) %>
+  <%= render component("notifications/info", info: @notice) %>
 <% end %>
 
 <%= turbo_stream.replace "cart" do %>
-    <%= render Carts::NavbarComponent.new(cart: @cart) %>
+    <%= render component("carts/navbar", cart: @cart) %>
 <% end %>

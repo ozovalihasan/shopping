@@ -3,14 +3,8 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-
     page = params[:page] || 1
     @products, @last_page = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]))
-    
-    respond_to do |format|
-      format.turbo_stream 
-      format.html 
-    end
   end
 
   # GET /products/1 or /products/1.json

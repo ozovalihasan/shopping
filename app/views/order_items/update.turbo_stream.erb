@@ -3,11 +3,11 @@
 <% end %>
 
 <%= turbo_stream.append "notifications" do %>
-  <%= render Notifications::InfoComponent.new(info: @notice) %>
+  <%= render component("notifications/info", info: @notice) %>
 <% end %>
 
 <%= turbo_stream.replace "cart" do %>
-  <%= render Carts::NavbarComponent.new(cart: @cart) %>
+  <%= render component("carts/navbar", cart: @cart) %>
 <% end %>
 
 <%= turbo_stream.update "#{dom_id(@order_item.order)}-total" do %>

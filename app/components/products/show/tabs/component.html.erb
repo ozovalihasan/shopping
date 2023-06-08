@@ -1,0 +1,36 @@
+<div data-controller="tabs" data-scroll-target="tab" data-tabs-active-tab="-mb-px border-l border-t border-r rounded-t bg-first-400">
+  <ul class="flex border-b">
+    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
+      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Description</a>
+    </li>
+    
+    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
+      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Questions</a>
+    </li>
+    
+    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
+      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Reviews</a>
+    </li>
+
+  </ul>
+
+  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    <%= @product.description %>
+  </div>
+
+      
+      
+  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    
+    <turbo-frame id=<%= dom_id(@product, :questions) %> src=<%= product_questions_path(@product) %> loading="lazy">
+      <%= render component("icons/spinner") %>
+    </turbo-frame>
+  </div>
+
+  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+    <turbo-frame id=<%=  dom_id(@product, :reviews) %> src=<%= product_reviews_path(@product) %> loading="lazy">
+      <%= render component("icons/spinner") %>
+    </turbo-frame>
+  </div>
+
+</div>

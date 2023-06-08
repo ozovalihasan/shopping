@@ -1,0 +1,21 @@
+<div 
+  class="sticky top-0 w-full flex justify-between text-3xl border-b border-solid bg-first-50 p-3 items-center z-50" 
+  data-scroll-target="navbar"
+  data-turbo-permanent
+>
+  <%= link_to "Shopping", root_path, data: {"turbo-frame"=> "main-parts"}  %>
+
+  <div class="ml-auto flex">
+    <turbo-frame id="products-search-bar" src=<%= new_search_path %> loading="lazy" class="flex items-center">
+      
+      <%= render component("icons/spinner") %>
+    </turbo-frame>
+    
+    
+    <div class="mr-8 flex items-center">
+      <%= render component("settings/main_color") %>
+      <%= render component("layout/user_account", current_user: @current_user) %>
+    </div>
+    <%= render component("carts/navbar", cart: @cart) %>
+  </div>
+</div>

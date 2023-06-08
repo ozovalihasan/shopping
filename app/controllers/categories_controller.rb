@@ -5,10 +5,6 @@ class CategoriesController < ApplicationController
   def show
     page = params[:page] || 1
     @products, @last_page = pagy_products(page: page, products: @category.products)
-    
-    respond_to do |format|
-      format.html 
-    end
   end
 
   private

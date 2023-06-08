@@ -1,0 +1,10 @@
+<h1>Editing review</h1>
+
+<%= render component("reviews/form", review: @review, products: @products, customers: @customers) %>
+
+<br>
+
+<div>
+  <%= link_to "Show this review", @review %> |
+  <%= link_to "Back to reviews", reviews_path %>
+</div>

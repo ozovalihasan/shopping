@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+
+<div id="categories" class="flex flex-wrap justify-evenly">
+  <%= render components("categories/category", @categories) %>
+</div>
+
+<div id="products" class="flex flex-wrap w-full justify-evenly">
+  <%= render components("products/product", @products) %>
+</div>
+
+<%= link_to "New category", new_category_path %>

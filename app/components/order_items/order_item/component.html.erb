@@ -1,0 +1,32 @@
+<div id="<%= dom_id @order_item %>" class="w-full p-4 border-solid border-b">
+  <div class="flex w-full items-center">
+
+    <%= link_to @order_item.product, class: "w-full flex-grow-1" do %>
+      <div class="flex items-center">
+
+        <%= image_tag @order_item.product.images.first.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
+      
+        <div class="m-4">
+          <span class="font-bold"><%= @order_item.product.company %></span>
+          <div>
+            <%= @order_item.product.name %>
+          </div>
+          <div class="text-first-500 w-full font-bold mt-2 text-lg" id=<%= "#{ dom_id(@order_item) }-intermediate-total" %>>
+            <%= number_to_currency(@order_item.product.price * @order_item.quantity)  %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= button_to "X", 
+      order_item_path(@order_item), 
+      method: :delete, 
+      class: "btn-danger w-10 aspect-square"
+    %>
+    
+    <%= render component("order_items/quantity_form", order_item: @order_item) %>
+    
+  </div>
+  
+
+</div>

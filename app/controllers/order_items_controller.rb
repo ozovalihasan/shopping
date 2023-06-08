@@ -6,18 +6,10 @@ class OrderItemsController < ApplicationController
   # GET /order_items or /order_items.json
   def index
     @order_items = OrderItem.all
-    respond_to do |format|
-      format.html { render OrderItems::IndexComponent.new(order_items: @order_items) }
-      format.json
-    end
   end
 
   # GET /order_items/1 or /order_items/1.json
   def show
-    respond_to do |format|
-      format.html { render OrderItems::ShowComponent.new(order_item: @order_item) }
-      format.json 
-    end
   end
 
   # GET /order_items/new
@@ -27,8 +19,6 @@ class OrderItemsController < ApplicationController
     @orders = Order.all
     
     @products = Product.all
-    
-    render OrderItems::NewComponent.new(order_item: @order_item, orders: @orders, products: @products)
   end
 
   # GET /order_items/1/edit
@@ -37,8 +27,6 @@ class OrderItemsController < ApplicationController
     @orders = Order.all
     
     @products = Product.all
-    
-    render OrderItems::EditComponent.new(order_item: @order_item, orders: @orders, products: @products)
   end
 
   # POST /order_items or /order_items.json
@@ -49,15 +37,16 @@ class OrderItemsController < ApplicationController
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to order_item_url(@order_item), notice: "#{@order_item.product.name} is added to your cart." }
-        format.json { render :show, status: :created, location: @order_item }
         format.turbo_stream { 
           render turbo_stream: turbo_stream.prepend(
-            "notifications", render_to_string( OrderItems::CreateComponent.new(cart: @cart, order_item: @order_item ))
+            "notifications", 
+            render_to_string( 
+              OrderItems::Create::Component.new(cart: @cart, order_item: @order_item )
+            )
           ) 
         }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,15 +59,13 @@ class OrderItemsController < ApplicationController
 
         format.html { redirect_to order_item_url(@order_item), notice: @notice }
         format.turbo_stream 
-        format.json { render :show, status: :ok, location: @order_item }
       else
         @notice = "The order item is not updated because of an error."
         
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
         format.turbo_stream {
           render turbo_stream: turbo_stream.append(
-            "notifications", render_to_string( Notifications::InfoComponent.new(info: @notice) )
+            "notifications", render_to_string( Notifications::Info::Component.new(info: @notice) )
           ) 
         }
       end
@@ -94,7 +81,6 @@ class OrderItemsController < ApplicationController
 
       format.html { redirect_to order_items_url, notice: @notice }
       format.turbo_stream 
-      format.json { head :no_content }
     end
   end
 

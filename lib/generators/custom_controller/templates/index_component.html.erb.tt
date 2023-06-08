@@ -1,7 +1,0 @@
-<h1><%= class_name %>s</h1>
-
-<div id="<%= plural_name %>">
-  <%%= render(<%= class_name %>s::<%= class_name %>Component.with_collection(@<%= plural_name %>)) %>
-</div>
-
-<%%= link_to "New <%= singular_name %>", new_<%= singular_name %>_path %>

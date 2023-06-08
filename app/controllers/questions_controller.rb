@@ -6,18 +6,10 @@ class QuestionsController < ApplicationController
   # GET /questions or /questions.json
   def index
     @questions = @product.questions
-    respond_to do |format|
-      format.html { render Questions::IndexComponent.new(questions: @questions, product: @product) }
-      format.json
-    end
   end
 
   # GET /questions/1 or /questions/1.json
   def show
-    respond_to do |format|
-      format.html { render Questions::ShowComponent.new(question: @question) }
-      format.json 
-    end
   end
 
   # GET /questions/new
@@ -27,8 +19,6 @@ class QuestionsController < ApplicationController
     @customers = Customer.all
     
     @products = Product.all
-    
-    render Questions::NewComponent.new(question: @question, customers: @customers, products: @products)
   end
 
   # GET /questions/1/edit
@@ -37,8 +27,6 @@ class QuestionsController < ApplicationController
     @customers = Customer.all
     
     @products = Product.all
-    
-    render Questions::EditComponent.new(question: @question, customers: @customers, products: @products)
   end
 
   # POST /questions or /questions.json

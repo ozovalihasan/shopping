@@ -1,1 +1,9 @@
-<%= render Orders::IndexComponent.new(orders: @orders) %>
+<%= render component("frame/body") do %>
+  <h1>Orders</h1>
+
+  <div id="orders">
+    <%= render components("orders/order", @orders) %>
+  </div>
+
+  <%= link_to "New order", new_order_path %>
+<% end %>

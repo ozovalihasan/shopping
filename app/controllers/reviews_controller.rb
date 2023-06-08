@@ -5,18 +5,10 @@ class ReviewsController < ApplicationController
   # GET /reviews or /reviews.json
   def index
     @reviews = @product.reviews
-    respond_to do |format|
-      format.html { render Reviews::IndexComponent.new(reviews: @reviews, product: @product) }
-      format.json
-    end
   end
 
   # GET /reviews/1 or /reviews/1.json
   def show
-    respond_to do |format|
-      format.html { render Reviews::ShowComponent.new(review: @review) }
-      format.json 
-    end
   end
 
   # GET /reviews/new
@@ -26,8 +18,6 @@ class ReviewsController < ApplicationController
     @products = Product.all
     
     @customers = Customer.all
-    
-    render Reviews::NewComponent.new(review: @review, products: @products, customers: @customers)
   end
 
   # GET /reviews/1/edit
@@ -36,8 +26,6 @@ class ReviewsController < ApplicationController
     @products = Product.all
     
     @customers = Customer.all
-    
-    render Reviews::EditComponent.new(review: @review, products: @products, customers: @customers)
   end
 
   # POST /reviews or /reviews.json
@@ -47,10 +35,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
-        format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,7 +60,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

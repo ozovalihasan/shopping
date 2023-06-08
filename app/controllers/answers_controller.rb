@@ -4,18 +4,10 @@ class AnswersController < ApplicationController
   # GET /answers or /answers.json
   def index
     @answers = Answer.all
-    respond_to do |format|
-      format.html { render Answers::IndexComponent.new(answers: @answers) }
-      format.json
-    end
   end
 
   # GET /answers/1 or /answers/1.json
   def show
-    respond_to do |format|
-      format.html { render Answers::ShowComponent.new(answer: @answer) }
-      format.json 
-    end
   end
 
   # GET /answers/new
@@ -25,8 +17,6 @@ class AnswersController < ApplicationController
     @questions = Question.all
     
     @sellers = Seller.all
-    
-    render Answers::NewComponent.new(answer: @answer, questions: @questions, sellers: @sellers)
   end
 
   # GET /answers/1/edit
@@ -35,8 +25,6 @@ class AnswersController < ApplicationController
     @questions = Question.all
     
     @sellers = Seller.all
-    
-    render Answers::EditComponent.new(answer: @answer, questions: @questions, sellers: @sellers)
   end
 
   # POST /answers or /answers.json

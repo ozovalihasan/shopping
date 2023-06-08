@@ -1,1 +1,41 @@
-<%= render Products::ShowComponent.new(product: @product) %>
+<%= render component("frame/body") do %>
+
+  <div>
+    
+    <div class="flex">
+      <div class="w-1/2 aspect-square rounded-md p-4">
+        <%= render component("products/show/image_tabs", images: @product.images) %>
+      </div>
+      <div class="w-1/2 p-4">
+        <div>
+          <span class="font-bold"><%= @product.company %></span> <%= @product.name %>
+        </div>
+        <div>
+        
+          <%= link_to product_reviews_path(@product), class: "flex" do %>
+            <div class="h-6 aspect-[5]">
+              <%= render component("icons/star", percent: @product.average_rate * 100) %>
+            </div>
+          <% end %>
+          <div>
+            <%= pluralize @product.review_count, "Review" %>
+          </div>
+        </div>
+        <div>
+          seller: <%= @product.seller.email %>
+        </div>
+        <div>
+          color: <%= @product.color %>
+        </div>
+        <div class="text-2xl font-bold py-4" >
+          <%= number_to_currency(@product.price, :unit => "$") %>
+        </div>
+        <%= button_to "Add to Cart", order_items_path(order_item: {product_id: @product.id, quantity: 1}), class: "btn-first p-2 w-full font-bold" %>
+        
+      </div>
+      
+    </div>
+    
+    <%= render component("products/show/tabs", product: @product) %>
+  </div>
+<% end %>

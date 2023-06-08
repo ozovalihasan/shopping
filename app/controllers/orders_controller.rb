@@ -5,16 +5,10 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = current_user.orders
-    respond_to do |format|
-      format.html
-    end
   end
 
   # GET /orders/1 or /orders/1.json
   def show
-    respond_to do |format|
-      format.html
-    end
   end
 
   private

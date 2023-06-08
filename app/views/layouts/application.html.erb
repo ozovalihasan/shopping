@@ -30,15 +30,15 @@
       <div class="relative ">
         <div id="notifications" class="absolute right-0 bottom-0 flex flex-col items-end space-y-4">
           <% if notice  %>
-            <%= render Notifications::InfoComponent.new(info: notice) %>  
+            <%= render component("notifications/info", info: notice) %>
           <% end %>
           <% if alert  %>
-            <%= render Notifications::InfoComponent.new(info: alert) %>
+            <%= render component("notifications/info", info: alert) %>
           <% end %>
         </div>
       </div>
     </div>
-    <%= render Layout::NavbarComponent.new(cart: @cart, current_user: current_user) %>
+    <%= render component("layout/navbar", cart: @cart, current_user: current_user) %>
     <div class="px-3">
       <%= yield %>
     </div>

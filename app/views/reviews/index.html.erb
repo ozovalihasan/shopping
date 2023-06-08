@@ -1,0 +1,10 @@
+<h1>Reviews</h1>
+
+<turbo-frame id=<%= dom_id(@product, :reviews) %>>
+  <div id="reviews">
+    <%= render components("reviews/review", @reviews) %>
+  </div>
+
+  <%= link_to "New review", new_review_path %>
+</turbo-frame>
+

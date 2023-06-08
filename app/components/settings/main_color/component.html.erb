@@ -1,0 +1,39 @@
+<div data-controller="dropdown"
+  data-action="click->dropdown#toggle click@window->dropdown#hide"
+  data-dropdown-open-value="false"
+  data-dropdown-active-target="#dropdown-button"
+  data-dropdown-active-class="bg-indigo-600"
+  data-dropdown-invisible-class="opacity-0 scale-95"
+  data-dropdown-visible-class="opacity-100 scale-100"
+  data-dropdown-entering-class="ease-out duration-300"
+  data-dropdown-enter-timeout="300"
+  data-dropdown-leaving-class="ease-in duration-300"
+  data-dropdown-leave-timeout="300"
+>
+  <div id="dropdown-button" class="relative inline-block text-sm text-white px-4 py-2 leading-none rounded no-underline hover:bg-indigo-600 mt-0">
+    <div role="button" tabindex="0" data-dropdown-target="button" class="inline-block select-none">
+      <span class="appearance-none flex items-center">
+        <span class="w-8 h-8">
+          <%= render component("icons/settings") %>
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="text-white fill-current h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+      </span>
+    </div>
+    <div data-dropdown-target="menu" class="absolute right-0 mt-2 transform transition hidden opacity-0 scale-95">
+      <div class="bg-white shadow rounded border overflow-hidden w-32">
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('green')" >
+          green
+        </button>
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('yellow')" >
+          yellow
+        </button>
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('sky')" >
+          sky
+        </button>
+        <button class="text-center w-full no-underline block py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap" onClick="setVar('pink')" >
+          pink
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

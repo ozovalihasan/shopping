@@ -1,10 +1,8 @@
-<%= render Frame::BodyComponent.new do |c|%>
-  <% c.with_custom_component do %>
-    <%= @category.name %>
+<%= render component("frame/body") do %>
+  <%= @category.name %>
 
-    <div class="bg-blue-100">
-      <%= render Products::InfiniteScrollStartPage.new(products:@products, category_id: @category.id, last_page: @last_page) %>
-    </div>
+  <div class="bg-blue-100">
+    <%= render component("products/infinite_scroll_start_page", products: @products, last_page: @last_page, category_id: @category.id) %>
+  </div>
 
-  <% end %>
 <% end %>

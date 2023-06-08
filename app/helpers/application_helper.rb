@@ -33,6 +33,10 @@ module ApplicationHelper
     return [ limited_products, last_page ]
   end
 
+  def main_parts_target
+    "main-parts"
+  end
+  
   def component(name, *args, **kwargs, &)
     name.to_s.camelize.constantize::Component.new(*args, **kwargs, &)
   end

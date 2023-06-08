@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "/categories", type: :request do
 
   describe "GET /show" do
-    let(:frame_id) { "main-parts" }
+    let(:frame_id) { main_parts_target }
 
     before(:all) {
       FactoryBot.reload

@@ -3,7 +3,7 @@
   data-scroll-target="navbar"
   data-turbo-permanent
 >
-  <%= link_to "Shopping", root_path, data: {"turbo-frame"=> "main-parts"}  %>
+  <%= link_to "Shopping", root_path, data: {"turbo-frame"=> main_parts_target}  %>
 
   <div class="ml-auto flex">
     <turbo-frame id="products-search-bar" src=<%= new_search_path %> loading="lazy" class="flex items-center">

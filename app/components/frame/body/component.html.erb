@@ -1,12 +1,5 @@
-<turbo-frame 
-  id="main-parts" 
-  data-turbo-action="advance" 
-  autoscroll 
-  data-autoscroll-block="start"
-  data-autoscroll-behavior="smooth"
-  
->
+<%= turbo_frame_tag main_parts_target, autoscroll: true, data: {autoscroll_block: "start", autoscroll_behavior: "smooth" } do %>
   <div class="scroll-mt-96">
     <%= content %>
   </div>
-</turbo-frame>
+<% end %>

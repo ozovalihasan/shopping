@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "/main_categories", type: :request do
 
-  let(:frame_id) { "main-parts" }
+  let(:frame_id) { main_parts_target }
 
   before(:each) {
     FactoryBot.reload

@@ -1,5 +1,5 @@
 <% if @cart %>
-  <%= link_to @cart, data: {"turbo-frame"=> "main-parts"}, id: "cart" do %>
+  <%= link_to @cart, data: {"turbo-frame"=> main_parts_target}, id: "cart" do %>
     <div class="w-16 h-16 p-2 rounded-full relative stroke-first-500">
       <%= render component("icons/cart") %>
       <% unless cart_empty? %>

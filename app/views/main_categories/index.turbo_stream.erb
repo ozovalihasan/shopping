@@ -2,7 +2,7 @@
     <%= render component("layout/user_account", current_user: current_user) %>
 <% end %>
 
-<%= turbo_stream.replace "main-parts" do %>
+<%= turbo_stream.replace main_parts_target do %>
     <%= render component("shared/main_page", main_categories: @main_categories, products: @products) %>
 <% end %>
 

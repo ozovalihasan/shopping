@@ -1,18 +1,15 @@
 <%= render component("frame/body") do |c|%>
-  <% c.with_custom_component do %>
+  <%= @main_category.name %>
 
-    <%= @main_category.name %>
+  <div>
+    Subcategories
+  </div>
+  <div class="flex flex-wrap justify-evenly">
+    <%= render components("categories/category", @main_category.categories) %>
+  </div>
 
-    <div>
-      Subcategories
-    </div>
-    <div class="flex flex-wrap justify-evenly">
-      <%= render components("categories/category", @main_category.categories) %>
-    </div>
-
-    <div class="bg-blue-100">
-      <%= render Products::InfiniteScrollStartPage::Component.new(products: @main_category.products, last_page: @last_page, category_id: @main_category.id) %>
-    </div>
-
-  <% end %>
+  <div class="bg-blue-100">
+    <%= render Products::InfiniteScrollStartPage::Component.new(products: @main_category.products, last_page: @last_page, category_id: @main_category.id) %>
+    
+  </div>
 <% end %>

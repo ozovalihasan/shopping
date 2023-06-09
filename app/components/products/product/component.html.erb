@@ -4,7 +4,7 @@
     <%= link_to @product, data: {"turbo-action": "advance", "turbo-frame": main_parts_target} do %>
       <div class="w-full aspect-square ">
         <% if @product.images.first %>
-          <%= image_tag @product.images.first, class: "rounded-md" %>
+          <%= image_tag @product.images.first, class: "rounded-md aspect-square" %>
         <% end %>
       </div>
       <div class="text-sm line-clamp-2 h-10 my-2">

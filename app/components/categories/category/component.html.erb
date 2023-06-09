@@ -1,7 +1,7 @@
 <%= link_to @category, class: "w-full sm:w-1/2 md:w-1/3 lg:w-1/4", data: {"turbo-action": "advance", "turbo-frame": main_parts_target} do %>
   <div class="bg-first-300 border border-solid border-red-200 m-4 rounded-md">
     <div id="<%= dom_id @category %>" class="relative group rounded-md">
-      <%= image_tag @category.image, class: "rounded-t-md rounded-b-lg" %>
+      <%= image_tag @category.image, class: "rounded-t-md rounded-b-lg aspect-square" %>
       <p class="absolute bottom-0 bg-first-100 group-hover:bg-first-300 p-2 rounded-b-md w-full">
         <%= @category.name %>
       </p>

@@ -36,6 +36,22 @@ module ApplicationHelper
   def main_parts_target
     "main-parts"
   end
+
+  def products_search_bar_target
+    "products-search-bar"
+  end
+
+  def product_questions_target(product)
+    dom_id(product, :questions)
+  end
+
+  def product_reviews_target(product)
+    dom_id(product, :reviews)
+  end
+  
+  def product_questions_target(product)
+    dom_id(product, :questions)
+  end
   
   def component(name, *args, **kwargs, &)
     name.to_s.camelize.constantize::Component.new(*args, **kwargs, &)

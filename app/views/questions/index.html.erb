@@ -1,6 +1,6 @@
 <h1>Questions</h1>
 
-<turbo-frame id=<%= dom_id(@product, :questions) %>>
+<%= turbo_frame_tag product_questions_target(@product) do %>
   <div id="questions">
     <% if @questions.present? %>
       <%= render components("questions/question", @questions) %>
@@ -12,4 +12,4 @@
   </div>
 
   <%= link_to "New question", new_question_path %>
-</turbo-frame>
+<% end %>

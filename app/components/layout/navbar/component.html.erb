@@ -6,10 +6,10 @@
   <%= link_to "Shopping", root_path, data: {"turbo-frame"=> main_parts_target}  %>
 
   <div class="ml-auto flex">
-    <turbo-frame id="products-search-bar" src=<%= new_search_path %> loading="lazy" class="flex items-center">
-      
+    
+    <%= turbo_frame_tag products_search_bar_target, src: new_search_path, loading: "lazy", class: "flex items-center" do %>
       <%= render component("icons/spinner") %>
-    </turbo-frame>
+    <% end %>
     
     
     <div class="mr-8 flex items-center">

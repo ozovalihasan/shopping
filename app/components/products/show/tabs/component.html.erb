@@ -17,20 +17,17 @@
   <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
     <%= @product.description %>
   </div>
-
-      
       
   <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-    
-    <turbo-frame id=<%= dom_id(@product, :questions) %> src=<%= product_questions_path(@product) %> loading="lazy">
+    <%= turbo_frame_tag product_questions_target(@product), src: product_questions_path(@product), loading: "lazy" do %>
       <%= render component("icons/spinner") %>
-    </turbo-frame>
+    <% end %>
   </div>
 
   <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-    <turbo-frame id=<%=  dom_id(@product, :reviews) %> src=<%= product_reviews_path(@product) %> loading="lazy">
+    <%= turbo_frame_tag product_reviews_target(@product), src: product_reviews_path(@product), loading: "lazy" do %>
       <%= render component("icons/spinner") %>
-    </turbo-frame>
+    <% end %>
   </div>
 
 </div>

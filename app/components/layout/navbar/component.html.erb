@@ -5,9 +5,9 @@
 >
   <%= link_to "Shopping", root_path, data: {"turbo-frame"=> main_parts_target}  %>
 
-  <div class="ml-auto flex">
+  <div class="w-full flex">
     
-    <%= turbo_frame_tag products_search_bar_target, src: new_search_path, loading: "lazy", class: "flex items-center" do %>
+    <%= turbo_frame_tag products_search_bar_target, src: new_search_path, loading: "lazy", class: "flex items-center w-full" do %>
       <%= render component("icons/spinner") %>
     <% end %>
     

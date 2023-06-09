@@ -1,4 +1,4 @@
-<div id="user-account">
+<div id="user-account" class="text-lg whitespace-nowrap">
   <% if @current_user %>
     <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
   <% else %>

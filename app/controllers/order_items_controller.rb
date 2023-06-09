@@ -37,14 +37,7 @@ class OrderItemsController < ApplicationController
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to order_item_url(@order_item), notice: "#{@order_item.product.name} is added to your cart." }
-        format.turbo_stream { 
-          render turbo_stream: turbo_stream.prepend(
-            "notifications", 
-            render_to_string( 
-              OrderItems::Create::Component.new(cart: @cart, order_item: @order_item )
-            )
-          ) 
-        }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
       end

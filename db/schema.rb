@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_11_194111) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_123131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -76,6 +76,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_194111) do
     t.index ["main_category_id"], name: "index_base_categories_on_main_category_id"
   end
 
+  create_table "campaign_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "campaign_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["campaign_id"], name: "index_campaign_items_on_campaign_id"
+    t.index ["product_id"], name: "index_campaign_items_on_product_id"
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer "discount"
+    t.text "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.decimal "price"
     t.integer "quantity"
@@ -83,6 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_194111) do
     t.datetime "updated_at", null: false
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
+    t.bigint "campaign_id"
+    t.index ["campaign_id"], name: "index_order_items_on_campaign_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -154,6 +174,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_194111) do
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users", column: "seller_id"
   add_foreign_key "base_categories", "base_categories", column: "main_category_id"
+  add_foreign_key "campaign_items", "campaigns"
+  add_foreign_key "campaign_items", "products"
+  add_foreign_key "order_items", "campaigns"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users", column: "customer_id"

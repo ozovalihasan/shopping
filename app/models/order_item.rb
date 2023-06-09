@@ -1,6 +1,7 @@
 class OrderItem < ApplicationRecord
   belongs_to :product
   belongs_to :order
+  belongs_to :campaign, optional: true
 
   before_create :set_price
   after_save :update_order

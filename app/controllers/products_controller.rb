@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @products_from_category = @product.category.products.limit(10).with_discount
+
     respond_to do |format|
       format.html
     end

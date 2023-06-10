@@ -44,7 +44,7 @@
     From <%= @product.category.name %>
     <div class="flex overflow-x-auto w-full snap-x">
       
-      <%= render components("products/product", @product.category.products.limit(10)) %>
+      <%= render components("products/product", @products_from_category) %>
     </div>
   </div>
 <% end %>

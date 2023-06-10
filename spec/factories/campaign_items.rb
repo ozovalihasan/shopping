@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :campaign_item do
     body { Faker::Lorem.paragraph }
-    question_id { Question.ids.sample }
-    seller_id { Seller.ids.sample }
+    campaign_id { Campaign.ids.sample }
+    product_id { Product.ids.sample }
   end
 end
 

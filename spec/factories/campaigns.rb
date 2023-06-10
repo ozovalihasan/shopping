@@ -1,9 +1,11 @@
+
 FactoryBot.define do
-  selected_start_time = Time.now - 1.years + rand(0..24.months) + rand(0..30.days) + rand(0..24.hours)
+selected_start_time = nil
+
   factory :campaign do
     discount { rand(5..20) }
     name { Faker::Lorem.paragraph }
-    start_time { selected_start_time }
+    start_time { selected_start_time = Time.now - 1.years + rand(0..24.months) + rand(0..30.days) + rand(0..24.hours)}
     end_time { selected_start_time + rand(0..24.months) + rand(0..30.days) + rand(0..24.hours) }
   end
 end

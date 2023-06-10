@@ -4,7 +4,7 @@ class MainCategoriesController < ApplicationController
   # GET /main_categories or /main_categories.json
   def index
     @main_categories = MainCategory.all
-    @products = Product.limit(10).order("RANDOM()")
+    @products = Product.limit(10).order("RANDOM()").with_discount
   end
 
   # GET /main_categories/1 or /main_categories/1.json

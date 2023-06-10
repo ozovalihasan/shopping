@@ -38,4 +38,13 @@
     
     <%= render component("products/show/tabs", product: @product) %>
   </div>
+
+  
+  <div class=" mt-16">
+    From <%= @product.category.name %>
+    <div class="flex overflow-x-auto w-full snap-x">
+      
+      <%= render components("products/product", @product.category.products.limit(10)) %>
+    </div>
+  </div>
 <% end %>

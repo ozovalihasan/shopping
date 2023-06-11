@@ -41,6 +41,10 @@ module ApplicationHelper
     "products-search-bar"
   end
 
+  def all_categories_map_target
+    "all_categories_map"
+  end
+
   def product_questions_target(product)
     dom_id(product, :questions)
   end

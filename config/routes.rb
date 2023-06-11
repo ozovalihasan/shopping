@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:show]
   resources :main_categories, only: [:index, :show]
+  resources :base_categories, only: [:index]
   
   devise_for :sellers
   devise_for :customers

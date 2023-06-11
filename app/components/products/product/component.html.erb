@@ -1,6 +1,6 @@
-<div class="p-4 sm:w-1/3 md:w-1/4 lg:w-1/5 md:min-w-[250px] snap-start " id="<%= dom_id @product %>">
+<div class="p-4 sm:w-1/3 md:w-1/4 lg:w-1/5 md:min-w-[250px] snap-start h-full " id="<%= dom_id @product %>">
 
-  <div class="bg-first-100 border border-solid border-red-200 p-4 rounded-md">
+  <div class="bg-first-100 hover:bg-first-200 border border-solid border-red-200 p-4 rounded-md">
     <%= link_to @product, data: {"turbo-action": "advance", "turbo-frame": main_parts_target} do %>
       <div class="w-full aspect-square ">
         <% if @product.images.first %>
@@ -20,18 +20,20 @@
           </div>
         </div>
       </div>
+
       <% if @product.discount %>
-        <div class="flex">
+
+        <div class="text-lg text-first-500 font-bold  mt-2">
+          <%= number_to_currency(@product.price * ( 100 - @product.discount) / 100, :unit => "$") %>
+        </div>
+
+        <div class="flex  mb-2">
           <div class="text-xs line-through">
             <%= number_to_currency(@product.price, :unit => "$") %>
           </div>
           <span class="ml-2 text-xs font-bold">%<%= @product.discount %> </span>
         </div>
         
-        <div class="text-lg text-first-500 font-bold mb-2">
-          <%= number_to_currency(@product.price * ( 100 - @product.discount) / 100, :unit => "$") %>
-        </div>
-
       <% else %>
         
         <div class="text-lg font-bold mb-2">
@@ -39,6 +41,7 @@
         </div>
 
       <% end %>
+
     <% end %>
     <%= button_to "Add to Cart", order_items_path(order_item: {product_id: @product.id, quantity: 1}), class: "btn-first p-2 w-full font-bold" %>
   </div>

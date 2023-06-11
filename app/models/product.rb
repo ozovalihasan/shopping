@@ -14,9 +14,9 @@ class Product < ApplicationRecord
 
   scope :search, ->(search_term, category_id = nil) do 
     if category_id && category_id != ""
-      return where('category_id = ? AND name ILIKE ?', category_id, "%#{search_term}%") 
+      return where('products.category_id = ? AND products.name ILIKE ?', category_id, "%#{search_term}%") 
     else
-      return where('name ILIKE ?', "%#{search_term}%") 
+      return where('products.name ILIKE ?', "%#{search_term}%") 
     end
   end
 

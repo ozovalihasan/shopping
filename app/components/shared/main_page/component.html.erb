@@ -3,13 +3,16 @@
     <%= render components("categories/category", @main_categories) %>
   </div>
 
-  <div class="mx-8">
-    Best Deals
-  </div>
-  <div class="flex overflow-x-auto w-full snap-x">
-    <%= render components("products/product", @products_of_best_deal) %>
-  </div>
-
+  <% if @best_campaign %>
+    <div class="mx-8">
+      Best Deals
+    </div>
+    <div class="flex overflow-x-auto  snap-x">
+      <%= image_tag @best_campaign.image, class: "aspect-square" %>
+      <%= render components("products/product", @products_of_best_deal) %>
+    </div>
+  <% end %>
+  
   <div id="products" class="flex flex-wrap w-full justify-evenly">
     <%= render components("products/product", @products) %>
   </div>

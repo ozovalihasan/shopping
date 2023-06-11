@@ -41,7 +41,9 @@
 
   
   <div class=" mt-16">
-    From <%= @product.category.name %>
+    <div class="mx-8">
+      From <%= @product.category.name %>
+    </div>
     <div class="flex overflow-x-auto w-full snap-x">
       
       <%= render components("products/product", @products_from_category) %>

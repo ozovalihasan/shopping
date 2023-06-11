@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1 or /categories/1.json
   def show
     page = params[:page] || 1
-    @products, @last_page = pagy_products(page: page, products: @category.products)
+    @products, @last_page = pagy_products(page: page, products: @category.products.with_discount)
   end
 
   private

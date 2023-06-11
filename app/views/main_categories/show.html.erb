@@ -9,7 +9,7 @@
   </div>
 
   <div class="bg-blue-100">
-    <%= render Products::InfiniteScrollStartPage::Component.new(products: @main_category.products, last_page: @last_page, category_id: @main_category.id) %>
+    <%= render Products::InfiniteScrollStartPage::Component.new(products: @products, last_page: @last_page, category_id: @main_category.id) %>
     
   </div>
 <% end %>

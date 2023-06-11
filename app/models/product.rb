@@ -25,5 +25,7 @@ class Product < ApplicationRecord
     .left_outer_joins(:active_campaigns_now)
     .group( Product.arel_table[:id] )
   }
+
+  scope :in_random_order, -> { order("RANDOM()") }
   
 end

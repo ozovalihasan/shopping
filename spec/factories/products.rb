@@ -7,10 +7,10 @@ FactoryBot.define do
     price { Faker::Number.decimal(l_digits: 2, r_digits: 2) }
     review_count { 0 }
     average_rate { 0 }
+    brand_id { Brand.ids.sample }
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
     images { [Rack::Test::UploadedFile.new("app/assets/images/mock-#{rand(1..5)}.jpg", 'image/png')] }
-    company { Faker::Company.name }
   end
 end
 
@@ -24,6 +24,7 @@ FactoryBot.define do
     sequence(:description) { |n| "description#{n}" }
     sequence(:review_count) { |n| n }
     sequence(:average_rate) { |n| n % 5  }
+    sequence(:brand_id) { |n| Brand.first.id + n - 1 }
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
   end

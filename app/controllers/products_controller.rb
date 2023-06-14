@@ -4,9 +4,10 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     page = params[:page] || 1
-    @category = BaseCategory.find(params[:category_id]) if params[:category_id]
-    @products, @last_page, @products_count = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id]).with_discount)
+    @category = BaseCategory.find(params[:category_id]) unless params[:category_id].blank?
+    @products, @last_page, @products_count = pagy_products(page: page, products: Product.search(params[:search_term], params[:category_id], params[:brand_ids]))
     @main_categories = MainCategory.all.includes(:categories)
+    @brands = Brand.all
     @search_term = params[:search_term]
     @category_id = params[:category_id]
   end

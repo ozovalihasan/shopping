@@ -19,6 +19,10 @@ end
 end
 
 15.times do
+  FactoryBot.create(:brand)
+end
+
+15.times do
   FactoryBot.create(:product)
 end
 

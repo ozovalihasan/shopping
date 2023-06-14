@@ -8,13 +8,14 @@ export default class extends Controller {
   };
 
   connect() {
+    this.brandTarget.value = []
   }
   
   updateCategory(e) {
     this.categoryTarget.value = e.target.value
     this.search()
   }
-  
+
   search() {
     clearTimeout(this.timeout)
     this.timeout = setTimeout(() => {

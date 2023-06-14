@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :seller
   belongs_to :category
+  belongs_to :brand
   
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
@@ -12,13 +13,25 @@ class Product < ApplicationRecord
   
   has_many_attached :images
 
-  scope :search, ->(search_term, category_id = nil) do 
+  scope :of_brands, -> (brand_ids) do
+    return nil if brand_ids.blank?
+      
+    return where(brand_id: brand_ids)
+  end
+
+  scope :of_category, -> (category_id) do
     if category_id && category_id != ""
       category = BaseCategory.find(category_id)
-      return category.products.where('products.name ILIKE ?', "%#{search_term}%") 
+      category.products
     else
-      return where('products.name ILIKE ?', "%#{search_term}%") 
+      nil
     end
+  end
+  
+  scope :with_term, -> (search_term) { where('products.name ILIKE ?', "%#{search_term}%") }
+
+  scope :search, ->(search_term, category_id = nil, brand_ids = []) do 
+    with_term(search_term).of_category(category_id).of_brands(brand_ids).with_discount
   end
 
   scope :with_discount, -> {

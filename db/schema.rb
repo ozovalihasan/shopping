@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_123131) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_115701) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -76,6 +76,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_123131) do
     t.index ["main_category_id"], name: "index_base_categories_on_main_category_id"
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "campaign_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -128,7 +134,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_123131) do
     t.bigint "seller_id", null: false
     t.bigint "category_id", null: false
     t.string "name"
-    t.string "company"
+    t.bigint "brand_id", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "products_on_name_idx", opclass: :gin_trgm_ops, using: :gin
     t.index ["seller_id"], name: "index_products_on_seller_id"
@@ -181,6 +188,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_123131) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users", column: "customer_id"
   add_foreign_key "products", "base_categories", column: "category_id"
+  add_foreign_key "products", "brands"
   add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "questions", "products"
   add_foreign_key "questions", "users", column: "customer_id"

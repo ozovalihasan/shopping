@@ -26,6 +26,13 @@ end
   FactoryBot.create(:product)
 end
 
+10.times do
+  FactoryBot.create(:campaign) 
+end
+
+20.times do
+  FactoryBot.create(:campaign_item) 
+end
 
 30.times do
   FactoryBot.create(:review)

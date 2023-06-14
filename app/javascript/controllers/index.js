@@ -7,6 +7,7 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 import CustomTabsController from "./custom_tabs_controller"
 import SearchFormController from "./search_form_controller"
+import LeftSearchFormController from "./left_search_form_controller"
 import ScrollController from "./scroll_controller"
 import OrderItemQuantityController from "./order_item_quantity_controller"
 import PaginationController from "./pagination_controller"
@@ -17,6 +18,7 @@ application.register("alert", Alert)
 application.register("tabs", CustomTabsController)
 application.register('dropdown', Dropdown);
 application.register("search-form", SearchFormController)
+application.register("left-search-form", LeftSearchFormController)
 application.register("scroll", ScrollController)
 application.register("order-item-quantity", OrderItemQuantityController)
 application.register("pagination", PaginationController)

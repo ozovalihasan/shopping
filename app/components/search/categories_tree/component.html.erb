@@ -1,0 +1,23 @@
+<select 
+  size=<%= 1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size} %>  
+  class="h-full bg-first-50 border border-l-3 placeholder-white outline-none w-full p-4" 
+  data-action="input->search-form#search" 
+  data-search-form-target="category"
+  value=""
+>
+  <option class="" value="" data-action="click->left-search-form#updateCategory" >All categories</option>
+  <% @main_categories.each do |main_category| %>
+    <option 
+      value="<%= main_category.id %>" 
+      class="" 
+      data-action="click->left-search-form#updateCategory" 
+    >
+      <%= main_category.name %>
+    </option>
+    <% main_category.categories.each do |category| %>
+      <option value="<%= category.id %>" class="ml-4" data-action="click->left-search-form#updateCategory">
+        <%= category.name %>
+      </option>
+    <% end %>
+  <% end %>
+</select>

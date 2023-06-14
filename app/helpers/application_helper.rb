@@ -29,8 +29,9 @@ module ApplicationHelper
   def pagy_products(page:, products:)
     pagy, limited_products = pagy(products, page: page)
     last_page = pagy.last
+    count_of_products = pagy.count
 
-    return [ limited_products, last_page ]
+    return [ limited_products, last_page, count_of_products]
   end
 
   def main_parts_target
@@ -43,6 +44,10 @@ module ApplicationHelper
 
   def all_categories_map_target
     "all_categories_map"
+  end
+
+  def search_results_target
+    "search_results"
   end
 
   def product_questions_target(product)

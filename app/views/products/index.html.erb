@@ -1,8 +1,44 @@
-<%= 
-  render Products::InfiniteScrollStartPage::Component.new(
-    products: @products, 
-    last_page: @last_page, 
-    search_term: params[:search_term],
-    category_id: params[:category_id] 
-  ) 
-%>
+<%= render component("frame/body") do %>
+  <div class="flex" data-controller="left-search-form">
+    <%= form_with(
+      url: products_path,
+      method: :get,
+      class: "flex w-1/5",
+      data: {
+        turbo_frame: search_results_target,
+        action: "turbo:before-fetch-response->left-search-form#removeOpacity",
+        left_search_form_target: "form",
+      }
+    ) do |form| %>
+      <%= form.hidden_field :search_term, value: @search_term %>
+
+      <details class="w-full p-4 ">
+        <summary class="font-black py-2">Categories</summary>
+        <div class="">
+          <%= form.hidden_field :category_id, data: {left_search_form_target: "category"} %>
+        
+          <%= render component("search/categories_tree", main_categories: @main_categories) %>
+        </div>
+      </details> 
+      
+    <% end %>
+
+    
+    <%= turbo_frame_tag search_results_target, class: "w-4/5" do %>
+      <%= @products_count %> products found <% unless @search_term == "" %>
+                                              for <span class="font-bold"> <%= @search_term %> </span>
+                                            <% end %>
+      
+      
+      <%= 
+        render component(
+          "products/infinite_scroll_start_page",
+          products: @products, 
+          last_page: @last_page, 
+          search_term: params[:search_term],
+          category_id: params[:category_id] 
+        ) 
+      %>
+    <% end %>
+  </div>
+<% end %>

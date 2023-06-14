@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
-import { get } from '@rails/request.js'
 
 export default class extends Controller {
-  static targets = [ "input", "category", "loading", "searchIcon" ]
+  static targets = [ "input", "loading", "searchIcon" ]
 
   static values = {
     url: String,
@@ -10,22 +9,19 @@ export default class extends Controller {
   };
 
   connect() {
-    this._updateCategory()
+    this._updateInput()
   }
 
-  _updateCategory() {
+  _updateInput() {
     if( ["/products", "/products/"].includes(document.location.pathname) ){
       let url = new URL(document.location);
 
-      this.categoryTarget.value = url.searchParams.get("category") || ""
       this.inputTarget.value = url.searchParams.get("search_term")
     }
 
   }
   
   search() {
-    
-    
     clearTimeout(this.timeout)
     this.timeout = setTimeout(() => {
       this.loadingTarget.classList.remove("hidden");

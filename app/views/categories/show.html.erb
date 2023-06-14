@@ -2,6 +2,8 @@
   <%= @category.name %>
 
   <div class="bg-blue-100">
+    <h2>Products</h2>
+
     <%= render component("products/infinite_scroll_start_page", products: @products, last_page: @last_page, category_id: @category.id) %>
   </div>
 

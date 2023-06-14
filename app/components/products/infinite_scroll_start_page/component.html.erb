@@ -1,44 +1,40 @@
-<%= render component("frame/body") do %>
-  <h1>Products</h1>
+<div
+  data-controller="pagination"
+  data-pagination-url-value="<%= products_url %> "
+  data-pagination-current-page-value="<%= 1 %>"
+  data-pagination-max-page-value="<%= @last_page %>"
+  data-pagination-request-value="false"
+  <% if @search_term %>
+    data-pagination-search-term-value="<%= @search_term %>"
+  <% end %>
+  <% if @category_id %>
+    data-pagination-category-id-value="<%= @category_id %>"
+  <% end %>
+>
+  <div
+    id="products"
+    class="flex flex-wrap justify-center"  
+  >
+    <% if @products.empty? %>
+      <div class="flex">
+        <div class="text-center w-52 m-7 p-6">
+          There is no result to show
+          <% if @category %>
+            in <%= @category.name %>
+          <% end %>
+          .
+        </div>
+      </div>
+    <% else %>
+      <%= render components("products/product", @products) %>
+    <% end %>
+  </div>
 
   <div
-    data-controller="pagination"
-    data-pagination-url-value="<%= products_url %> "
-    data-pagination-current-page-value="<%= 1 %>"
-    data-pagination-max-page-value="<%= @last_page %>"
-    data-pagination-request-value="false"
-    <% if @search_term %>
-      data-pagination-search-term-value="<%= @search_term %>"
-    <% end %>
-    <% if @category_id %>
-      data-pagination-category-id-value="<%= @category_id %>"
-    <% end %>
+    class="w-full h-32 mt-32 flex justify-center"
+    data-pagination-target="loading"
   >
-    <div
-      id="products"
-      class="flex flex-wrap justify-center"  
-    >
-      <% if @products.empty? %>
-        <div class="flex" id="no-product">
-          <div class="text-center w-52 m-7 p-6">
-            There is no result to show
-            <% if @category %>
-              in <%= @category.name %>
-            <% end %>
-            .
-          </div>
-        </div>
-      <% else %>
-        <%= render components("products/product", @products) %>
-      <% end %>
-    </div>
-
-    <div
-      class="w-full h-32 mt-32 flex justify-center"
-      data-pagination-target="loading"
-    >
-      <%= render component("icons/spinner") %>
-    </div>
-
+    <%= render component("icons/spinner") %>
   </div>
-<% end %>
+
+</div>

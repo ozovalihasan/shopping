@@ -6,20 +6,7 @@
   <%= link_to "Shopping", root_path, data: {"turbo-frame"=> main_parts_target}  %>
 
   <div class="w-full flex">
-    <div class="group relative">
-      <div >
-        By categories
-      </div>
-
-      <%= 
-        turbo_frame_tag all_categories_map_target, 
-                        src: base_categories_path, 
-                        loading: "lazy", 
-                        class: "absolute top-full left-0 hidden group-hover:flex flex-col flex-wrap bg-first-50 aspect-square w-96" do %>
-        <%= render component("icons/spinner") %>
-      <% end %>
-      
-    </div>
+    
     
     <%= turbo_frame_tag products_search_bar_target, src: new_search_path, loading: "lazy", class: "flex items-center w-full" do %>
       <%= render component("icons/spinner") %>

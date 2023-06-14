@@ -17,19 +17,10 @@
               action: "input->search-form#search", "search-form-target": "input"
             },
             placeholder: 'Search products',
-            class: "w-full input-primary p-3 pl-12 px-6 w-full border border-r-0 rounded-l-full h-12",
+            class: "w-full input-primary p-3 pl-12 px-6 w-full border rounded-full h-12",
             value: @search_term
           %>
-          <%= form.select :category_id,
-            [["All categories", nil]].concat(@categories),
-            {},
-            {
-              class: "bg-first-50 rounded-r-full border border-l-3 placeholder-white outline-none w-1/2 h-12 px-4",
-              data: {
-                action: "input->search-form#search", "search-form-target": "category"
-              }
-            }
-          %>
+          
           <div
             class="absolute left-4 top-1/2 transform -translate-y-1/2 flex justify-center"
             data-search-form-target="searchIcon"

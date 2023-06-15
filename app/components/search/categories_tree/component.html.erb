@@ -2,8 +2,9 @@
   size=<%= 1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size} %>  
   class="h-full bg-first-50 border-l-4 outline-none w-full p-4" 
   data-action="input->search-form#search" 
-  data-search-form-target="category"
+  data-left-search-form-target="category"
   value=""
+  name="category_id"
 >
   <option class="" value="" data-action="click->left-search-form#updateCategory" >All categories</option>
   <% @main_categories.each do |main_category| %>

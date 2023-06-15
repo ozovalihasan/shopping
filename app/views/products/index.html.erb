@@ -29,7 +29,10 @@
                                           :id, 
                                           :name, 
                                           { include_hidden: false}, 
-                                          data: {action: "input->left-search-form#search"} do |b| 
+                                          data: {
+                                            action: "input->left-search-form#search", 
+                                            left_search_form_target: "brand"
+                                          } do |b| 
           %>
             <div class="flex">
               <%= b.check_box %>

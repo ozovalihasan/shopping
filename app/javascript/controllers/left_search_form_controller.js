@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "category", "form", "searchTerm" ]
+  static targets = [ "category", "form", "searchTerm", "brand" ]
 
   static values = {
   
@@ -16,13 +16,12 @@ export default class extends Controller {
       const urlParams = new URLSearchParams(window.location.search);
 
       this.searchTermTarget.value = urlParams.get('search_term');
-      this.categoryTarget.value = urlParams.get('category_id');
+      this.categoryTarget.value = urlParams.get('category_id') || "";
 
-      const brandIds = urlParams.getAll('brand_ids[]');
-      brandIds.forEach((brandId) => {
-        const brandInput = document.getElementById(`brand_ids_${brandId}`);
-        if (brandInput) {
-          brandInput.checked = true;
+      const brandValues = urlParams.getAll('brand_ids[]');
+      this.brandTargets.forEach((brandElement) => {
+        if (brandValues.includes(brandElement.value)) {
+          brandElement.checked = true;
         }
       });
     }

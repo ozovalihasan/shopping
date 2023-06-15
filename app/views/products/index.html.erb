@@ -11,7 +11,12 @@
         left_search_form_target: "form",
       }
     ) do |form| %>
-      <%= form.hidden_field :search_term, value: @search_term, data: {left_search_form_target: "searchTerm"} %>
+      <%= form.hidden_field :search_term, 
+                            value: @search_term, 
+                            data: {
+                              search_form_target: "leftInput"
+                            } 
+      %>
 
       <details class="w-full p-4 ">
         <summary class="font-black py-2">Category</summary>
@@ -31,7 +36,7 @@
                                           { include_hidden: false}, 
                                           data: {
                                             action: "input->left-search-form#search", 
-                                            left_search_form_target: "brand"
+                                            search_form_target: "brand"
                                           } do |b| 
           %>
             <div class="flex">

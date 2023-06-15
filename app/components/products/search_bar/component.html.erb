@@ -8,14 +8,15 @@
           class: "flex text-sm w-full",
           data: {
             turbo_frame: main_parts_target,
-            action: "turbo:before-fetch-response->search-form#hideSpinner",
+            search_form_target: "form",
             turbo_action: "advance",
-            controller: "search-form"
+            action: "turbo:before-fetch-response->search-form#hideSpinner",
           }
         ) do |form| %>
           <%= form.text_field :search_term,
             data: {
-              action: "input->search-form#search", "search-form-target": "input"
+              action: "input->search-form#search", 
+              search_form_target: "input"
             },
             placeholder: 'Search products',
             class: "w-full input-primary p-3 pl-12 px-6 w-full border rounded-full h-12",

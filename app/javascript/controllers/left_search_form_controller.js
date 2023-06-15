@@ -1,36 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "category", "form", "searchTerm", "brand" ]
-
-  static values = {
-  
-  };
+  static targets = [ "form", "category" ]
 
   connect() {
-    this._updateInput()
+   this._setCategory()  
   }
 
-  _updateInput() {
-    if( ["/products", "/products/"].includes(document.location.pathname) ){
-      const urlParams = new URLSearchParams(window.location.search);
-
-      this.searchTermTarget.value = urlParams.get('search_term');
-      this.categoryTarget.value = urlParams.get('category_id') || "";
-
-      const brandValues = urlParams.getAll('brand_ids[]');
-      this.brandTargets.forEach((brandElement) => {
-        if (brandValues.includes(brandElement.value)) {
-          brandElement.checked = true;
-        }
-      });
-    }
+  _setCategory() {
+    this.categoryTarget.value = ""
   }
   
-  updateCategory(e) {
-    this.search()
-  }
-
   search() {
     clearTimeout(this.timeout)
     this.timeout = setTimeout(() => {

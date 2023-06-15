@@ -7,11 +7,9 @@
 
   <div class="w-full flex">
     
-    
-    <%= turbo_frame_tag products_search_bar_target, src: new_search_path, loading: "lazy", class: "flex items-center w-full" do %>
-      <%= render component("icons/spinner") %>
-    <% end %>
-    
+    <div class="flex items-center w-full">
+      <%= render component("products/search_bar") %>
+    </div>
     
     <div class="mr-8 flex items-center">
       <%= render component("settings/main_color") %>

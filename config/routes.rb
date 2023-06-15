@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :answers
   resources :questions
   resources :reviews
-  resources :searches, only: [:new]
   resources :products, only: %i[ index show ] do 
     resources :questions
     resources :reviews

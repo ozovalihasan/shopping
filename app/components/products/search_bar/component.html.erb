@@ -9,6 +9,7 @@
           data: {
             turbo_frame: main_parts_target,
             action: "turbo:before-fetch-response->search-form#hideSpinner",
+            turbo_action: "advance",
             controller: "search-form"
           }
         ) do |form| %>

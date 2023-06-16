@@ -35,7 +35,7 @@ class Product < ApplicationRecord
   end
 
   scope :with_discount, -> {
-    select("products.*, MAX(campaigns.discount) as discount")
+    select("products.*, COALESCE(MAX(campaigns.discount), 0) as discount")
     .left_outer_joins(:active_campaigns_now)
     .group( Product.arel_table[:id] )
   }

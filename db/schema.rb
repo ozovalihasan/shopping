@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_115701) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_184640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -98,6 +98,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_115701) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: false
+    t.index ["active"], name: "index_campaigns_on_active"
+    t.index ["end_time"], name: "index_campaigns_on_end_time"
+    t.index ["start_time"], name: "index_campaigns_on_start_time"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -135,8 +139,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_115701) do
     t.bigint "category_id", null: false
     t.string "name"
     t.bigint "brand_id", null: false
+    t.decimal "discount_price"
+    t.bigint "campaign_id"
+    t.integer "discount"
     t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["campaign_id"], name: "index_products_on_campaign_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["discount"], name: "index_products_on_discount"
+    t.index ["discount_price"], name: "index_products_on_discount_price"
     t.index ["name"], name: "products_on_name_idx", opclass: :gin_trgm_ops, using: :gin
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
@@ -189,6 +199,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_115701) do
   add_foreign_key "orders", "users", column: "customer_id"
   add_foreign_key "products", "base_categories", column: "category_id"
   add_foreign_key "products", "brands"
+  add_foreign_key "products", "campaigns"
   add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "questions", "products"
   add_foreign_key "questions", "users", column: "customer_id"

@@ -24,7 +24,7 @@
       <% if @product.discount %>
 
         <div class="text-lg text-first-500 font-bold  mt-2">
-          <%= number_to_currency(@product.price * ( 100 - @product.discount) / 100, :unit => "$") %>
+          <%= number_to_currency(@product.discount_price, :unit => "$") %>
         </div>
 
         <div class="flex  mb-2">

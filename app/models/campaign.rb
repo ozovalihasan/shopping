@@ -6,6 +6,6 @@ class Campaign < ApplicationRecord
   has_one_attached :image
   
   scope :active_at, -> ( time) { where("? BETWEEN start_time AND end_time", time) }
-  scope :active_now, -> { active_at( Time.now ) }
+  scope :active_now, -> { active_at( Time.current ) }
   scope :order_by_discount, -> { order(discount: :desc) }
 end

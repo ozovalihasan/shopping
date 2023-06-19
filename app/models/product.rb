@@ -46,6 +46,8 @@ class Product < ApplicationRecord
       descending_price
     when "lowest_price"
       ascending_price
+    when "highest_review_rate"
+      highest_review_rate
     else
       nil
     end
@@ -53,6 +55,7 @@ class Product < ApplicationRecord
 
   scope :descending_price, -> { order(discount_price: :desc ) }
   scope :ascending_price, -> { order(discount_price: :asc ) }
+  scope :highest_review_rate, -> { order(average_rate: :desc ) }
 
   scope :in_random_order, -> { order("RANDOM()") }
 end

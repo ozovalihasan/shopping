@@ -65,7 +65,8 @@
 
         <%= select_tag :price_order, options_for_select([
                             ["Price: Low to High", :lowest_price], 
-                            ["Price: High to Low", :highest_price]
+                            ["Price: High to Low", :highest_price],
+                            ["Avg. Customer Review", :highest_review_rate],
                             
                           ], @price_order), {include_blank: "Sort", 
                           data: { 

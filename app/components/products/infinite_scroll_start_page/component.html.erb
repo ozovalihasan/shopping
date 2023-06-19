@@ -10,6 +10,9 @@
   <% if @category_id %>
     data-pagination-category-id-value="<%= @category_id %>"
   <% end %>
+  <% if @price_order %>
+    data-pagination-price-order-value="<%= @price_order %>"
+  <% end %>
 >
   <div
     id="products"
@@ -28,6 +31,8 @@
     <% else %>
       <%= render components("products/product", @products) %>
     <% end %>
+
+    
   </div>
 
   <div

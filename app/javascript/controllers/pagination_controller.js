@@ -9,6 +9,7 @@ export default class extends Controller {
     request: Boolean,
     searchTerm: String,
     categoryId: Number,
+    priceOrder: String,
   };
 
   static targets = [ "loading" ]
@@ -39,12 +40,9 @@ export default class extends Controller {
   async _fetchNewPage() {
     const url = new URL(this.urlValue);
     url.searchParams.set('page', this.currentPageValue + 1)
-    if (this.searchTermValue){
-      url.searchParams.set('search_term', this.searchTermValue)
-    }
-    if (this.categoryIdValue){
-      url.searchParams.set('category', this.categoryIdValue)
-    }
+    url.searchParams.set('search_term', this.searchTermValue)
+    url.searchParams.set('category', this.categoryIdValue)
+    url.searchParams.set('price_order', this.priceOrderValue)
  
     this.requestValue = true;
     await get(url.toString(), {

@@ -2,7 +2,6 @@
   size="<%= [1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size}, 10].min %>"  
   class="h-full bg-first-50 border-l-4 outline-none w-full p-4" 
   data-action="input->left-search-form#search" 
-  data-search-form-target="category"
   value=""
   name="category_id"
   data-left-search-form-target="category"

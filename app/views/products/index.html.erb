@@ -14,7 +14,14 @@
       <%= form.hidden_field :search_term, 
                             value: @search_term, 
                             data: {
-                              search_form_target: "leftInput"
+                              left_search_form_target: "searchTerm"
+                            } 
+      %>
+
+      <%= form.hidden_field :price_order, 
+                            value: @price_order, 
+                            data: {
+                              left_search_form_target: "priceOrder"
                             } 
       %>
 
@@ -36,7 +43,7 @@
                                           { include_hidden: false}, 
                                           data: {
                                             action: "input->left-search-form#search", 
-                                            search_form_target: "brand"
+                                            left_search_form_target: "brand"
                                           } do |b| 
           %>
             <div class="flex">
@@ -46,13 +53,26 @@
           <% end %>
         </div>
       </details> 
-
+      
+      
     <% end %>
     
     <%= turbo_frame_tag search_results_target, class: "w-4/5" do %>
-      <%= @products_count %> products found <% unless @search_term == "" %>
-                                              for <span class="font-bold"> <%= @search_term %> </span>
-                                            <% end %>
+      <div>
+        <%= @products_count %> products found <% unless @search_term == "" %>
+                                                for <span class="font-bold"> <%= @search_term %> </span>
+                                              <% end %> 
+
+        <%= select_tag :price_order, options_for_select([
+                            ["Price: Low to High", :lowest_price], 
+                            ["Price: High to Low", :highest_price]
+                            
+                          ], @price_order), {include_blank: "Sort", 
+                          data: { 
+                            action: "input->left-search-form#setPriceOrder" 
+                          }} 
+                            %>
+      </div>
       
       
       <%= 
@@ -61,7 +81,8 @@
           products: @products, 
           last_page: @last_page, 
           search_term: params[:search_term],
-          category_id: params[:category_id] 
+          category_id: params[:category_id],
+          price_order: params[:price_order]
         ) 
       %>
     <% end %>

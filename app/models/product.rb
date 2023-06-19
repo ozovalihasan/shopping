@@ -36,9 +36,20 @@ class Product < ApplicationRecord
   
   scope :with_term, -> (search_term) { where('products.name ILIKE ?', "%#{search_term}%") }
 
-  scope :search, ->(search_term, category_id = nil, brand_ids = []) do 
-    with_term(search_term).of_category(category_id).of_brands(brand_ids)
+  scope :search, ->(search_term, category_id = nil, brand_ids = [], price_order = nil) do 
+    with_term(search_term).of_category(category_id).of_brands(brand_ids).order_in_price(price_order)
   end
+
+  scope :order_in_price, -> (selection) {
+    case selection 
+    when "highest_price"
+      descending_price
+    when "lowest_price"
+      ascending_price
+    else
+      nil
+    end
+  }
 
   scope :descending_price, -> { order(discount_price: :desc ) }
   scope :ascending_price, -> { order(discount_price: :asc ) }

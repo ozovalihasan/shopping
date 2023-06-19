@@ -10,7 +10,6 @@ export default class extends Controller {
 
   connect() {
     this._setInput()
-    this._setLeftSearchForm()
   }
 
   _setInput() {
@@ -24,24 +23,6 @@ export default class extends Controller {
 
   }
 
-  _setLeftSearchForm() {
-    if( 
-      ["/products", "/products/"].includes(document.location.pathname) 
-    ){
-      const urlParams = new URLSearchParams(window.location.search);
-
-      this.leftInputTarget.value = urlParams.get('search_term');
-      this.categoryTarget.value = urlParams.get('category_id') || "";
-
-      const brandValues = urlParams.getAll('brand_ids[]');
-      this.brandTargets.forEach((brandElement) => {
-        if (brandValues.includes(brandElement.value)) {
-          brandElement.checked = true;
-        }
-      });
-    }
-  }
-  
   search() {
     clearTimeout(this.timeout)
     this.timeout = setTimeout(() => {

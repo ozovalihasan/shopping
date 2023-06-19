@@ -33,7 +33,7 @@ class CheckProductsWithCampaigns < ApplicationService
         UPDATE products 
         SET 
           discount_price = (((100 - COALESCE(products_with_discount_query.max_discount, 0)) * products.price) / 100 ),
-          discount = products_with_discount_query.max_discount,
+          discount = COALESCE(products_with_discount_query.max_discount, 0),
           campaign_id = products_with_discount_query.campaign_id
         FROM (
           #{ products_with_discount(time) }

@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <% if @product.discount %>
+      <% if @product.campaign_id %>
 
         <div class="text-lg text-first-500 font-bold  mt-2">
           <%= number_to_currency(@product.discount_price, :unit => "$") %>

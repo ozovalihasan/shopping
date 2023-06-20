@@ -4,7 +4,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = @product.reviews
+    @reviews = @product.reviews.includes(:customer)
+    @reviews_statistics = @product.reviews.group_by_rates.each_with_object({}) do |review, statistics| 
+                            statistics[review.rate] = {
+                              count: review.count, 
+                              percentage: (review.count * 100) / @product.review_count
+                            }
+                          end
   end
 
   # GET /reviews/1 or /reviews/1.json

@@ -14,6 +14,9 @@
 }
 
 @layer components {
+  .progress {
+    @apply rounded-lg [&::-webkit-progress-bar]:bg-first-300 [&::-webkit-progress-value]:bg-first-400 [&::-moz-progress-bar]:bg-first-400
+  }
 
   .btn {
     @apply flex justify-center items-center

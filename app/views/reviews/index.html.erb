@@ -1,6 +1,8 @@
 <h1>Reviews</h1>
 
 <%= turbo_frame_tag product_reviews_target(@product) do %>
+  <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics) %>
+
   <div id="reviews">
     <%= render components("reviews/review", @reviews) %>
   </div>

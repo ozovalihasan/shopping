@@ -1,0 +1,32 @@
+<div class="flex">
+  <div class="aspect-square m-4">
+    <div class="text-[50px]">
+      <%= @product.average_rate %>
+    </div>
+    <%= render component("icons/star", percent: @product.average_rate * 100) %>
+  </div>
+
+  <div>
+    <% 5.downto(1) do |rate| %>
+      <div class="flex items-center gap-3">
+        <div>
+          <%= rate %>
+        </div>
+        
+        <% if @reviews_statistics[rate] %>
+          <progress 
+            class="flex flex-col progress h-1"
+            value=<%= @reviews_statistics[rate][:percentage] %> 
+            max="100"> <%= @reviews_statistics[rate][:percentage] 
+          %> </progress> <%= @reviews_statistics[rate][:count] %>
+        <% else %>
+          <progress 
+            value="0" 
+            max="100"
+            class="flex flex-col progress h-1"
+          > 0 </progress> 0
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

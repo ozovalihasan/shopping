@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     @brands = Brand.all
     @search_term = params[:search_term]
     @category_id = params[:category_id]
+    @brand_ids = params[:brand_ids]
     @price_order = params[:price_order]
   end
 

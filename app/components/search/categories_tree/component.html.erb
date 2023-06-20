@@ -1,22 +1,21 @@
-<select 
-  size="<%= [1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size}, 10].min %>"  
-  class="h-full bg-first-50 border-l-4 outline-none w-full p-4" 
-  data-action="input->left-search-form#search" 
-  value=""
-  name="category_id"
-  data-left-search-form-target="category"
->
-  <option class="" value="" >All categories</option>
-  <% @main_categories.each do |main_category| %>
-    <option 
-      value="<%= main_category.id %>" 
-    >
-      <%= main_category.name %>
-    </option>
-    <% main_category.categories.each do |category| %>
-      <option value="<%= category.id %>" class="ml-4">
-        <%= category.name %>
-      </option>
-    <% end %>
-  <% end %>
-</select>
+<%= @form.select :category_id, 
+                options_for_select(
+                  [["All Categories", ""]].concat(
+                    @main_categories.map {|main_category| 
+                      [
+                        [main_category.name, main_category.id ]
+                      ].concat( main_category.categories.map {|category| [category.name, category.id, { class: "ml-4" }]}   ) 
+                    }.flatten(1)
+                  ),
+                  @category_id || ""
+                ), 
+                {include_blank: false}, 
+                {
+                  size: [1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size}, 10].min,
+                  class: "h-full bg-first-50 border-l-4 outline-none w-full p-4",
+                  data: {
+                    action:"input->left-search-form#search" 
+                  }
+
+                } 
+%>

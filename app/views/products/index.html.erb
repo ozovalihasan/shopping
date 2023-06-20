@@ -7,7 +7,7 @@
       data: {
         turbo_frame: search_results_target,
         turbo_action: "advance",
-        action: "turbo:before-fetch-response->left-search-form#removeOpacity",
+        action: "turbo:before-fetch-response->left-search-form#removeOpacity turbo:frame-load->left-search-form#_setLeftSearchForm",
         left_search_form_target: "form",
       }
     ) do |form| %>
@@ -24,11 +24,12 @@
                               left_search_form_target: "priceOrder"
                             } 
       %>
-
+      
       <details class="w-full p-4 ">
         <summary class="font-black py-2">Category</summary>
         <div class="">
-          <%= render component("search/categories_tree", main_categories: @main_categories) %>
+          <%= render component("search/categories_tree", main_categories: @main_categories, category_id: @category_id, form: form) %>
+          
         </div>
       </details> 
 
@@ -40,7 +41,7 @@
                                           @brands, 
                                           :id, 
                                           :name, 
-                                          { include_hidden: false}, 
+                                          { include_hidden: false, checked: @brand_ids}, 
                                           data: {
                                             action: "input->left-search-form#search", 
                                             left_search_form_target: "brand"
@@ -82,9 +83,9 @@
           "products/infinite_scroll_start_page",
           products: @products, 
           last_page: @last_page, 
-          search_term: params[:search_term],
-          category_id: params[:category_id],
-          price_order: params[:price_order]
+          search_term: @search_term,
+          category_id: @category_id,
+          price_order: @price_order
         ) 
       %>
     <% end %>

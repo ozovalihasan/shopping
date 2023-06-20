@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "input", "loading", "searchIcon", "brand", "category", "leftInput", "form" ]
+  static targets = [ "input", "loading", "searchIcon", "form" ]
 
   static values = {
     url: String,

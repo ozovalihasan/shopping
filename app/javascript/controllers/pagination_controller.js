@@ -14,13 +14,11 @@ export default class extends Controller {
 
   static targets = [ "loading" ]
 
-  initialize() {
-    this.scroll = this.scroll.bind(this);
-    this.currentPageValue = this.currentPageValue || 1;
-  }
-
   connect() {
+    this.scroll = this.scroll.bind(this)
     document.addEventListener("scroll", this.scroll);
+
+    this.currentPageValue = this.currentPageValue || 1;
     if ( this.currentPageValue === this.maxPageValue ){
       this.loadingTarget.classList.add("hidden");  
     }

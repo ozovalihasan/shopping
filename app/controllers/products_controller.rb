@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @products_from_category = @product.category.products.limit(10)
+    @products_from_category = @product.category.products.limit(10).includes(:brand)
 
     respond_to do |format|
       format.html

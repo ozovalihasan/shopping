@@ -57,6 +57,10 @@ module ApplicationHelper
   def product_reviews_target(product)
     dom_id(product, :reviews)
   end
+
+  def product_reviews_inner_target(product)
+    dom_id(product, :reviews_inner)
+  end
   
   def product_questions_target(product)
     dom_id(product, :questions)

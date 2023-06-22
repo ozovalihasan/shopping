@@ -3,8 +3,33 @@
 <%= turbo_frame_tag product_reviews_target(@product) do %>
   <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics) %>
 
-  <div id="reviews">
-    <%= render components("reviews/review", @reviews) %>
+  <div data-controller="reviews-options-form" >
+    <%= form_with(
+      url: product_reviews_path(@product),
+      method: :get,
+      class: "flex text-sm w-full",
+      data: {
+        turbo_frame: product_reviews_inner_target(@product),
+        reviews_options_form_target: "form",
+        action: "turbo:before-fetch-response->reviews-options-form#removeOpacity"
+      }
+    ) do |form| %>
+
+      <%= form.select :rate_order, options_for_select([
+                                      ["Highest First", :highest_rate], 
+                                      ["Lowest First", :lowest_rate],
+                                    ], @rate_order), 
+                                    { include_blank: "Sort" }, 
+                                    data: { 
+                                      action: "change->reviews-options-form#search" 
+                                    } 
+      %>
+      
+    <% end %>
+
+    <%= turbo_frame_tag product_reviews_inner_target(@product) do %>
+      <%= render components("reviews/review", @reviews) %>
+    <% end %>
   </div>
 
   <%= link_to "New review", new_review_path %>

@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = @product.reviews.includes(:customer)
+    @reviews = @product.reviews.order_in_rate(params[:rate_order]).includes(:customer)
     @reviews_statistics = @product.reviews.group_by_rates.each_with_object({}) do |review, statistics| 
                             statistics[review.rate] = {
                               count: review.count, 

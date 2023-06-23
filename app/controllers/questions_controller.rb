@@ -5,7 +5,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    @questions = @product.questions
+    questions = @product.questions.by_sorting( params[:sort_option] )
+    
+    @pagy, @questions = pagy(questions, page: params[:page] || 1, params: ->(pagy_params){ pagy_params.merge!(sort_option: params[:sort_option]) } ) 
   end
 
   # GET /questions/1 or /questions/1.json

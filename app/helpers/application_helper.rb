@@ -66,6 +66,10 @@ module ApplicationHelper
     dom_id(product, :questions)
   end
   
+  def product_questions_inner_target(product)
+    dom_id(product, :questions_inner)
+  end
+  
   def component(name, *args, **kwargs, &)
     name.to_s.camelize.constantize::Component.new(*args, **kwargs, &)
   end

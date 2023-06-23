@@ -1,15 +1,54 @@
 <h1>Questions</h1>
 
 <%= turbo_frame_tag product_questions_target(@product) do %>
-  <div id="questions">
-    <% if @questions.present? %>
-      <%= render components("questions/question", @questions) %>
-    <% else %>
-      <div>
-        There is no question to show.
-      </div>
-    <% end %>
-  </div>
+  <% if @questions.present? %>
+    <div data-controller="product-tabs-form" >
+      <%= form_with(
+        url: product_questions_path(@product),
+        method: :get,
+        class: "text-sm w-full",
+        data: {
+          turbo_frame: product_questions_inner_target(@product),
+          product_tabs_form_target: "form",
+          action: "turbo:before-fetch-response->product-tabs-form#removeOpacity"
+        }
+      ) do |form| %>
+
+        <%= form.select :sort_option, options_for_select([
+                                        ["Newest First", :newest], 
+                                        ["Oldest First", :oldest],
+                                      ], @sort_option), 
+                                      { include_blank: "Sort" }, 
+                                      data: { 
+                                        action: "change->product-tabs-form#search" 
+                                      } 
+        %>
+        
+      
+
+        <%= turbo_frame_tag product_questions_inner_target(@product), 
+                            data: {
+                              action: "turbo:frame-render->scroll#scrollNow"
+                            } do 
+        %>
+          <%= render components("questions/question", @questions) %>
+          <div class="w-full justify-center flex ">
+            <%== pagy_nav(@pagy) %>  
+          </div>
+        <% end %>
+
+        
+        
+
+        
+      <% end %>
+    </div>
+    
+  <% else %>
+    <div>
+      There is no question to show.
+    </div>
+  <% end %>
 
   <%= link_to "New question", new_question_path %>
 <% end %>

@@ -4,15 +4,15 @@
   <% if @reviews.present? %>
     <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics) %>
 
-    <div data-controller="reviews-options-form" >
+    <div data-controller="product-tabs-form" >
       <%= form_with(
         url: product_reviews_path(@product),
         method: :get,
         class: "text-sm w-full",
         data: {
           turbo_frame: product_reviews_inner_target(@product),
-          reviews_options_form_target: "form",
-          action: "turbo:before-fetch-response->reviews-options-form#removeOpacity"
+          product_tabs_form_target: "form",
+          action: "turbo:before-fetch-response->product-tabs-form#removeOpacity"
         }
       ) do |form| %>
 
@@ -22,7 +22,7 @@
                                       ], @rate_order), 
                                       { include_blank: "Sort" }, 
                                       data: { 
-                                        action: "change->reviews-options-form#search" 
+                                        action: "change->product-tabs-form#search" 
                                       } 
         %>
         

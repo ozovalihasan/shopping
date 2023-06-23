@@ -11,7 +11,7 @@ import LeftSearchFormController from "./left_search_form_controller"
 import ScrollController from "./scroll_controller"
 import OrderItemQuantityController from "./order_item_quantity_controller"
 import PaginationController from "./pagination_controller"
-import ReviewsOptionsFormController from "./reviews_options_form_controller"
+import ProductTabsFormController from "./product_tabs_form_controller"
 import { Alert, Dropdown } from "tailwindcss-stimulus-components"
 
 application.register("hello", HelloController)
@@ -23,4 +23,4 @@ application.register("left-search-form", LeftSearchFormController)
 application.register("scroll", ScrollController)
 application.register("order-item-quantity", OrderItemQuantityController)
 application.register("pagination", PaginationController)
-application.register("reviews-options-form", ReviewsOptionsFormController)
+application.register("product-tabs-form", ProductTabsFormController)

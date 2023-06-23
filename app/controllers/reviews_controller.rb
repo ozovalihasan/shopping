@@ -4,7 +4,10 @@ class ReviewsController < ApplicationController
 
   # GET /reviews or /reviews.json
   def index
-    @reviews = @product.reviews.order_in_rate(params[:rate_order]).includes(:customer)
+    reviews = @product.reviews.order_in_rate(params[:rate_order]).includes(:customer)
+    
+    @pagy, @reviews = pagy(reviews, page: params[:page] || 1, params: ->(pagy_params){ pagy_params.merge!(rate_order: params[:rate_order]) } ) 
+    
     @reviews_statistics = @product.reviews.group_by_rates.each_with_object({}) do |review, statistics| 
                             statistics[review.rate] = {
                               count: review.count, 

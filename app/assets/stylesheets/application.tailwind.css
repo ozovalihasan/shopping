@@ -49,6 +49,37 @@
   }
 }
 
+@layer components {
+
+  .pagy-nav.pagination {
+    @apply isolate inline-flex -space-x-px rounded-md shadow-sm;
+  }
+
+  .page.next a {
+    @apply hidden;
+  }
+
+  .page.prev a {
+    @apply hidden;
+  }
+
+  .page.next.disabled {
+    @apply hidden;
+  }
+
+  .page.prev.disabled {
+    @apply hidden;
+  }
+
+  .page a, .page.gap {
+    @apply bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
+  }
+
+  .page.active {
+    @apply z-10 border-first-500 bg-first-50 text-first-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
+  }
+}
+
 details > summary::marker {
   content: "";
 }

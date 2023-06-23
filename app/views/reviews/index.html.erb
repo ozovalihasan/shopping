@@ -7,7 +7,7 @@
     <%= form_with(
       url: product_reviews_path(@product),
       method: :get,
-      class: "flex text-sm w-full",
+      class: "text-sm w-full",
       data: {
         turbo_frame: product_reviews_inner_target(@product),
         reviews_options_form_target: "form",
@@ -25,10 +25,17 @@
                                     } 
       %>
       
-    <% end %>
+    
 
-    <%= turbo_frame_tag product_reviews_inner_target(@product) do %>
-      <%= render components("reviews/review", @reviews) %>
+      <%= turbo_frame_tag product_reviews_inner_target(@product) do %>
+        <%= render components("reviews/review", @reviews) %>
+        <%== pagy_nav(@pagy) %>  
+      <% end %>
+
+      
+      
+
+      
     <% end %>
   </div>
 

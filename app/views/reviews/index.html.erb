@@ -27,9 +27,15 @@
       
     
 
-      <%= turbo_frame_tag product_reviews_inner_target(@product) do %>
+      <%= turbo_frame_tag product_reviews_inner_target(@product), 
+                          data: {
+                            action: "turbo:frame-render->scroll#scrollNow"
+                          } do 
+      %>
         <%= render components("reviews/review", @reviews) %>
-        <%== pagy_nav(@pagy) %>  
+        <div class="w-full justify-center flex ">
+          <%== pagy_nav(@pagy) %>  
+        </div>
       <% end %>
 
       

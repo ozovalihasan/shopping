@@ -9,12 +9,16 @@ class Review < ApplicationRecord
   end
 
 
-  scope :order_in_rate, -> (selection) {
+  scope :sort_by_using_option, -> (selection) {
     case selection 
     when "highest_rate"
       descending_rate
     when "lowest_rate"
       ascending_rate
+    when "oldest"
+      ascending_created_at
+    when "newest"
+      descending_created_at
     else
       nil
     end
@@ -22,6 +26,8 @@ class Review < ApplicationRecord
 
   scope :descending_rate, -> { order(rate: :desc ) }
   scope :ascending_rate, -> { order(rate: :asc ) }
+  scope :descending_created_at, -> { order(created_at: :desc ) }
+  scope :ascending_created_at, -> { order(created_at: :asc ) }
   
   def update_product
     return if product.destroyed?

@@ -16,10 +16,12 @@
         }
       ) do |form| %>
 
-        <%= form.select :rate_order, options_for_select([
+        <%= form.select :sort_option, options_for_select([
                                         ["Highest First", :highest_rate], 
                                         ["Lowest First", :lowest_rate],
-                                      ], @rate_order), 
+                                        ["Newest First", :newest],
+                                        ["Oldest First", :oldest],
+                                      ], @sort_option), 
                                       { include_blank: "Sort" }, 
                                       data: { 
                                         action: "change->product-tabs-form#search" 

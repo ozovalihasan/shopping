@@ -28,7 +28,12 @@ class Product < ApplicationRecord
   scope :of_category, -> (category_id) do
     if category_id && category_id != ""
       category = BaseCategory.find(category_id)
-      category.products
+      
+      if category.is_a? MainCategory
+        where(category_id: category.categories)
+      else category.is_a? Category
+        where(category_id: category)
+      end
     else
       nil
     end

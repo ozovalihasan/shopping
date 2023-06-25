@@ -24,6 +24,14 @@ class Review < ApplicationRecord
     end
   }
 
+  scope :select_by_rate_option, -> (selection) {
+    if selection
+      where(rate: selection)
+    else
+      nil
+    end
+  }
+  
   scope :descending_rate, -> { order(rate: :desc ) }
   scope :ascending_rate, -> { order(rate: :asc ) }
   scope :descending_created_at, -> { order(created_at: :desc ) }

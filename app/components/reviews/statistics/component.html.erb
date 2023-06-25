@@ -8,7 +8,11 @@
 
   <div>
     <% 5.downto(1) do |rate| %>
-      <div class="flex items-center gap-3">
+      <button 
+        class="flex items-center gap-3" 
+        data-action="click->product-tabs-form#changeRateOption" 
+        data-product-review-rate-value="<%= rate %>"
+      >
         <div>
           <%= rate %>
         </div>
@@ -26,7 +30,7 @@
             class="flex flex-col progress h-1"
           > 0 </progress> 0
         <% end %>
-      </div>
+      </button>
     <% end %>
   </div>
 </div>

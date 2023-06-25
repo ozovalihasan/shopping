@@ -2,19 +2,23 @@
 
 <%= turbo_frame_tag product_reviews_target(@product) do %>
   <% if @reviews.present? %>
-    <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics) %>
+    
 
     <div data-controller="product-tabs-form" >
       <%= form_with(
         url: product_reviews_path(@product),
         method: :get,
-        class: "text-sm w-full",
+        class: " w-full",
         data: {
           turbo_frame: product_reviews_inner_target(@product),
           product_tabs_form_target: "form",
           action: "turbo:before-fetch-response->product-tabs-form#removeOpacity"
         }
       ) do |form| %>
+
+        <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics, form: form) %>
+        <%= form.hidden_field :page, value: @page %>
+        <%= form.hidden_field :rate_option, value: nil, data: {product_tabs_form_target: "rateOption"} %>
 
         <%= form.select :sort_option, options_for_select([
                                         ["Highest First", :highest_rate], 
@@ -23,6 +27,7 @@
                                         ["Oldest First", :oldest],
                                       ], @sort_option), 
                                       { include_blank: "Sort" }, 
+                                      class: "text-sm",
                                       data: { 
                                         action: "change->product-tabs-form#search" 
                                       } 
@@ -30,14 +35,14 @@
         
       
 
-        <%= turbo_frame_tag product_reviews_inner_target(@product), 
+        <%= turbo_frame_tag product_reviews_inner_target(@product),
                             data: {
                               action: "turbo:frame-render->scroll#scrollNow"
-                            } do 
+                            } do
         %>
           <%= render components("reviews/review", @reviews) %>
           <div class="w-full justify-center flex ">
-            <%== pagy_nav(@pagy) %>  
+            <%== pagy_nav(@pagy) %>
           </div>
         <% end %>
 

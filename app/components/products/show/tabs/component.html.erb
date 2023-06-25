@@ -1,17 +1,8 @@
-<div data-controller="tabs" data-tabs-active-tab="-mb-px border-l border-t border-r rounded-t bg-first-400">
+<div data-controller="tabs" data-tabs-active-tab="-mb-px border-l border-t border-r rounded-t bg-first-400" data-tabs-index="<%= @tab_index%>">
   <ul class="flex border-b">
-    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
-      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Description</a>
-    </li>
-    
-    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
-      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Questions</a>
-    </li>
-    
-    <li class="-mb-px mr-1" data-tabs-target="tab" data-action="click->scroll#scrollNow click->tabs#change">
-      <a class="bg-second inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#">Reviews(<%= @product.review_count %>)</a>
-    </li>
-
+    <%= render component("product/tab_button", name: "Description") %>
+    <%= render component("product/tab_button", name: "Questions") %>
+    <%= render component("product/tab_button", name: "Reviews(#{@product.review_count})") %>
   </ul>
 
   <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">

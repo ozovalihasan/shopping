@@ -16,7 +16,7 @@
         }
       ) do |form| %>
 
-        <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics, form: form) %>
+        <%= render component("reviews/statistics", product: @product, reviews_statistics: @reviews_statistics) %>
         <%= form.hidden_field :page, value: @page %>
         <%= form.hidden_field :rate_option, value: nil, data: {product_tabs_form_target: "rateOption"} %>
 

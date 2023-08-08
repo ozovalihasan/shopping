@@ -1,19 +1,31 @@
 <%= render component("frame/body") do %>
-  <div id="main-categories" class="flex flex-wrap justify-evenly">
+  <div id="main-categories" class="flex overflow-x-auto">
     <%= render components("categories/category", @main_categories) %>
   </div>
 
   <% if @best_campaign %>
-    <div class="mx-8">
-      Best Deals
-    </div>
-    <div class="flex overflow-x-auto  snap-x">
-      <%= image_tag @best_campaign.image, class: "aspect-square" %>
-      <%= render components("products/product", @products_of_best_deal) %>
+    <div class="pb-4 my-4 px-4 bg-fourth-100 rounded-lg border border-fourth-300 border-solid">
+      <div class="text-2xl font-bold m-4 pt-4 ">
+        Best Deals
+      </div>
+
+      <div class="w-full border border-solid border-fourth-300 mb-4"></div>
+      
+      <div class="flex items-center overflow-x-auto gap-x-4 gap-y-8 ">
+      
+        <div class="flex aspect-square w-auto shrink-0">
+          <%= image_tag @best_campaign.image, class: "w-fit rounded-md" %>
+        </div>
+        <div class="h-full">
+          <div class="flex  gap-x-4 gap-y-8 ">
+            <%= render components("products/product", @products_of_best_deal) %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
   
-  <div id="products" class="flex flex-wrap w-full justify-evenly">
+  <div id="products" class="flex flex-wrap w-full justify-evenly gap-x-4 gap-y-8">
     <%= render components("products/product", @products) %>
   </div>
 

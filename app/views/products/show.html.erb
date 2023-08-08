@@ -7,8 +7,14 @@
         <%= render component("products/show/image_tabs", images: @product.images) %>
       </div>
       <div class="w-1/2 p-4">
-        <div>
-          <span class="font-bold"><%= @product.brand.name %></span> <%= @product.name %>
+        <div class="text-3xl my-4">
+          <%= @product.name %>
+          <%= link_to products_path("brand_ids[]" => @product.brand.id) do %>
+            <div class="text-xl">
+              <%= @product.brand.name %>
+            </div>  
+          <% end %>
+          
         </div>
         <div>
         
@@ -21,11 +27,13 @@
             <%= pluralize @product.review_count, "Review" %>
           </div>
         </div>
-        <div>
-          seller: <%= @product.seller.username %>
-        </div>
-        <div>
-          color: <%= @product.color %>
+        <div class="my-4">
+          <div>
+            seller: <%= @product.seller.username ? @product.seller.username : "example seller name"%>
+          </div>
+          <div>
+            color: <%= @product.color %>
+          </div>
         </div>
         <div class="text-2xl font-bold py-4" >
           <%= number_to_currency(@product.price, :unit => "$") %>
@@ -40,13 +48,15 @@
   </div>
 
   
-  <div class=" mt-16">
-    <div class="mx-8">
-      From <%= @product.category.name %>
+  <% unless @products_from_category.empty? %>
+    <div class=" mt-16">
+      <div class="mx-8">
+        From <%= @product.category.name %>
+      </div>
+      <div class="flex overflow-x-auto w-full snap-x gap-x-4 gap-y-8">
+        
+        <%= render components("products/product", @products_from_category) %>
+      </div>
     </div>
-    <div class="flex overflow-x-auto w-full snap-x">
-      
-      <%= render components("products/product", @products_from_category) %>
-    </div>
-  </div>
+  <% end %>
 <% end %>

@@ -25,44 +25,51 @@
                             } 
       %>
       
-      <details class="w-full p-4 ">
-        <summary class="font-black py-2">Category</summary>
-        <div class="">
-          <%= render component("search/categories_tree", main_categories: @main_categories, category_id: @category_id, form: form) %>
-          
-        </div>
-      </details> 
-
-      <details class="w-full p-4 ">
-        <summary class="font-black py-2">Brand</summary>
+      <div class="p-4">
+        <details class="w-full border border-solid border-slate-300 p-2 rounded">
+          <summary class="font-black py-2">Category</summary>
+          <div class="">
+            <%= render component("search/categories_tree", main_categories: @main_categories, category_id: @category_id, form: form) %>
         
-        <div class="h-96 overflow-y-scroll  border-l-4 w-full p-4">
-          <%= form.collection_check_boxes :brand_ids,  
-                                          @brands, 
-                                          :id, 
-                                          :name, 
-                                          { include_hidden: false, checked: @brand_ids}, 
-                                          data: {
-                                            action: "input->left-search-form#search", 
-                                            left_search_form_target: "brand"
-                                          } do |b| 
-          %>
-            <div class="flex">
-              <%= b.check_box %>
-              <%= b.label class: "ml-2 whitespace-nowrap overflow-hidden text-ellipsis" %>
-            </div>
-          <% end %>
-        </div>
-      </details> 
+          </div>
+        </details>
+      </div>
+
+      <div class="p-4">
+        <details class="w-full border border-solid border-slate-300 p-2 rounded">
+      
+          <summary class="font-black py-2">Brand</summary>
+          
+          <div class="h-96 overflow-y-scroll   w-full p-4">
+            <%= form.collection_check_boxes :brand_ids,  
+                                            @brands, 
+                                            :id, 
+                                            :name, 
+                                            { include_hidden: false, checked: @brand_ids}, 
+                                            data: {
+                                              action: "input->left-search-form#search", 
+                                              left_search_form_target: "brand"
+                                            } do |b| 
+            %>
+              <div class="flex">
+                <%= b.check_box %>
+                <%= b.label class: "ml-2 whitespace-nowrap overflow-hidden text-ellipsis" %>
+              </div>
+            <% end %>
+          </div>
+        </details> 
+      </div>
       
       
     <% end %>
     
     <%= turbo_frame_tag search_results_target, class: "w-4/5" do %>
-      <div>
-        <%= @products_count %> products found <% unless @search_term == "" %>
-                                                for <span class="font-bold"> <%= @search_term %> </span>
-                                              <% end %> 
+      <div class="w-full flex justify-between py-4 items-center">
+        <div>
+          <%= @products_count %> products found <% unless @search_term.blank? %>
+                                                  for <span class="font-bold"> <%= @search_term %> </span>
+                                                <% end %> 
+        </div>
 
         <%= select_tag :price_order, options_for_select([
                             ["Price: Low to High", :lowest_price], 
@@ -71,9 +78,11 @@
                             ["Discount: High to Low", :highest_discount],
                             
                           ], @price_order), {include_blank: "Sort", 
-                          data: { 
-                            action: "input->left-search-form#setPriceOrder" 
-                          }} 
+                            data: { 
+                              action: "input->left-search-form#setPriceOrder" 
+                            },
+                            class: "rounded p-2 "
+                          }
         %>
       </div>
       

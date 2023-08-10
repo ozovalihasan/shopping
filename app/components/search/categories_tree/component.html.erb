@@ -1,10 +1,10 @@
 <%= @form.select :category_id,
                 options_for_select(
-                  [["All Categories", ""]].concat(
+                  [["All Categories", "", { class: "cursor-pointer hover:bg-fourth-100 bg-first-50 checked:bg-fourth-200 rounded my-0.5" }]].concat(
                     @main_categories.map {|main_category|
                       [
-                        [main_category.name, main_category.id ]
-                      ].concat( main_category.categories.map {|category| [category.name, category.id, { class: "ml-4" }]}   )
+                        [main_category.name, main_category.id, { class: "pl-2 cursor-pointer hover:bg-fourth-100 bg-first-50 checked:bg-fourth-200 rounded my-0.5" } ]
+                      ].concat( main_category.categories.map {|category| [category.name, category.id, { class: "ml-4 pl-2 cursor-pointer hover:bg-fourth-100 checked:bg-fourth-200 rounded my-0.5" }]}   )
                     }.flatten(1)
                   ),
                   @category_id || ""
@@ -12,7 +12,7 @@
                 {include_blank: false},
                 {
                   size: [1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size}, 10].min,
-                  class: "h-full  outline-none w-full p-4",
+                  class: "h-full  outline-none w-full p-4 ",
                   data: {
                     action:"input->left-search-form#search"
                   }

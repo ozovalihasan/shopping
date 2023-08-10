@@ -26,8 +26,8 @@
       %>
       
       <div class="p-4">
-        <details class="w-full border border-solid border-slate-300 p-2 rounded">
-          <summary class="font-black py-2">Category</summary>
+        <details class="w-full border border-solid border-slate-300 p-2 rounded" open>
+          <summary class="font-black py-2 cursor-pointer">Category</summary>
           <div class="">
             <%= render component("search/categories_tree", main_categories: @main_categories, category_id: @category_id, form: form) %>
         
@@ -38,9 +38,9 @@
       <div class="p-4">
         <details class="w-full border border-solid border-slate-300 p-2 rounded">
       
-          <summary class="font-black py-2">Brand</summary>
+          <summary class="font-black py-2 cursor-pointer">Brand</summary>
           
-          <div class="h-96 overflow-y-scroll   w-full p-4">
+          <div class="h-96 overflow-y-scroll w-full p-4">
             <%= form.collection_check_boxes :brand_ids,  
                                             @brands, 
                                             :id, 
@@ -52,8 +52,8 @@
                                             } do |b| 
             %>
               <div class="flex">
-                <%= b.check_box %>
-                <%= b.label class: "ml-2 whitespace-nowrap overflow-hidden text-ellipsis" %>
+                <%= b.check_box class: "accent-first-500" %>
+                <%= b.label class: "ml-2 whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:bg-fourth-100 w-full" %>
               </div>
             <% end %>
           </div>
@@ -81,7 +81,7 @@
                             data: { 
                               action: "input->left-search-form#setPriceOrder" 
                             },
-                            class: "rounded p-2 "
+                            class: "rounded p-2 cursor-pointer "
                           }
         %>
       </div>

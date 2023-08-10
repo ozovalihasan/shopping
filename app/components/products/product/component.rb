@@ -7,4 +7,8 @@ class Products::Product::Component < Application::Component
     @product = product
   end
 
+  def having_review?
+    @product.review_count > 0
+  end
+
 end

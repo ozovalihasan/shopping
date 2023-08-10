@@ -4,9 +4,9 @@
   <div>
     Subcategories
   </div>
-  <div class="flex overflow-x-auto">
+  <%= render component("shared/carousel") do %>
     <%= render components("categories/category", @main_category.categories) %>
-  </div>
+  <% end %>
 
   <div class="bg-blue-100">
     <h2>Products</h2>

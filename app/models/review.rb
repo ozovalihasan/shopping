@@ -25,7 +25,7 @@ class Review < ApplicationRecord
   }
 
   scope :select_by_rate_option, -> (selection) {
-    if selection
+    if selection.present?
       where(rate: selection)
     else
       nil

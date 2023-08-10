@@ -1,0 +1,13 @@
+<div class="relative" id="main-categories"  data-controller="snap">
+  <div class="absolute top-1/2 left-8 bg-fourth-100 hover:bg-fourth-200 rounded-full w-8 text-center z-10 shadow-lg cursor-pointer" data-snap-target="previousButton" data-action="click->snap#goToPreviousPart">
+    <
+  </div>
+
+  <div class="flex overflow-x-scroll snap-proximity scroll-smooth <%= @classes %>" data-snap-target="container">
+    <%= content %>
+  </div>
+  
+  <div class="absolute top-1/2 right-8 bg-fourth-100 hover:bg-fourth-200 rounded-full w-8 text-center z-10 shadow-lg cursor-pointer" data-snap-target="nextButton" data-action="click->snap#goToNextPart">
+    >
+  </div>
+</div>

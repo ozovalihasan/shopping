@@ -10,7 +10,7 @@ FactoryBot.define do
     brand_id { Brand.ids.sample }
     seller_id { Seller.ids.sample }
     category_id { Category.ids.sample }
-    images { [Rack::Test::UploadedFile.new("app/assets/images/mock-#{rand(1..5)}.jpg", 'image/png')] }
+    images { Array.new(rand(1..5)) {Rack::Test::UploadedFile.new("app/assets/images/mock-#{rand(1..5)}.jpg", 'image/png')} }
   end
 end
 

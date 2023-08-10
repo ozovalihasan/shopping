@@ -4,4 +4,8 @@ class Products::Show::ImageTabs::Component < Application::Component
   def initialize(images:)
     @images = images
   end
+
+  def multiple_images?
+    @images.size > 1
+  end
 end

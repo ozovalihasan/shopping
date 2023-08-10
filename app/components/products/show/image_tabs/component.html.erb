@@ -1,29 +1,36 @@
 <div data-controller="tabs" class="border-2 border-solid border-slate-100">
   <div class="relative group">
-    <% @images.map do |image| %>
-      <div class="hidden py-4 px-4" data-tabs-target="panel">
-        <%= image_tag image, class: "object-contain w-full rounded-md pb-4", loading: "lazy" %>
-      </div>
-      
-    <% end %>
-
-    <div class="absolute top-1/2 left-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#previous">
-      <
-    </div>
-    <div class="absolute top-1/2 right-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#next">
-      >
-    </div>
-  </div>
-  
-  <div class="p-4">
-    <ul class="flex overflow-x-scroll">
+    <% if multiple_images? %>
       <% @images.map do |image| %>
-        <li class="m-1 h-32 aspect-square" data-tabs-target="tab" data-action="mouseover->tabs#change">
-          <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
-        </li>
+        <div class="hidden py-4 px-4 aspect-square" data-tabs-target="panel">
+          <%= image_tag image, class: "object-contain w-full rounded-md pb-4", loading: "lazy" %>
+        </div>
       <% end %>
-    </ul>
+      
+      <div class="absolute top-1/2 left-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#previous">
+        <
+      </div>
+      <div class="absolute top-1/2 right-8 aspect-square w-16 rounded-full btn-second opacity-0 group-hover:opacity-40" data-action="click->tabs#next">
+        >
+      </div>
+    <% else %>
+      <div class="py-4 px-4" data-tabs-target="panel">
+        <%= image_tag @images.first, class: "object-contain w-full rounded-md pb-4", loading: "lazy" %>
+      </div>
+    <% end %>
   </div>
   
+  <% if multiple_images? %>
+
+    <div class="p-4">
+      <ul class="flex overflow-x-scroll">
+        <% @images.map do |image| %>
+          <li class="m-1 h-32 aspect-square" data-tabs-target="tab" data-action="mouseover->tabs#change">
+            <%= image_tag image.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 </div>

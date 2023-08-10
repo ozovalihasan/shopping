@@ -1,24 +1,28 @@
-<div data-controller="tabs" data-tabs-active-tab="-mb-px border-l border-t border-r rounded-t bg-first-400" data-tabs-index="<%= @tab_index%>">
-  <ul class="flex border-b">
-    <%= render component("product/tab_button", name: "Description") %>
-    <%= render component("product/tab_button", name: "Questions") %>
-    <%= render component("product/tab_button", name: "Reviews(#{@product.review_count})") %>
-  </ul>
-
-  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-    <%= @product.description %>
+<%= turbo_frame_tag product_tabs_target(@product) do %>
+  <div class="p-4" >
+    <div data-controller="tabs" data-tabs-active-tab="-mb-px border-l border-t border-r rounded-t bg-first-400" data-tabs-index="<%= @tab_index %>">
+      <ul class="flex border-b">
+        <%= render component("product/tab_button", name: "Description") %>
+        <%= render component("product/tab_button", name: "Questions") %>
+        <%= render component("product/tab_button", name: "Reviews(#{@product.review_count})") %>
+      </ul>
+    
+      <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+        <%= @product.description %>
+      </div>
+    
+      <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+        <%= turbo_frame_tag product_questions_target(@product), src: product_questions_path(@product), loading: "lazy", data: { action: "turbo:frame-render->scroll#scrollNow" } do %>
+          <%= render component("icons/spinner") %>
+        <% end %>
+      </div>
+    
+      <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
+        <%= turbo_frame_tag product_reviews_target(@product), src: product_reviews_path(@product), loading: @tab_index == @tab_names[:reviews] ? "eager" : "lazy", data: { action: "turbo:frame-render->scroll#scrollNow" } do %>
+          <%= render component("icons/spinner") %>
+        <% end %>
+      </div>
+    
+    </div>
   </div>
-      
-  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-    <%= turbo_frame_tag product_questions_target(@product), src: product_questions_path(@product), loading: "lazy" do %>
-      <%= render component("icons/spinner") %>
-    <% end %>
-  </div>
-
-  <div class="hidden py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-    <%= turbo_frame_tag product_reviews_target(@product), src: product_reviews_path(@product), loading: "lazy" do %>
-      <%= render component("icons/spinner") %>
-    <% end %>
-  </div>
-
-</div>
+<% end %>

@@ -50,6 +50,10 @@ module ApplicationHelper
     "search_results"
   end
 
+  def product_tabs_target(product)
+    dom_id(product, :tabs)
+  end
+
   def product_questions_target(product)
     dom_id(product, :questions)
   end

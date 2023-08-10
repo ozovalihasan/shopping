@@ -16,17 +16,26 @@
           <% end %>
           
         </div>
-        <div>
-        
-          <%= link_to product_reviews_path(@product), class: "flex" do %>
-            <div class="h-6 aspect-[5]">
-              <%= render component("icons/star", percent: @product.average_rate * 100) %>
-            </div>
-          <% end %>
+
+        <% if @product.review_count > 0 %>
           <div>
-            <%= pluralize @product.review_count, "Review" %>
+          
+            <%= link_to product_path(@product, tab_name: "reviews"), data: {turbo_frame: product_tabs_target(@product)} do %>
+              <div class="flex">
+                <div class="h-6 aspect-[5]">
+                  <%= render component("icons/star", percent: @product.average_rate * 100) %>
+                </div>
+                <div class="pl-2">
+                  <%= @product.average_rate %>
+                </div>
+              </div>
+              <div class="text-xs">
+                <%= pluralize @product.review_count, "Review" %>
+              </div>
+            <% end %>
+          
           </div>
-        </div>
+        <% end %>
         <div class="my-4">
           <div>
             seller: <%= @product.seller.username ? @product.seller.username : "example seller name"%>
@@ -60,7 +69,7 @@
       
     </div>
     
-    <%= render component("products/show/tabs", product: @product) %>
+    <%= render component("products/show/tabs", product: @product, tab_name: @tab_name) %>
   </div>
 
   

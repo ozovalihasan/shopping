@@ -1,10 +1,10 @@
 <%= @form.select :category_id,
                 options_for_select(
-                  [["All Categories", "", { class: "cursor-pointer hover:bg-fourth-100 bg-first-50 checked:bg-fourth-200 rounded my-0.5" }]].concat(
+                  [["All Categories", "", { class: "cursor-pointer hover:bg-fourth-100 checked:bg-fourth-200 rounded my-0.5" }]].concat(
                     @main_categories.map {|main_category|
                       [
-                        [main_category.name, main_category.id, { class: "pl-2 cursor-pointer hover:bg-fourth-100 bg-first-50 checked:bg-fourth-200 rounded my-0.5" } ]
-                      ].concat( main_category.categories.map {|category| [category.name, category.id, { class: "ml-4 pl-2 cursor-pointer hover:bg-fourth-100 checked:bg-fourth-200 rounded my-0.5" }]}   )
+                        [main_category.name, main_category.id, { class: "pl-2 cursor-pointer hover:bg-fourth-100 checked:bg-fourth-200 rounded my-0.5" } ]
+                      ].concat( main_category.categories.map {|category| [category.name, category.id, { class: "ml-4 pl-2 cursor-pointer hover:bg-fourth-100 checked:bg-fourth-200 rounded my-0.5 text-sm" }]}   )
                     }.flatten(1)
                   ),
                   @category_id || ""

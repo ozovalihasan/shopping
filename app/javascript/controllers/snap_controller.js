@@ -22,15 +22,14 @@ export default class extends Controller {
       this.previousButtonTarget.classList.remove("hidden")
     }
 
-    if(this.containerTarget.scrollLeft === this.containerTarget.scrollLeftMax){
-      this.nextButtonTarget.classList.add("hidden")
-    } else {
-      this.nextButtonTarget.classList.remove("hidden")
-    }
   }
 
   goToNextPart() {
-    this.containerTarget.scrollLeft += this.containerTarget.clientWidth
+    if(this.containerTarget.scrollLeft === this.containerTarget.scrollLeftMax){
+      this.containerTarget.scrollLeft = 0
+    } else {
+      this.containerTarget.scrollLeft += this.containerTarget.clientWidth
+    }
   }
 
   goToPreviousPart() {

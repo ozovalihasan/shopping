@@ -9,6 +9,8 @@ class MainCategoriesController < ApplicationController
     if @best_campaign
       @products_of_best_deal = @best_campaign.products.in_random_order.limit(10)
     end
+
+    @brands = Brand.order("RANDOM()").limit(10)
   end
 
   # GET /main_categories/1 or /main_categories/1.json

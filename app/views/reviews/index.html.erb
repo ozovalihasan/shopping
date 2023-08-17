@@ -20,19 +20,24 @@
         <%= form.hidden_field :page, value: @page %>
         <%= form.hidden_field :rate_option, value: nil, data: {product_tabs_form_target: "rateOption"} %>
 
-        <%= form.select :sort_option, options_for_select([
-                                        ["Highest First", :highest_rate], 
-                                        ["Lowest First", :lowest_rate],
-                                        ["Newest First", :newest],
-                                        ["Oldest First", :oldest],
-                                      ], @sort_option), 
-                                      { include_blank: "Sort" }, 
-                                      class: "text-sm",
-                                      data: { 
-                                        action: "change->product-tabs-form#search" 
-                                      } 
-        %>
-        
+
+        <div class="flex justify-end">
+          <%= form.select :sort_option, options_for_select([
+                                          ["Highest First", :highest_rate],
+                                          ["Lowest First", :lowest_rate],
+                                          ["Newest First", :newest],
+                                          ["Oldest First", :oldest],
+                                        ], @sort_option),
+                                        { include_blank: "Sort" },
+                                        {
+                                          class: "select-options",
+                                          data: {
+                                            action: "change->product-tabs-form#search"
+                                          }
+                                        }
+          %>
+          
+        </div>
       
 
         <%= turbo_frame_tag product_reviews_inner_target(@product),

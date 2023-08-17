@@ -82,6 +82,10 @@
   .page.active {
     @apply z-10 border-first-500 bg-first-50 text-first-600 relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20;
   }
+
+  .select-options {
+    @apply rounded p-2 cursor-pointer
+  }
 }
 
 details > summary::marker {

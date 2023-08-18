@@ -26,26 +26,28 @@
         <% end %>
 
         <%= render component("products/filter", title: "Brand") do%>
-          <div class="h-96 overflow-y-scroll w-full p-4" data-controller="filter-options">
+          <div class="h-96 overflow-y-scroll w-full px-2" data-controller="filter-options">
             <%= render component("shared/filter_list") %>
-        
-            <%= form.collection_check_boxes :brand_ids,
-                                            @brands,
-                                            :id,
-                                            :name,
-                                            { include_hidden: false, checked: @brand_ids},
-                                            data: {
-                                              action: "input->left-search-form#search",
-                                              left_search_form_target: "brand",
-                                              filter_options_target: "option"
-                                            } do |b|
-            %>
-              <div class="flex" >
-                <%= b.check_box class: "accent-first-500" %>
-                <%= b.label class: "ml-2 whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:bg-fourth-100 w-full" %>
-              </div>
-            <% end %>
-          </div>
+
+            <div>
+              <%= form.collection_check_boxes :brand_ids,
+                                              @brands,
+                                              :id,
+                                              :name,
+                                              { include_hidden: false, checked: @brand_ids},
+                                              data: {
+                                                action: "input->left-search-form#search",
+                                                left_search_form_target: "brand",
+                                                filter_options_target: "option"
+                                              } do |b|
+              %>
+                <div class="flex" >
+                  <%= b.check_box class: "accent-first-500" %>
+                  <%= b.label class: "ml-2 whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:bg-fourth-100 w-full" %>
+                </div>
+              <% end %>
+            </div>
+          <div data-controller="filter-options">
         <% end %>
         
       </div>

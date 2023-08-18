@@ -12,7 +12,7 @@
                 {include_blank: false},
                 {
                   size: [1 + @main_categories.size + @main_categories.sum {|main_category| main_category.categories.size}, 10].min,
-                  class: "h-full  outline-none w-full p-4 ",
+                  class: "outline-none w-full px-2 ",
                   data: {
                     action:"input->left-search-form#search"
                   }

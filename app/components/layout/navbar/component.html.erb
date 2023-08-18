@@ -11,10 +11,11 @@
       <%= render component("products/search_bar") %>
     </div>
     
-    <div class="mr-8 flex items-center">
+    <div class="mr-8 flex items-center gap-x-6">
       <%= render component("settings/main_color") %>
       <%= render component("layout/user_account", current_user: @current_user) %>
+      <%= render component("carts/navbar", cart: @cart) %>
     </div>
-    <%= render component("carts/navbar", cart: @cart) %>
+    
   </div>
 </div>

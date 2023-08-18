@@ -1,4 +1,5 @@
-<div data-controller="dropdown"
+<div 
+  data-controller="dropdown"
   data-action="click->dropdown#toggle click@window->dropdown#hide"
   data-dropdown-open-value="false"
   data-dropdown-active-target="#dropdown-button"
@@ -10,13 +11,12 @@
   data-dropdown-leaving-class="ease-in duration-300"
   data-dropdown-leave-timeout="300"
 >
-  <div id="dropdown-button" class="relative inline-block text-sm text-white px-4 py-2 leading-none rounded no-underline hover:bg-indigo-600 mt-0">
+  <div id="dropdown-button" class="relative inline-block text-sm text-white py-2 leading-none rounded no-underline hover:bg-indigo-600 mt-0">
     <div role="button" tabindex="0" data-dropdown-target="button" class="inline-block select-none">
       <span class="appearance-none flex items-center">
         <span class="w-6 h-6">
           <%= render component("icons/settings") %>
         </span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="text-white fill-current h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
       </span>
     </div>
     <div data-dropdown-target="menu" class="absolute right-0 mt-2 transform transition hidden opacity-0 scale-95">

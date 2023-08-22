@@ -13,7 +13,7 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-  config.wrappers :default, class: :input,
+  config.wrappers :default, class: "w-96 py-2 grid grid-cols-4 justify-between items-center group", tag: "div",
     hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
@@ -40,7 +40,7 @@ SimpleForm.setup do |config|
     b.optional :maxlength
 
     # Calculate minlength from length validations for string inputs
-    b.optional :minlength
+    b.use :minlength
 
     # Calculates pattern from format validations for string inputs
     b.optional :pattern
@@ -53,10 +53,14 @@ SimpleForm.setup do |config|
 
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
-
+    b.wrapper tag: 'div', class: "col-start-1 col-span-2 flex justify-between" do |ba|
+      ba.use :label, class: "flex"
+      ba.use :custom_hints
+    end
+    
+    b.use :input, class: 'rounded p-2 col-start-3 col-span-2 w-full border border-fourth-300 border-solid'
+    b.use :error, wrap_with: { tag: :div, class: "bg-danger-200 rounded px-2 py-1 col-start-3 col-span-2 text-sm mt-1" }
+    
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
     # use the component :full_error, like:
@@ -71,10 +75,10 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = "btn-first p-2 my-2 w-full"
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -114,7 +118,7 @@ SimpleForm.setup do |config|
 
   # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.
-  # config.default_form_class = nil
+  config.default_form_class = "mx-auto w-min border border-fourth-200 border-solid p-8 rounded my-4"
 
   # You can define which elements should obtain additional classes
   # config.generate_additional_classes_for = [:wrapper, :label, :input]
@@ -173,4 +177,13 @@ SimpleForm.setup do |config|
   # Defines validation classes to the input_field. By default it's nil.
   # config.input_field_valid_class = 'is-valid'
   # config.input_field_error_class = 'is-invalid'
+
+  config.wrappers :login_form_remember_me, tag: 'div', class: "ml-auto py-4 justify-end flex items-center" do |b|
+    b.use :html5
+
+    b.use :input, class: 'appearance-none checked:bg-first-500 rounded border border-fourth-300 border-solid w-4 h-4 m-1'
+    b.use :label, class: "w-min cursor-pointer whitespace-nowrap"
+  end
 end
+
+Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }

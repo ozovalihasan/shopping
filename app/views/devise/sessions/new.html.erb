@@ -1,38 +1,32 @@
 <%= render component("frame/body") do %>
-
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mx-auto w-min border border-fourth-200 border-solid p-8 rounded my-4"}) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <h2 class="w-full text-center p-4">Log in</h2>
+
     <div class="form-inputs">
       <%= f.input :email,
                   required: true,
                   autofocus: true,
                   placeholder: "Email",
-                  input_html: { autocomplete: "email", class: "rounded p-2 w-2/3 border border-fourth-300 border-solid"},
-                  wrapper_html: {class: "w-96 py-2 flex justify-between items-center"}
-                    
-                    
+                  input_html: { autocomplete: "email"}
       %>
       <%= f.input :password,
                   required: true,
                   placeholder: "Password",
-                  input_html: { autocomplete: "email", class: "rounded p-2 w-2/3 border border-fourth-300 border-solid"},
-                  wrapper_html: {class: "w-96 py-2 flex justify-between items-center"}
-                    
+                  input_html: { autocomplete: "password"}
       %>
+
       <% if devise_mapping.rememberable? %>
         <%= f.input :remember_me, 
                     as: :boolean, 
-                    input_html: {class: "appearance-none checked:bg-first-500 rounded border border-fourth-300 border-solid w-4 h-4 m-1"},
-                    label_html: {class: "w-min flex items-center cursor-pointer whitespace-nowrap"},
-                    wrapper_html: {class: "ml-auto py-4 justify-end flex"} 
+                    wrapper: :login_form_remember_me
         %>
       <% end %>
+
     </div>
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class: "btn-first p-2 my-2 w-full", data: {turbo: false } %>
+      <%= f.button :submit, "Log in", data: {turbo: false } %>
     </div>
 
     <%= render "devise/shared/links" %>
   <% end %>
-
 <% end %>

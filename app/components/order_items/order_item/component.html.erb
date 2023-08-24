@@ -7,7 +7,7 @@
         <%= image_tag @order_item.product.images.first.variant(resize_to_limit: [100, 100]), class: "rounded-md h-32 aspect-square" %>
       
         <div class="m-4">
-          <span class="font-bold"><%= @order_item.product.company %></span>
+          <span class="font-bold"><%= @order_item.product.brand.name %></span>
           <div>
             <%= @order_item.product.name %>
           </div>

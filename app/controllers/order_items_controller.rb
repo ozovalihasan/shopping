@@ -53,7 +53,7 @@ class OrderItemsController < ApplicationController
         format.html { redirect_to order_item_url(@order_item), notice: @notice }
         format.turbo_stream 
       else
-        @notice = "The order item is not updated because of an error."
+        @notice = "#{@order_item.product.name} is not updated because of an error."
         
         format.html { render :edit, status: :unprocessable_entity }
         format.turbo_stream {
@@ -70,7 +70,7 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
 
     respond_to do |format|
-      @notice = "OrderItem was successfully destroyed."
+      @notice = "#{@order_item.product.name} was successfully destroyed."
 
       format.html { redirect_to order_items_url, notice: @notice }
       format.turbo_stream 

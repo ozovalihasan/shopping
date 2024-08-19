@@ -7,6 +7,7 @@ class OrderItem < ApplicationRecord
   after_save :update_order
 
   validates :quantity, presence: true, numericality: { only_integer: true,  greater_than: 0 }
+  validates :product, uniqueness: { scope: :order }
   
   def update_order
     order.update_total_price
